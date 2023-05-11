@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -10,10 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use((err, res) => {
-  console.log(err);
-
-  res.status(500).json({ message: "Something went wrong :(" });
-});
+// Requests
+app.use("/", require("./server/routes/userRoutes"));
+app.use("/", require("./server/routes/commentRoutes"));
+app.use("/", require("./server/routes/bookmarkRoutes"));
+app.use("/", require("./server/routes/articleRoutes"));
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
