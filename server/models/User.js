@@ -7,7 +7,7 @@ class User {
   }
 
   static findUser(username) {
-    let sql = `SELECT FROM users WHERE username = ${username};`;
+    let sql = `SELECT * FROM users WHERE username = "${username}";`;
 
     return db.execute(sql);
   }

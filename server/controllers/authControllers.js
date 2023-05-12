@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 exports.register = async (req, res) => {
   // Check if user exists
   try {
-    const username = req.params.username;
+    const username = req.body.username;
 
     await User.findUser(username);
 
