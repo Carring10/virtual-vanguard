@@ -16,5 +16,6 @@ app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
 app.use("/", require("./server/routes/bookmarkRoutes"));
 app.use("/", require("./server/routes/articleRoutes"));
+app.use("/", require("./server/routes/authRoutes"));
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
