@@ -2,28 +2,20 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 exports.register = async (req, res) => {
-  // Check if user exists
   try {
     const username = req.body.username;
+    const [userExists, _] = await User.findUser(username);
+    // If a user already exists, do not save it to the database.
+    if (userExists.length != 0) {
+      return res.status(409).json({ message: "User already exists!" });
+    } else {
+      // Hash the password before saving to the database, salt it 10 times.
+      const password = await bcrypt.hash(req.body.password, 10);
+      let user = new User(username, password);
+      await user.create();
 
-    await User.findUser(username);
-
-    res.status(409).json({ message: "User already exists" });
-  } catch (err) {
-    console.log(err);
-  }
-
-  // Create new user
-  try {
-    const username = req.body.username;
-    // Hash the password before saving to the database
-    const password = await bcrypt.hash(req.body.password, 10);
-    
-    let user = new User(username, password);
-
-    await user.create();
-
-    res.status(201).json({ user });
+      res.status(201).json({ user });
+    }
   } catch (err) {
     console.log(err);
   }
