@@ -57,5 +57,8 @@ exports.login = async (req, res) => {
 }
 
 exports.logout = async (req, res) => {
-  res.send('Get all articles route!')
+  res.clearCookie('accessToken', {
+    secure: true,
+    sameSite: 'none'
+  }).status(200).json('User has been logged out.')
 }
