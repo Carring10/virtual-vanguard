@@ -4,14 +4,14 @@ import {
   Route
 } from 'react-router-dom';
 import { Bookmark } from './pages/Bookmark';
-import { Articles } from './pages/Articles';
+import { Feed } from './pages/Feed';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Articles />} />
+          <Route path='/' element={<Feed />} />
           <Route path='/bookmark' element={<Bookmark />} />
         </Routes>
       </BrowserRouter>

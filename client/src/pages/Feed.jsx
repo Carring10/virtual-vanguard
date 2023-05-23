@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const Articles = () => {
+export const Feed = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -17,12 +17,17 @@ export const Articles = () => {
     fetchAllArticles();
   }, []);
 
+  function handleClick(event, index) {
+    event.preventDefault();
+    console.log(articles[index]);
+  }
+
   return (
     <>
-      {articles.map((article) => (
-        <div className='article' key={article.id}>
+      {articles.map((article, index) => (
+        <div className='article' key={article.id} index={index} onClick={(event) => handleClick(event, index)}>
           <h2>{article.title}</h2>
-          <img src={article.thumbnail} alt='' />
+          <img src={article.thumbnail} alt='Game Thumbnail' />
         </div>
       ))}
     </>
