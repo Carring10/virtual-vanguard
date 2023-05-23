@@ -20,7 +20,10 @@ export const Articles = () => {
   return (
     <>
       {articles.map((article) => (
-        <h2 key={article.id}>{article.title}</h2>
+        <div className='article' key={article.id}>
+          <h2>{article.title}</h2>
+          <img src={article.thumbnail} alt='' />
+        </div>
       ))}
     </>
   );
