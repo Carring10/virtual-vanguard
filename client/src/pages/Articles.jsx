@@ -2,25 +2,26 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const Articles = () => {
-  const [posts, setPosts] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const fetchAllPosts = async () => {
+    const fetchAllArticles = async () => {
       try {
         const response = await axios.get("https://www.mmobomb.com/api1/latestnews");
-        console.log(response.data);
+        setArticles(response.data);
+        console.log(response.data)
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllPosts();
+    fetchAllArticles();
   }, []);
 
-  // return (
-  //   <ul>
-  //     {posts.map((post) => (
-  //       <li key={post.id}>{post.title}</li>
-  //     ))}
-  //   </ul>
-  // );
+  return (
+    <>
+      {articles.map((article) => (
+        <h2 key={article.id}>{article.title}</h2>
+      ))}
+    </>
+  );
 };
