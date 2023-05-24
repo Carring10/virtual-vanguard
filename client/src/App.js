@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { Bookmark } from './pages/Bookmark';
 import { Feed } from './pages/Feed';
+import { Article } from './pages/Article';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Feed />} />
           <Route path='/bookmark' element={<Bookmark />} />
+          <Route path='/article' Component={Article} />
         </Routes>
       </BrowserRouter>
     </div>

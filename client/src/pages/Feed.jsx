@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Article } from "./Article";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Feed = () => {
@@ -9,7 +11,7 @@ export const Feed = () => {
       try {
         const response = await axios.get("https://www.mmobomb.com/api1/latestnews");
         setArticles(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -17,17 +19,14 @@ export const Feed = () => {
     fetchAllArticles();
   }, []);
 
-  function handleClick(event, index) {
-    event.preventDefault();
-    console.log(articles[index]);
-  }
-
   return (
     <>
       {articles.map((article, index) => (
-        <div className='article' key={article.id} index={index} onClick={(event) => handleClick(event, index)}>
-          <h2>{article.title}</h2>
-          <img src={article.thumbnail} alt='Game Thumbnail' />
+        <div className="article" key={article.id} index={index}>
+          <Link to="/article" state={articles[index]}>
+            <h2>{article.title}</h2>
+            <img src={article.thumbnail} alt="Game Thumbnail" />
+          </Link>
         </div>
       ))}
     </>
