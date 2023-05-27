@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import DOMPurify from 'dompurify'
+import DOMPurify from "dompurify";
 
 export const Article = () => {
   const location = useLocation();
@@ -8,11 +8,12 @@ export const Article = () => {
 
   // DOMPurify sanitizes HTML and prevents XSS attacks
   const sanitizedData = () => ({
-    __html: DOMPurify.sanitize(propsData.article_content)
-  })
+    __html: DOMPurify.sanitize(propsData.article_content),
+  });
 
   return (
     <>
+      <Link to="/">Back</Link>
       <h1>{propsData.title}</h1>
       <div dangerouslySetInnerHTML={sanitizedData()} />
     </>
