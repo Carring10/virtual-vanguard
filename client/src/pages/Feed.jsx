@@ -11,7 +11,6 @@ export const Feed = () => {
       try {
         const response = await axios.get("https://www.mmobomb.com/api1/latestnews");
         setArticles(response.data);
-        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
