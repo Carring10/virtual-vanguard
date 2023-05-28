@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import { Navbar } from "./Navbar";
+
 export const Feed = () => {
   const [articles, setArticles] = useState([]);
 
@@ -19,6 +21,7 @@ export const Feed = () => {
 
   return (
     <>
+    <Navbar />
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]}>
