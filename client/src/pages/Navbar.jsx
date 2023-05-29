@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
   return (
     <div>
-      <a href='placeholder'>Sign In</a>
+      <Link to="/register">Sign In</Link>
     </div>
   )
 }
