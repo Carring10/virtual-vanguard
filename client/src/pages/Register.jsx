@@ -8,6 +8,8 @@ export const Register = () => {
     password: ''
   });
 
+  const [err, setErr] = useState(null);
+
   const handleChange = (event) => {
     setInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   }
@@ -21,6 +23,7 @@ export const Register = () => {
       await axios.post('http://localhost:8800/auth/register', input)
     } catch (err) {
       console.log(err);
+      setErr(err.response.data.message);
     }
   }
 
@@ -31,6 +34,7 @@ export const Register = () => {
         <input type='text' placeholder='Username' name='username' onChange={handleChange} />
         <input type='text' placeholder='Password' name='password' onChange={handleChange} />
         <button onClick={handleClick}>Register</button>
+        {err && err}
       </form>
     </div>
   )
