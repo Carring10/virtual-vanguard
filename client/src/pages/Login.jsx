@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import axios from 'axios';
 
-export const Register = () => {
+export const Login = () => {
   const [input, setInput] = useState({
     username: '',
     password: ''
@@ -28,11 +28,11 @@ export const Register = () => {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h1>Login</h1>
       <form>
         <input type='text' placeholder='Username' name='username' onChange={handleChange} />
         <input type='text' placeholder='Password' name='password' onChange={handleChange} />
-        <button onClick={handleClick}>Register</button>
+        <button onClick={handleClick}>Login</button>
         {/* If err is not null, render err message */}
         {err && err}
       </form>

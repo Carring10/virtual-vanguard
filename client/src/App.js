@@ -7,6 +7,7 @@ import { Bookmark } from './pages/Bookmark';
 import { Feed } from './pages/Feed';
 import { Article } from './pages/Article';
 import { Register } from './pages/Register';
+import { Login } from './pages/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/bookmark' element={<Bookmark />} />
           <Route path='/article' Component={Article} />
           <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
