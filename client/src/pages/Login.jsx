@@ -1,6 +1,8 @@
 import React from 'react'
+import { useContext } from "react";
 import { useState } from "react";
 import axios from 'axios';
+import { AuthContext } from '../context/authContext';
 
 export const Login = () => {
   const [input, setInput] = useState({
@@ -15,11 +17,13 @@ export const Login = () => {
     setInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   }
 
-  const handleClick = async (event) => {
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
-      await axios.post('http://localhost:8800/auth/register', input)
+      await login(input);
     } catch (err) {
       console.log(err);
       setErr(err.response.data.message);
@@ -32,7 +36,7 @@ export const Login = () => {
       <form>
         <input type='text' placeholder='Username' name='username' onChange={handleChange} />
         <input type='text' placeholder='Password' name='password' onChange={handleChange} />
-        <button onClick={handleClick}>Login</button>
+        <button onClick={handleLogin}>Login</button>
         {/* If err is not null, render err message */}
         {err && err}
       </form>
