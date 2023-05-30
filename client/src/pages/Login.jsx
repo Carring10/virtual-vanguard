@@ -1,8 +1,8 @@
 import React from 'react'
 import { useContext } from "react";
 import { useState } from "react";
-import axios from 'axios';
 import { AuthContext } from '../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [input, setInput] = useState({
@@ -19,11 +19,14 @@ export const Login = () => {
 
   const { login } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
       await login(input);
+      navigate('/');
     } catch (err) {
       console.log(err);
       setErr(err.response.data.message);
