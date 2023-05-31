@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from '../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
   const [input, setInput] = useState({
@@ -36,6 +37,7 @@ export const Login = () => {
   return (
     <div>
       <h1>Login</h1>
+      <Link to="/register">Don't have an account? Click here to register</Link>
       <form>
         <input type='text' placeholder='Username' name='username' onChange={handleChange} />
         <input type='text' placeholder='Password' name='password' onChange={handleChange} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 export const Register = () => {
@@ -29,6 +30,7 @@ export const Register = () => {
   return (
     <div>
       <h1>Register</h1>
+      <Link to="/login">Already have an account? Click here to login</Link>
       <form>
         <input type='text' placeholder='Username' name='username' onChange={handleChange} />
         <input type='text' placeholder='Password' name='password' onChange={handleChange} />
