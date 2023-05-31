@@ -9,12 +9,12 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentails", true);
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 })
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:3000"
+  origin: "http://localhost:3000/"
 }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
