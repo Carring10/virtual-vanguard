@@ -28,6 +28,7 @@ export const Login = () => {
     try {
       await login(input);
       navigate('/');
+      window.location.reload();
     } catch (err) {
       console.log(err);
       setErr(err.response.data.message);
