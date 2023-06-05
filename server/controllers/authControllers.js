@@ -57,8 +57,9 @@ exports.login = async (req, res) => {
 }
 
 exports.logout = async (req, res) => {
-  res.clearCookie('accessToken', {
-    secure: true,
-    sameSite: 'none'
-  }).status(200).json('User has been logged out.');
+  try {
+    res.clearCookie('accessToken').status(200).json('User has been logged out.');
+  } catch (err) {
+    console.log(err)
+  }
 }

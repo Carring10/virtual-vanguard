@@ -1,14 +1,20 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const handleClick = (event) => {
+const handleClick = async (event) => {
   event.preventDefault();
-  localStorage.clear();
-  window.location.reload();
-}
+  localStorage.removeItem("user");
+
+  const res = await axios.post("http://localhost:8800/auth/logout", {
+    withCredentials: true
+  });
+  console.log(res);
+};
 
 const isLoggedIn = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+
   if (user) {
     return (
       <div>
@@ -19,7 +25,7 @@ const isLoggedIn = () => {
   } else {
     return <Link to="/login">Sign In</Link>;
   }
-}
+};
 
 export const Navbar = () => {
   return <>{isLoggedIn()}</>;
