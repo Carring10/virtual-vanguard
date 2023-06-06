@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     const { password, ...data } = userData[0];
 
     res.cookie('accessToken', token, {
-      httpOnly: true,
+      // httpOnly: true,
     }).status(200).json(data);
 
   } catch (err) {
@@ -58,7 +58,9 @@ exports.login = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    res.clearCookie('accessToken').status(200).json('User has been logged out.');
+    res.clearCookie('accessToken', {
+      withCredentials: true
+    }).status(200).json('User has been logged out.');
   } catch (err) {
     console.log(err)
   }

@@ -6,7 +6,7 @@ const handleClick = async (event) => {
   event.preventDefault();
   localStorage.removeItem("user");
 
-  const res = await axios.post("http://localhost:8800/auth/logout", {
+  const res = await axios.delete("http://localhost:8800/auth/logout", {
     withCredentials: true
   });
   console.log(res);
