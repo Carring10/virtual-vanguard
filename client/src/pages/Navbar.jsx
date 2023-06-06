@@ -6,10 +6,15 @@ const handleClick = async (event) => {
   event.preventDefault();
   localStorage.removeItem("user");
 
-  const res = await axios.delete("http://localhost:8800/auth/logout", {
-    withCredentials: true
-  });
-  console.log(res);
+  try {
+    await axios.delete("http://localhost:8800/auth/logout", {
+      withCredentials: true
+    });
+
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const isLoggedIn = () => {

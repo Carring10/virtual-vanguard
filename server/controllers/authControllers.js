@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     const { password, ...data } = userData[0];
 
     res.cookie('accessToken', token, {
-      // httpOnly: true,
+      httpOnly: true,
     }).status(200).json(data);
 
   } catch (err) {
