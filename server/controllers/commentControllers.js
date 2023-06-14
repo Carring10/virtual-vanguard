@@ -8,12 +8,13 @@ exports.getAllComments = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   try {
-    // const userId = req.body.userId
+    console.log(req.body)
+    const userId = req.body.userId
     const content = req.body.content;
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    // const articleId = req.body.articleId;
+    const articleId = req.body.articleId;
 
-    let comment = new Comment(content, createdAt);
+    let comment = new Comment(userId, content, createdAt, articleId);
 
     await comment.add();
 

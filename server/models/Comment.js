@@ -1,11 +1,11 @@
 const db = require('../config/connection');
 
 class Comment {
-  constructor(content, createdAt) {
-    // this.userId = userId;
+  constructor(userId, content, createdAt, articleId) {
+    this.userId = userId;
     this.content = content;
     this.createdAt = createdAt;
-    // this.articleId = articleId;
+    this.articleId = articleId;
   }
 
   static getComments() {
@@ -17,12 +17,16 @@ class Comment {
   add() {
     let sql = `
     INSERT INTO comments(
+      userId,
       content,
-      createdAt
+      createdAt,
+      articleId
     )
     VALUES(
+      '${this.userId}',
       '${this.content}',
-      '${this.createdAt}'
+      '${this.createdAt}',
+      '${this.articleId}'
     )
     `;
 

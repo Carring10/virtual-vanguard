@@ -17,7 +17,7 @@ export const Article = () => {
       <Link to="/">Back</Link>
       <h1>{propsData.title}</h1>
       <div dangerouslySetInnerHTML={sanitizedData()} />
-      <Comments />
+      <Comments articleId={propsData.id} />
     </>
   );
 };
