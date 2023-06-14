@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { Comments } from "./Comments";
 
 export const Article = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ export const Article = () => {
       <Link to="/">Back</Link>
       <h1>{propsData.title}</h1>
       <div dangerouslySetInnerHTML={sanitizedData()} />
+      <Comments />
     </>
   );
 };
