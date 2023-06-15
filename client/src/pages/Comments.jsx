@@ -16,6 +16,7 @@ export const Comments = ({ articleId }) => {
 
   const queryClient = useQueryClient();
 
+  // Mutation used to make changes to the server, provide data as 'newComment'
   const mutation = useMutation(
     (newComment) => {
       return axios.post("http://localhost:8800/comments", newComment);
