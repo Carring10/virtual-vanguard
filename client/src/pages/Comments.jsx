@@ -8,12 +8,6 @@ export const Comments = ({ articleId }) => {
   const { currentUser } = useContext(AuthContext);
   const userId = currentUser.id;
 
-  // const { isLoading, error, data } = useQuery(["comments"], () => {
-  //   axios.get("/comments?articleId=" + articleId).then((res) => {
-  //     return res.data;
-  //   });
-  // });
-
   const queryClient = useQueryClient();
 
   // Mutation used to make changes to the server, provide data as 'newComment'
