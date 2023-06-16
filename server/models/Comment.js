@@ -8,8 +8,8 @@ class Comment {
     this.articleId = articleId;
   }
 
-  static getComments() {
-    let sql = `SELECT * FROM comments;`
+  static getComments(articleId) {
+    let sql = `SELECT * FROM comments WHERE articleId = ${articleId};`
 
     return db.execute(sql);
   }

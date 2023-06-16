@@ -2,17 +2,20 @@ const Comment = require('../models/Comment');
 
 const moment = require('moment');
 
-exports.getAllComments = async (req, res) => {
-  res.send("Get all comments route!")
+exports.getComments = async (req, res) => {
+  try {
+    const articleId = req.params.userId;
+
+    await Comment.getComments(articleId);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 exports.addComment = async (req, res) => {
   try {
-    console.log(req.body)
-    const userId = req.body.userId
-    const content = req.body.content;
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    const articleId = req.body.articleId;
+    const { userId, content, articleId } = req.body;
 
     let comment = new Comment(userId, content, createdAt, articleId);
 
