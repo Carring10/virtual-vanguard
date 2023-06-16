@@ -4,9 +4,12 @@ const moment = require('moment');
 
 exports.getComments = async (req, res) => {
   try {
-    const articleId = req.params.userId;
+    console.log("params", req.params)
+    const articleId = req.body.articleId;
 
-    await Comment.getComments(articleId);
+    const [comments, _] = await Comment.getComments(articleId);
+
+    res.status(200).json({ comments });
   } catch (err) {
     console.log(err);
   }
@@ -14,6 +17,7 @@ exports.getComments = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   try {
+    console.log(req)
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     const { userId, content, articleId } = req.body;
 
