@@ -9,7 +9,12 @@ class Comment {
   }
 
   static getComments(articleId) {
-    let sql = `SELECT * FROM comments WHERE articleId = ${articleId};`
+    let sql = `
+    SELECT * FROM comments 
+    LEFT JOIN users 
+    ON comments.userId = users.id 
+    WHERE articleId = ${articleId};
+    `;
 
     return db.execute(sql);
   }
