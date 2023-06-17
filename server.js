@@ -1,10 +1,11 @@
 require("dotenv").config();
 
 const express = require("express");
+const cookieParser = require("cookie-parser");
 
 const app = express();
+app.use(cookieParser());
 const cors = require('cors');
-const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 3001;
 
 // Middleware
@@ -14,9 +15,10 @@ app.use((req, res, next) => {
 })
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:3000"
+  origin: "http://localhost:3000",
+  credentials: true,
+  sameSite: 'None'
 }));
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

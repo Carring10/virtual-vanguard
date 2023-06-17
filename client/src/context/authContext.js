@@ -12,9 +12,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (input) => {
     const res = await axios.post('http://localhost:8800/auth/login', input, {
-      withCredentials: true
+      withCredentials: true,
     });
-    
     setCurrentUser(res.data);
   }
 
@@ -22,7 +21,7 @@ export const AuthContextProvider = ({ children }) => {
     // Write user object into local storage
     localStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
-
+  
   return (
     <AuthContext.Provider value={{ currentUser, login }}>
       {/* children allows the nested components to access the shared data provided by the context api */}
