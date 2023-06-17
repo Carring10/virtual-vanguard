@@ -35,7 +35,6 @@ export const Comments = ({ articleId }) => {
     mutation.mutate({ userId, content, articleId });
     setContent('');
   };
-  console.log(data)
   return (
     <div className='comments'>
       <div className='write'>
