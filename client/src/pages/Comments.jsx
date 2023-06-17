@@ -10,7 +10,7 @@ export const Comments = ({ articleId }) => {
 
   const queryClient = useQueryClient();
 
-  const { isLoading, error, data } = useQuery(["comments"], () =>
+  const { data } = useQuery(["comments"], () =>
     axios.get(`http://localhost:8800/comments/${articleId}`).then((res) => {
       const data = res.data.comments;
       return data;

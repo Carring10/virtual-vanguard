@@ -58,7 +58,6 @@ exports.login = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    console.log(req.cookies)
     res.clearCookie('accessToken', {
       withCredentials: true
     }).status(200).json('User has been logged out.');

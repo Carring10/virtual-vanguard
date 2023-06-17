@@ -13,7 +13,8 @@ class Comment {
     SELECT * FROM comments 
     LEFT JOIN users 
     ON comments.userId = users.id 
-    WHERE articleId = ${articleId};
+    WHERE articleId = ${articleId}
+    ORDER BY createdAt DESC;
     `;
 
     return db.execute(sql);
