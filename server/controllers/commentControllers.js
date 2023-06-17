@@ -4,8 +4,7 @@ const moment = require('moment');
 
 exports.getComments = async (req, res) => {
   try {
-    console.log("params", req.params)
-    const articleId = req.body.articleId;
+    const articleId = req.params.articleId;
 
     const [comments, _] = await Comment.getComments(articleId);
 
@@ -17,7 +16,6 @@ exports.getComments = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   try {
-    console.log(req)
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     const { userId, content, articleId } = req.body;
 
