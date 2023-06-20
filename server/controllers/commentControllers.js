@@ -31,3 +31,16 @@ exports.addComment = async (req, res) => {
     console.log(err)
   }
 }
+
+exports.deleteAll = async (req, res) => {
+  try {
+    console.log(req.params)
+    const articleId = req.params.articleId;
+
+    await Comment.deleteAll(articleId);
+
+    res.status(200).json({ message: 'comments deleted' });
+  } catch (err) {
+    console.log(err)
+  }
+}

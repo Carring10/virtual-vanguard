@@ -40,6 +40,15 @@ class Comment {
 
     return newComment;
   }
+
+  static deleteAll(articleId) {
+    let sql = `
+    DELETE FROM comments
+    WHERE id = ${articleId};
+    `;
+
+    return db.execute(sql);
+  }
 }
 
 module.exports = Comment;

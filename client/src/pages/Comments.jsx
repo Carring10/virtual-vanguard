@@ -5,6 +5,7 @@ import axios from "axios";
 import moment from "moment/moment";
 
 export const Comments = ({ articleId }) => {
+  console.log(articleId)
   const [content, setContent] = useState("");
   const { currentUser } = useContext(AuthContext);
 
