@@ -5,7 +5,6 @@ import axios from "axios";
 import moment from "moment/moment";
 
 export const Comments = ({ articleId }) => {
-  console.log(articleId)
   const [content, setContent] = useState("");
   const { currentUser } = useContext(AuthContext);
 
@@ -32,6 +31,18 @@ export const Comments = ({ articleId }) => {
     }
   );
 
+  const deleteMutation = useMutation(
+    (data) => {
+      console.log("data", data)
+      return axios.delete(`http://localhost:8800/comments/${data.id}`);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["comments"]);
+      },
+    }
+  );
+
   const handleClick = async (event) => {
     event.preventDefault();
     if (currentUser) {
@@ -43,6 +54,24 @@ export const Comments = ({ articleId }) => {
       console.log("not logged in")
     }
   };
+
+  const handleDelete = () => {
+    const userId = currentUser.id;
+    const id = data.id;
+
+    deleteMutation.mutate({ id, userId });
+  }
+
+
+  const deleteComment = (comment) => {
+    const userId = currentUser.id;
+
+    if (userId === comment.id) {
+      return (
+        <button>delete</button>
+      )
+    }
+  }
 
   return (
     <div className="comments">
@@ -58,12 +87,13 @@ export const Comments = ({ articleId }) => {
       </div>
       {data &&
         data.map((comment) => (
-          <div className="comment" key={comment.index}>
+          <div className="comment" key={comment.createdAt}>
             <div className="user-info">
               <h2>{comment.username}</h2>
               <p>{comment.content}</p>
             </div>
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
+            {currentUser && deleteComment(comment)}
           </div>
         ))}
     </div>

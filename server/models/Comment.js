@@ -41,10 +41,11 @@ class Comment {
     return newComment;
   }
 
-  static deleteAll(articleId) {
+  static deleteComment(id, userId) {
     let sql = `
     DELETE FROM comments
-    WHERE id = ${articleId};
+    WHERE articleId = ${id}
+    AND userId = ${userId};
     `;
 
     return db.execute(sql);

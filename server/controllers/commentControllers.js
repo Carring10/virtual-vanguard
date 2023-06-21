@@ -32,14 +32,14 @@ exports.addComment = async (req, res) => {
   }
 }
 
-exports.deleteAll = async (req, res) => {
+exports.deleteComment = async (req, res) => {
   try {
     console.log(req.params)
-    const articleId = req.params.articleId;
+    const { id, userId } = req.body;
 
-    await Comment.deleteAll(articleId);
+    await Comment.deleteComment(id, userId);
 
-    res.status(200).json({ message: 'comments deleted' });
+    res.status(200).json({ message: 'comment deleted' });
   } catch (err) {
     console.log(err)
   }
