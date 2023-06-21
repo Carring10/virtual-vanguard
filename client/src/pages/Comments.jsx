@@ -13,6 +13,7 @@ export const Comments = ({ articleId }) => {
   const { data } = useQuery(["comments"], () =>
     axios.get(`http://localhost:8800/comments/${articleId}`).then((res) => {
       const data = res.data.comments;
+      console.log(data)
       return data;
     })
   );
@@ -33,8 +34,7 @@ export const Comments = ({ articleId }) => {
 
   const deleteMutation = useMutation(
     (data) => {
-      console.log("data", data)
-      return axios.delete(`http://localhost:8800/comments/${data.id}`);
+      return axios.delete(`http://localhost:8800/comments/${data.id}/${data.userId}`);
     },
     {
       onSuccess: () => {
@@ -55,9 +55,9 @@ export const Comments = ({ articleId }) => {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (comment) => {
     const userId = currentUser.id;
-    const id = data.id;
+    const id = comment.commentId;
 
     deleteMutation.mutate({ id, userId });
   }
@@ -65,10 +65,11 @@ export const Comments = ({ articleId }) => {
 
   const deleteComment = (comment) => {
     const userId = currentUser.id;
+    console.log(comment)
 
-    if (userId === comment.id) {
+    if (userId === comment.userId) {
       return (
-        <button>delete</button>
+        <button onClick={() => handleDelete(comment)}>delete</button>
       )
     }
   }

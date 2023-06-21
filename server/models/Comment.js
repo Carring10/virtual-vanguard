@@ -44,7 +44,7 @@ class Comment {
   static deleteComment(id, userId) {
     let sql = `
     DELETE FROM comments
-    WHERE articleId = ${id}
+    WHERE commentId = ${id}
     AND userId = ${userId};
     `;
 

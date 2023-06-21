@@ -34,8 +34,7 @@ exports.addComment = async (req, res) => {
 
 exports.deleteComment = async (req, res) => {
   try {
-    console.log(req.params)
-    const { id, userId } = req.body;
+    const { id, userId } = req.params;
 
     await Comment.deleteComment(id, userId);
 
