@@ -7,6 +7,7 @@ import moment from "moment/moment";
 export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
   const { currentUser } = useContext(AuthContext);
+  const userId = currentUser.id;
 
   const queryClient = useQueryClient();
 
@@ -33,8 +34,8 @@ export const Comments = ({ articleId }) => {
   );
 
   const deleteMutation = useMutation(
-    (data) => {
-      return axios.delete(`http://localhost:8800/comments/${data.id}/${data.userId}`);
+    (deletedComment) => {
+      return axios.delete(`http://localhost:8800/comments/${deletedComment.id}/${deletedComment.userId}`);
     },
     {
       onSuccess: () => {
@@ -56,7 +57,6 @@ export const Comments = ({ articleId }) => {
   };
 
   const handleDelete = (comment) => {
-    const userId = currentUser.id;
     const id = comment.commentId;
 
     deleteMutation.mutate({ id, userId });
@@ -64,9 +64,6 @@ export const Comments = ({ articleId }) => {
 
 
   const deleteComment = (comment) => {
-    const userId = currentUser.id;
-    console.log(comment)
-
     if (userId === comment.userId) {
       return (
         <button onClick={() => handleDelete(comment)}>delete</button>
