@@ -72,7 +72,6 @@ export const Comments = ({ articleId }) => {
   }
 
   const replyToComment = (comment) => {
-    console.log(comment.parentId);
     const parentId = comment.commentId;
     addMutation.mutate({ userId, content, articleId, parentId });
   }

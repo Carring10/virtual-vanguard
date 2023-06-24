@@ -42,29 +42,6 @@ class Comment {
     return newComment;
   }
 
-  reply() {
-    let sql = `
-    INSERT INTO comments(
-      userId,
-      content,
-      createdAt,
-      articleId,
-      parentId
-    )
-    VALUES(
-      '${this.userId}',
-      '${this.content}',
-      '${this.createdAt}',
-      '${this.articleId}',
-      '${this.parentId}'
-    );
-    `;
-
-    const newReply = db.execute(sql);
-
-    return newReply;
-  }
-
   static deleteComment(id, userId) {
     let sql = `
     DELETE FROM comments
