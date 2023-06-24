@@ -27,13 +27,15 @@ class Comment {
       userId,
       content,
       createdAt,
-      articleId
+      articleId,
+      parentId
     )
     VALUES(
       '${this.userId}',
       '${this.content}',
       '${this.createdAt}',
-      '${this.articleId}'
+      '${this.articleId}',
+       ${this.parentId}
     );
     `;
 
