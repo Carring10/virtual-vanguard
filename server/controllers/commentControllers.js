@@ -20,13 +20,12 @@ exports.addComment = async (req, res) => {
     if (!token) return res.status(403).json({ message: 'Not logged in' });
 
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    let { userId, content, articleId, parentId } = req.body;
+    const { userId, content, articleId, parentId } = req.body;
     console.log(req.body)
-    if (parentId == undefined) {
-      let parentId = null
-      let comment = new Comment(userId, content, createdAt, articleId, parentId);
-      await comment.add();
-    }
+
+    const comment = new Comment(userId, content, createdAt, articleId, parentId || null);
+
+    await comment.add();
 
     res.status(200).json({ message: 'comment created' });
   } catch (err) {
