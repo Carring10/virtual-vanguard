@@ -20,7 +20,7 @@ export const Comments = ({ articleId }) => {
   );
 
   // Mutation used to make changes to the server, provide data as 'newComment'
-  const mutation = useMutation(
+  const addMutation = useMutation(
     (newComment) => {
       return axios.post("http://localhost:8800/comments", newComment, {
         withCredentials: true,
@@ -49,7 +49,7 @@ export const Comments = ({ articleId }) => {
     if (currentUser) {
       const userId = currentUser.id;
 
-      mutation.mutate({ userId, content, articleId });
+      addMutation.mutate({ userId, content, articleId });
       setContent("");
     } else {
       console.log("not logged in")
@@ -66,9 +66,15 @@ export const Comments = ({ articleId }) => {
   const deleteComment = (comment) => {
     if (userId === comment.userId) {
       return (
-        <button onClick={() => handleDelete(comment)}>delete</button>
+        <button onClick={() => handleDelete(comment)}>Delete</button>
       )
     }
+  }
+
+  const replyToComment = (comment) => {
+    console.log(comment.parentId);
+    const parentId = comment.commentId;
+    addMutation.mutate({ userId, content, articleId, parentId });
   }
 
   return (
@@ -92,6 +98,7 @@ export const Comments = ({ articleId }) => {
             </div>
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteComment(comment)}
+            <button onClick={() => replyToComment(comment)}>Reply</button>
           </div>
         ))}
     </div>
