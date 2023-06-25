@@ -76,6 +76,19 @@ export const Comments = ({ articleId }) => {
     addMutation.mutate({ userId, content, articleId, parentId });
   }
 
+  const showRepliesButton = (comment) => {
+    const replies = JSON.parse(comment.replies);
+    if (replies != null && replies.length > 1) {
+      return (
+        <button>Show {replies.length} Replies</button>
+      );
+    } else if (replies != null && replies.length === 1) {
+      return (
+        <button>Show {replies.length} Reply</button>
+      );
+    }
+  }
+
   return (
     <div className="comments">
       <div className="write">
@@ -98,7 +111,7 @@ export const Comments = ({ articleId }) => {
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteComment(comment)}
             <button onClick={() => replyToComment(comment)}>Reply</button>
-            <button>Show Replies</button>
+            {showRepliesButton(comment)}
           </div>
         ))}
     </div>
