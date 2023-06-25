@@ -15,6 +15,7 @@ class Comment {
     LEFT JOIN users 
     ON comments.userId = users.id 
     WHERE articleId = ${articleId}
+    AND parentId is NULL
     ORDER BY createdAt DESC;
     `;
 

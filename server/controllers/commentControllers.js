@@ -21,7 +21,6 @@ exports.addComment = async (req, res) => {
 
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     const { userId, content, articleId, parentId } = req.body;
-    console.log(req.body)
 
     const comment = new Comment(userId, content, createdAt, articleId, parentId || null);
 
