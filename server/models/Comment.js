@@ -14,8 +14,17 @@ class Comment {
     SELECT * FROM comments 
     LEFT JOIN users 
     ON comments.userId = users.id 
-    WHERE articleId = ${articleId}
-    AND parentId is NULL
+    LEFT JOIN (
+    SELECT
+        parentId,
+        COALESCE(JSON_ARRAYAGG(JSON_OBJECT('userId', replies.userId, 'content', replies.content)), '[]') AS replies
+    FROM
+        comments AS replies
+    GROUP BY
+        parentId
+) AS replies ON comments.commentId = replies.parentId
+    WHERE comments.parentId is NULL
+    AND articleId = ${articleId}
     ORDER BY createdAt DESC;
     `;
 

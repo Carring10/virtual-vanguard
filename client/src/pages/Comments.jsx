@@ -98,6 +98,7 @@ export const Comments = ({ articleId }) => {
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteComment(comment)}
             <button onClick={() => replyToComment(comment)}>Reply</button>
+            <button>Show Replies</button>
           </div>
         ))}
     </div>
