@@ -14,10 +14,16 @@ export const Comments = ({ articleId }) => {
   const { data } = useQuery(["comments"], () =>
     axios.get(`http://localhost:8800/comments/${articleId}`).then((res) => {
       const data = res.data.comments;
-      console.log(data)
       return data;
     })
   );
+
+  const getRelplies = async (comment) => {
+    const parentId = comment.commentId;
+    const repliesData = await axios.get(`http://localhost:8800/comments/${articleId}/${parentId}`);
+    console.log(repliesData.data.replies);
+    return repliesData;
+  }
 
   // Mutation used to make changes to the server, provide data as 'newComment'
   const addMutation = useMutation(
@@ -80,13 +86,15 @@ export const Comments = ({ articleId }) => {
     const replies = JSON.parse(comment.replies);
     if (replies != null && replies.length > 1) {
       return (
-        <button>Show {replies.length} Replies</button>
+        <button onClick={() => getRelplies(comment)}>Show {replies.length} Replies</button>
       );
     } else if (replies != null && replies.length === 1) {
       return (
-        <button>Show {replies.length} Reply</button>
+        <button onClick={() => getRelplies(comment)}>Show {replies.length} Reply</button>
       );
     }
+
+    
   }
 
   return (

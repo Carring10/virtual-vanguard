@@ -31,6 +31,18 @@ class Comment {
     return db.execute(sql);
   }
 
+  static getReplies(articleId, parentId) {
+    let sql = `
+    SELECT * FROM comments
+    LEFT JOIN users ON comments.userId = users.id
+    WHERE parentId = ${parentId}
+    AND articleId = ${articleId}
+    ORDER BY createdAt DESC;
+    `;
+
+    return db.execute(sql);
+  }
+
   add() {
     let sql = `
     INSERT INTO comments(

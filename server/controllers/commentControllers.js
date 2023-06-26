@@ -14,6 +14,20 @@ exports.getComments = async (req, res) => {
   }
 }
 
+exports.getReplies = async (req, res) => {
+  try {
+    console.log(req.params);
+    const parentId = req.params.parentId;
+    const articleId = req.params.articleId
+
+    const [replies, _] = await Comment.getReplies(articleId, parentId)
+
+    res.status(200).json({ replies });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 exports.addComment = async (req, res) => {
   try {
     const token = req.cookies.accessToken;
