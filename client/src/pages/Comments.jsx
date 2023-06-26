@@ -3,6 +3,7 @@ import { AuthContext } from "../../src/context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
+import { Replies } from "./Replies";
 
 export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
@@ -18,15 +19,8 @@ export const Comments = ({ articleId }) => {
     })
   );
 
-  const getRelplies = async (comment) => {
-    const parentId = comment.commentId;
-    const repliesData = await axios.get(`http://localhost:8800/comments/${articleId}/${parentId}`);
-    console.log(repliesData.data.replies);
-    return repliesData;
-  }
-
   // Mutation used to make changes to the server, provide data as 'newComment'
-  const addMutation = useMutation(
+  const addComment = useMutation(
     (newComment) => {
       return axios.post("http://localhost:8800/comments", newComment, {
         withCredentials: true,
@@ -55,7 +49,7 @@ export const Comments = ({ articleId }) => {
     if (currentUser) {
       const userId = currentUser.id;
 
-      addMutation.mutate({ userId, content, articleId });
+      addComment.mutate({ userId, content, articleId });
       setContent("");
     } else {
       console.log("not logged in")
@@ -68,33 +62,12 @@ export const Comments = ({ articleId }) => {
     deleteMutation.mutate({ id, userId });
   }
 
-
   const deleteComment = (comment) => {
     if (userId === comment.userId) {
       return (
         <button onClick={() => handleDelete(comment)}>Delete</button>
       )
     }
-  }
-
-  const replyToComment = (comment) => {
-    const parentId = comment.commentId;
-    addMutation.mutate({ userId, content, articleId, parentId });
-  }
-
-  const showRepliesButton = (comment) => {
-    const replies = JSON.parse(comment.replies);
-    if (replies != null && replies.length > 1) {
-      return (
-        <button onClick={() => getRelplies(comment)}>Show {replies.length} Replies</button>
-      );
-    } else if (replies != null && replies.length === 1) {
-      return (
-        <button onClick={() => getRelplies(comment)}>Show {replies.length} Reply</button>
-      );
-    }
-
-    
   }
 
   return (
@@ -118,8 +91,7 @@ export const Comments = ({ articleId }) => {
             </div>
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteComment(comment)}
-            <button onClick={() => replyToComment(comment)}>Reply</button>
-            {showRepliesButton(comment)}
+            <Replies data={comment} />
           </div>
         ))}
     </div>
