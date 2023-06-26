@@ -36,28 +36,26 @@ export const Replies = (comment) => {
     const userId = comment.data.userId;
     const content = comment.data.content;
     const parentId = comment.data.commentId;
+
     addReply.mutate({ userId, content, articleId, parentId });
   };
 
   const showRepliesButton = (comment) => {
     const replies = JSON.parse(comment.data.replies);
-    if (replies != null && replies.length > 1) {
-      return (
-        <button onClick={() => getRelplies(comment)}>
-          Show {replies.length} Replies
-        </button>
-      );
-    } else if (replies != null && replies.length === 1) {
-      return (
-        <button onClick={() => getRelplies(comment)}>Show {replies.length} Reply</button>
-      );
+    
+    if (replies != null) {
+      const numReplies = replies.length;
+      const buttonText =
+        numReplies > 1 ? `Show ${numReplies} Replies` : `Show ${numReplies} Reply`;
+
+      return <button onClick={() => getRelplies(comment)}>{buttonText}</button>;
     }
   };
 
   return (
     <div>
-    <button onClick={() => replyToComment(comment)}>Reply</button>
-    {showRepliesButton(comment)}
+      <button onClick={() => replyToComment(comment)}>Reply</button>
+      {showRepliesButton(comment)}
     </div>
-  )
+  );
 };
