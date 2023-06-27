@@ -33,7 +33,7 @@ export const Comments = ({ articleId }) => {
     }
   );
 
-  const deleteMutation = useMutation(
+  const deleteComment = useMutation(
     (deletedComment) => {
       return axios.delete(`http://localhost:8800/comments/${deletedComment.id}/${deletedComment.userId}`);
     },
@@ -59,10 +59,10 @@ export const Comments = ({ articleId }) => {
   const handleDelete = (comment) => {
     const id = comment.commentId;
 
-    deleteMutation.mutate({ id, userId });
+    deleteComment.mutate({ id, userId });
   }
 
-  const deleteComment = (comment) => {
+  const deleteButton = (comment) => {
     if (userId === comment.userId) {
       return (
         <button onClick={() => handleDelete(comment)}>Delete</button>
@@ -90,7 +90,7 @@ export const Comments = ({ articleId }) => {
               <p>{comment.content}</p>
             </div>
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
-            {currentUser && deleteComment(comment)}
+            {currentUser && deleteButton(comment)}
             <Replies data={comment} />
           </div>
         ))}

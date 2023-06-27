@@ -7,7 +7,7 @@ export const AuthContextProvider = ({ children }) => {
   // children refers to the nested components enclosed within <BrowserRouter>
   const [currentUser, setCurrentUser] = useState(
     // Check if there is a user
-    JSON.parse(localStorage.getItem('user')) || null
+    JSON.parse(sessionStorage.getItem('user')) || null
   );
 
   const login = async (input) => {
@@ -18,8 +18,8 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    // Write user object into local storage
-    localStorage.setItem('user', JSON.stringify(currentUser));
+    // Write user object into session storage
+    sessionStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
   
   return (

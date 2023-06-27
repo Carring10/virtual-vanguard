@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 const handleClick = async (event) => {
   event.preventDefault();
   localStorage.removeItem("user");
@@ -18,8 +20,6 @@ const handleClick = async (event) => {
 };
 
 const isLoggedIn = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-
   if (user) {
     return (
       <div>
