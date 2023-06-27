@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(sessionStorage.getItem("user"));
 
 const handleClick = async (event) => {
   event.preventDefault();
-  localStorage.removeItem("user");
+  sessionStorage.removeItem("user");
 
   try {
     await axios.delete("http://localhost:8800/auth/logout", {

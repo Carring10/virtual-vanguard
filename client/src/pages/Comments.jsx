@@ -8,7 +8,6 @@ import { Replies } from "./Replies";
 export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.id;
 
   const queryClient = useQueryClient();
 
@@ -35,7 +34,9 @@ export const Comments = ({ articleId }) => {
 
   const deleteComment = useMutation(
     (deletedComment) => {
-      return axios.delete(`http://localhost:8800/comments/${deletedComment.id}/${deletedComment.userId}`);
+      return axios.delete(
+        `http://localhost:8800/comments/${deletedComment.id}/${deletedComment.userId}`
+      );
     },
     {
       onSuccess: () => {
@@ -52,23 +53,23 @@ export const Comments = ({ articleId }) => {
       addComment.mutate({ userId, content, articleId });
       setContent("");
     } else {
-      console.log("not logged in")
+      console.log("not logged in");
     }
   };
 
   const handleDelete = (comment) => {
     const id = comment.commentId;
+    const userId = currentUser.id;
 
     deleteComment.mutate({ id, userId });
-  }
+  };
 
   const deleteButton = (comment) => {
-    if (userId === comment.userId) {
-      return (
-        <button onClick={() => handleDelete(comment)}>Delete</button>
-      )
+    const userId = currentUser.id;
+    if (userId && userId === comment.userId) {
+      return <button onClick={() => handleDelete(comment)}>Delete</button>;
     }
-  }
+  };
 
   return (
     <div className="comments">

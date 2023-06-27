@@ -6,7 +6,7 @@ import moment from "moment/moment";
 
 export const Replies = (comment) => {
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.id;
+  // const userId = currentUser.id;
   const articleId = comment.data.articleId;
 
   const queryClient = useQueryClient();
@@ -46,15 +46,21 @@ export const Replies = (comment) => {
     if (replies != null) {
       const numReplies = replies.length;
       const buttonText =
-        numReplies > 1 ? `Show ${numReplies} Replies` : `Show ${numReplies} Reply`;
+        numReplies > 1 ? `Show ${numReplies} Replies` : `Show 1 Reply`;
 
       return <button onClick={() => getRelplies(comment)}>{buttonText}</button>;
     }
   };
 
+  const replyButton = (comment) => {
+    if (currentUser) {
+      return <button onClick={() => replyToComment(comment)}>Reply</button>;
+    }
+  };
+
   return (
     <div>
-      <button onClick={() => replyToComment(comment)}>Reply</button>
+      {currentUser && replyButton(comment)}
       {showRepliesButton(comment)}
     </div>
   );
