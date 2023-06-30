@@ -73,7 +73,7 @@ export const Comments = ({ articleId }) => {
 
   return (
     <div className="comments">
-      <div className="write">
+      <div className="writeComment">
         <p>{currentUser && currentUser.username}</p>
         <input
           type="text"
@@ -86,6 +86,7 @@ export const Comments = ({ articleId }) => {
       {data &&
         data.map((comment) => (
           <div className="comment" key={comment.createdAt}>
+            {console.log(comment)}
             <div className="user-info">
               <h2>{comment.username}</h2>
               <p>{comment.content}</p>
