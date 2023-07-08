@@ -86,7 +86,6 @@ export const Comments = ({ articleId }) => {
       {data &&
         data.map((comment) => (
           <div className="comment" key={comment.createdAt}>
-            {console.log(comment)}
             <div className="user-info">
               <h2>{comment.username}</h2>
               <p>{comment.content}</p>

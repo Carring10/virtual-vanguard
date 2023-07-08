@@ -6,33 +6,49 @@ import { ReplyForm } from "./ReplyForm";
 
 export const Replies = (comment) => {
   const [showForm, setShowForm] = useState(false);
+  const [showReplies, setShowReplies] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
   // const userId = currentUser.id;
   const articleId = comment.data.articleId;
 
-  const getRelplies = async (comment) => {
-    const parentId = comment.data.commentId;
-    const repliesData = await axios.get(
-      `http://localhost:8800/comments/${articleId}/${parentId}`
-    );
-    return repliesData;
-  };
-
   const showReplyForm = () => setShowForm(true);
-  
+
   const hideReplyForm = () => setShowForm(false);
 
   const repliesButton = (comment) => {
     const replies = JSON.parse(comment.data.replies);
-    
+
     if (replies != null) {
       const numReplies = replies.length;
-      const buttonText =
-        numReplies > 1 ? `Show ${numReplies} Replies` : `Show 1 Reply`;
+      const buttonText = numReplies > 1 ? `Show ${numReplies} Replies` : `Show 1 Reply`;
 
-      return <button onClick={() => getRelplies(comment)}>{buttonText}</button>;
+      return <button onClick={() => setShowReplies(true)}>{buttonText}</button>;
     }
+  };
+
+  const getRelplies = (comment) => {
+    const parentId = comment.data.commentId;
+
+    axios
+      .get(`http://localhost:8800/comments/${articleId}/${parentId}`)
+      .then((repliesData) => {
+        const replies = repliesData.data.replies;
+        console.log(replies);
+        return (
+          <div>
+            {replies.map((reply) => (
+              <div className="reply" key={reply.createdAt}>
+                <div className="reply-user-info">
+                  <h2>{reply.username}</h2>
+                  <p>{reply.content}</p>
+                </div>
+                <span className="reply-date">{moment(reply.createdAt).fromNow()}</span>
+              </div>
+            ))}
+          </div>
+        );
+      });
   };
 
   const replyButton = (comment) => {
@@ -44,7 +60,7 @@ export const Replies = (comment) => {
   return (
     <div>
       {currentUser && replyButton(comment)}
-      {repliesButton(comment)}
+      {showReplies ? getRelplies(comment) : repliesButton(comment)}
       {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
     </div>
   );
