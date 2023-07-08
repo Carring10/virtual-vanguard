@@ -4,9 +4,15 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
 import { Replies } from "./Replies";
+import { ReplyForm } from "./ReplyForm";
 
 export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
+  const [showForm, setShowForm] = useState(false);
+
+  const showReplyForm = () => setShowForm(true);
+  const hideReplyForm = () => setShowForm(false);
+
   const { currentUser } = useContext(AuthContext);
 
   const queryClient = useQueryClient();
@@ -71,6 +77,24 @@ export const Comments = ({ articleId }) => {
     }
   };
 
+  const showRepliesButton = (comment) => {
+    console.log(comment)
+    const replies = JSON.parse(comment.replies);
+
+    if (replies != null) {
+      const numReplies = replies.length;
+      const buttonText = numReplies > 1 ? `Show ${numReplies} Replies` : `Show 1 Reply`;
+
+      return <button>{buttonText}</button>;
+    }
+  };
+
+  const replyButton = (comment) => {
+    if (currentUser) {
+      return <button onClick={() => showReplyForm(comment)}>Reply</button>;
+    }
+  };
+
   return (
     <div className="comments">
       <div className="writeComment">
@@ -92,7 +116,10 @@ export const Comments = ({ articleId }) => {
             </div>
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteButton(comment)}
-            <Replies data={comment} />
+            {currentUser && replyButton(comment)}
+            {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
+            {showRepliesButton(comment)}
+            {/* <Replies data={comment} /> */}
           </div>
         ))}
     </div>
