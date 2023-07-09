@@ -9,9 +9,13 @@ import { ReplyForm } from "./ReplyForm";
 export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [toggleReplies, setToggleReplies] = useState(false);
 
   const showReplyForm = () => setShowForm(true);
   const hideReplyForm = () => setShowForm(false);
+
+  const showReplies = () => setToggleReplies(true);
+  const hideReplies = () => setToggleReplies(false);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -83,9 +87,12 @@ export const Comments = ({ articleId }) => {
 
     if (replies != null) {
       const numReplies = replies.length;
-      const buttonText = numReplies > 1 ? `Show ${numReplies} Replies` : `Show 1 Reply`;
+      const toggle = toggleReplies ? 'Hide' : 'Show';
+      const buttonText = numReplies > 1 ? `${toggle} ${numReplies} Replies` : `${toggle} 1 Reply`;
+      
+      const controlClick = toggleReplies ? () => hideReplies() : () => showReplies();
 
-      return <button>{buttonText}</button>;
+      return <button onClick={controlClick}>{buttonText}</button>;
     }
   };
 
@@ -119,7 +126,7 @@ export const Comments = ({ articleId }) => {
             {currentUser && replyButton(comment)}
             {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
             {showRepliesButton(comment)}
-            {/* <Replies data={comment} /> */}
+            {toggleReplies ? <Replies data={comment} /> : null}
           </div>
         ))}
     </div>

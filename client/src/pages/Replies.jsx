@@ -7,22 +7,20 @@ import { ReplyForm } from "./ReplyForm";
 
 export const Replies = (comment) => {
   const articleId = comment.data.articleId;
+  const parentId = comment.data.commentId;
 
-  const getRelplies = (comment) => {
-    const parentId = comment.data.commentId;
-    axios
-      .get(`http://localhost:8800/comments/${articleId}/${parentId}`)
-      .then((repliesData) => {
-        repliesElement(repliesData);
-      });
-  };
+  const { data } = useQuery(["replies"], () =>
+    axios.get(`http://localhost:8800/comments/${articleId}/${parentId}`).then((res) => {
+      const data = res.data.replies;
+      
+      return data;
+    })
+  );
 
-  const repliesElement = (repliesData) => {
-    const replies = repliesData.data.replies;
-
-    return (
-      <div>
-        {replies.map((reply) => (
+  return (
+    <div className="replies">
+      {data &&
+        data.map((reply) => (
           <div className="reply" key={reply.createdAt}>
             {console.log(reply.content)}
             <div className="reply-user-info">
@@ -32,13 +30,6 @@ export const Replies = (comment) => {
             <span className="reply-date">{moment(reply.createdAt).fromNow()}</span>
           </div>
         ))}
-      </div>
-    );
-  };
-
-  return (
-    <div className="replies">
-
     </div>
   );
 };
