@@ -16,7 +16,6 @@ exports.getComments = async (req, res) => {
 
 exports.getReplies = async (req, res) => {
   try {
-    console.log(req.params);
     const parentId = req.params.parentId;
     const articleId = req.params.articleId
 

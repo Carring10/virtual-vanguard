@@ -7,7 +7,6 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
   const [content, setContent] = useState("");
 
   const { currentUser } = useContext(AuthContext);
-  const replyData = comment.data;
 
   const queryClient = useQueryClient();
 
@@ -27,9 +26,9 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
   const handleClick = async (event) => {
     event.preventDefault();
     if (currentUser) {
-      const userId = replyData.userId;
-      const parentId = replyData.commentId;
-      const articleId = replyData.articleId;
+      const userId = currentUser.id;
+      const parentId = comment.commentId;
+      const articleId = comment.articleId;
   
       addReply.mutate({ userId, content, articleId, parentId });
       setContent("");
