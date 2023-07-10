@@ -10,8 +10,11 @@ export const Comments = ({ articleId }) => {
   const [content, setContent] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [toggleReplies, setToggleReplies] = useState(false);
-
-  const showReplyForm = () => setShowForm(true);
+  
+  const showReplyForm = (comment) => {
+    console.log(comment)
+    setShowForm(true);
+  };
   const hideReplyForm = () => setShowForm(false);
 
   const showReplies = () => setToggleReplies(true);
@@ -51,6 +54,7 @@ export const Comments = ({ articleId }) => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(["comments"]);
+        queryClient.invalidateQueries(["replies"]);
       },
     }
   );
@@ -68,6 +72,8 @@ export const Comments = ({ articleId }) => {
   };
 
   const handleDelete = (comment) => {
+    console.log(comment);
+
     const id = comment.commentId;
     const userId = currentUser.id;
 
@@ -82,14 +88,14 @@ export const Comments = ({ articleId }) => {
   };
 
   const showRepliesButton = (comment) => {
-    console.log(comment)
     const replies = JSON.parse(comment.replies);
 
     if (replies != null) {
       const numReplies = replies.length;
-      const toggle = toggleReplies ? 'Hide' : 'Show';
-      const buttonText = numReplies > 1 ? `${toggle} ${numReplies} Replies` : `${toggle} 1 Reply`;
-      
+      const toggle = toggleReplies ? "Hide" : "Show";
+      const buttonText =
+        numReplies > 1 ? `${toggle} ${numReplies} Replies` : `${toggle} 1 Reply`;
+
       const controlClick = toggleReplies ? () => hideReplies() : () => showReplies();
 
       return <button onClick={controlClick}>{buttonText}</button>;
@@ -97,6 +103,7 @@ export const Comments = ({ articleId }) => {
   };
 
   const replyButton = (comment) => {
+    console.log(comment);
     if (currentUser) {
       return <button onClick={() => showReplyForm(comment)}>Reply</button>;
     }
@@ -124,9 +131,13 @@ export const Comments = ({ articleId }) => {
             <span className="date">{moment(comment.createdAt).fromNow()}</span>
             {currentUser && deleteButton(comment)}
             {currentUser && replyButton(comment)}
-            {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
+            {showForm ? (
+              <ReplyForm comment={comment} hideReplyForm={hideReplyForm} />
+            ) : null}
             {showRepliesButton(comment)}
-            {toggleReplies ? <Replies data={comment} /> : null}
+            {toggleReplies ? (
+              <Replies comment={comment} deleteComment={deleteComment} />
+            ) : null}
           </div>
         ))}
     </div>

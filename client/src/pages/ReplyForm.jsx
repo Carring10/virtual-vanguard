@@ -25,6 +25,7 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
 
   const handleClick = async (event) => {
     event.preventDefault();
+    
     if (currentUser) {
       const userId = currentUser.id;
       const parentId = comment.commentId;
