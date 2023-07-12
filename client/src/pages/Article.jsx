@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
-import { Comments } from "./Comments";
+import { CommentSection } from "./CommentSection";
 
 export const Article = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ export const Article = () => {
       <Link to="/">Back</Link>
       <h1>{propsData.title}</h1>
       <div dangerouslySetInnerHTML={sanitizedData()} />
-      <Comments articleId={propsData.id} />
+      <CommentSection articleId={propsData.id} />
     </>
   );
 };
