@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../src/context/authContext";
 import axios from "axios";
 import moment from "moment/moment";
 import { useQuery } from "@tanstack/react-query";
-import { ReplyForm } from "./ReplyForm";
 
 export const Replies = ({ comment, deleteComment }) => {
   const articleId = comment.articleId;

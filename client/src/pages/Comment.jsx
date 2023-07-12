@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
 import { Replies } from "./Replies";
 import { ReplyForm } from "./ReplyForm";
-import { CommentSection } from "./CommentSection";
 
 export const Comment = ({ comment }) => {
   const [showReplies, setShowReplies] = useState(false);

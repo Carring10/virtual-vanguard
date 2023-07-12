@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../src/context/authContext";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 export const ReplyForm = ({ comment, hideReplyForm }) => {
-  console.log(comment)
   const [content, setContent] = useState("");
 
   const { currentUser } = useContext(AuthContext);
-
   const queryClient = useQueryClient();
 
   const addReply = useMutation(
