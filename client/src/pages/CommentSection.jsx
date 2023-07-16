@@ -7,9 +7,7 @@ import { Comment } from "./Comment";
 export const CommentSection = ({ articleId }) => {
   const [content, setContent] = useState("");
 
-
   const { currentUser } = useContext(AuthContext);
-
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["comments"], () =>
@@ -44,10 +42,6 @@ export const CommentSection = ({ articleId }) => {
       console.log("not logged in");
     }
   };
-
-
-
-
 
   return (
     <>

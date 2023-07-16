@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 import { Bookmark } from './pages/Bookmark';
-import { Feed } from './pages/Feed';
+import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';

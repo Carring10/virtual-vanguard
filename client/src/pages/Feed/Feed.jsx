@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Navbar } from "./Navbar";
+import { Navbar } from "../Navbar";
+import './feed.css';
 
 export const Feed = () => {
   const [articles, setArticles] = useState([]);
@@ -24,7 +25,7 @@ export const Feed = () => {
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]}>
-            <h2>{article.title}</h2>
+            <h2 className="headline">{article.title}</h2>
             <img src={article.thumbnail} alt="Game Thumbnail" />
           </Link>
         </div>
