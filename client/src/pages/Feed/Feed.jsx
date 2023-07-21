@@ -22,6 +22,7 @@ export const Feed = () => {
   return (
     <>
     <Navbar />
+    <div className="article-container">
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]}>
@@ -30,6 +31,7 @@ export const Feed = () => {
           </Link>
         </div>
       ))}
+    </div>
     </>
   );
 };
