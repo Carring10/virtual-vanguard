@@ -27,8 +27,8 @@ export const Feed = () => {
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]} className="article-link">
-            <h2 className="headline">{article.title}</h2>
             <img src={article.main_image} className="article-img" alt="Game Thumbnail" />
+            <h2 className="headline">{article.title}</h2>
           </Link>
         </div>
       ))}
