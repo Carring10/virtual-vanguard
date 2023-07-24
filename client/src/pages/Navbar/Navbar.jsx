@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './navbar.css';
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -10,7 +11,7 @@ const handleClick = async (event) => {
 
   try {
     await axios.delete("http://localhost:8800/auth/logout", {
-      withCredentials: true
+      withCredentials: true,
     });
 
     window.location.reload();
@@ -33,5 +34,5 @@ const isLoggedIn = () => {
 };
 
 export const Navbar = () => {
-  return <>{isLoggedIn()}</>;
+  return <div className="navbar">{isLoggedIn()}</div>;
 };

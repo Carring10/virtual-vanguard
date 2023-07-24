@@ -1,3 +1,4 @@
+import "./pages/Feed/feed.css";
 import {
   BrowserRouter,
   Routes,
@@ -8,6 +9,7 @@ import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
+
 
 function App() {
   return (

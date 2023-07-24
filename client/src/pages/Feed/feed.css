@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+
 body {
   background-color: grey;
+  font-family: 'Kanit', sans-serif;
 }
 
 .App {
@@ -14,7 +17,7 @@ body {
   align-items: center;
   gap: 3rem;
   width: 80%;
-  background-color: #0e0e10;
+  background-color: #1f1f23
 }
 
 .article {
@@ -26,20 +29,29 @@ body {
 
 .article-link {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
   width: 100%;
   padding: 0px;
 }
 
+.article-img {
+  width: 60%;
+  margin-top: 2rem;
+}
+
+.article-contents {
+  padding: 1rem;
+  text-align: center;
+
+}
+
 .headline {
   color: white;
   padding: 0px;
-  text-align: center;
 }
 
-.article-img {
-  width: 70%;
-  margin-top: 2rem;
+.description {
+  color: white;
 }
