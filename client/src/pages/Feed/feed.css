@@ -25,6 +25,8 @@ body {
   flex-direction: column;
   align-items: center;
   width: 80%;
+  padding-bottom: 2rem;
+  border-bottom: solid .1rem #28282c;
 }
 
 .article-link {
@@ -37,21 +39,24 @@ body {
 }
 
 .article-img {
-  width: 60%;
+  width: 40%;
   margin-top: 2rem;
 }
 
 .article-contents {
-  padding: 1rem;
-  text-align: center;
-
+  margin: 2.5rem;
+  text-align: start;
 }
 
 .headline {
   color: white;
   padding: 0px;
+  margin: 0px;
+  font-size: 1.5rem;
 }
 
 .description {
   color: white;
+  font-size: 1rem;
+  margin-top: 1.5rem;
 }
