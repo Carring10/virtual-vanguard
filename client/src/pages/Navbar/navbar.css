@@ -1,11 +1,23 @@
 .navbar {
   width: 100%;
-  padding: 1rem;
-  background-color: powderblue;
+  padding: 1.5rem;
+  background-color: #151518;
+  border-bottom: solid .1rem #28282c;
   text-align: end;
 }
 
 .navbar a {
-  padding: 1rem;
+  padding: .4rem 1.5rem;
+  margin: 1.5rem;
   text-decoration: none;
+  color: white;
+  border: .1rem solid #28282c;
+  border-radius: 15%;
+  transition: 0.5s;
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: #151518;
+  border: .1rem solid white;
 }
