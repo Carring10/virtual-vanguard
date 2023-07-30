@@ -24,12 +24,14 @@ export const Feed = () => {
     <>
     <Navbar />
     <div className="article-container">
+      <h2 className="news-header">Latest MMO News</h2>
+      <hr></hr>
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]} className="article-link">
             <img src={article.main_image} className="article-img" alt="Game Thumbnail" />
             <div className="article-contents">
-            <h2 className="headline">{article.title}</h2>
+            <p className="headline">{article.title}</p>
             <p className="description">{article.short_description}</p>
             </div>
           </Link>

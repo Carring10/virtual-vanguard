@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: .5rem;
+  padding: 0rem;
   background-color: #151518;
   border-bottom: solid .1rem #28282c;
 }

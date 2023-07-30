@@ -37,7 +37,7 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <header className="logo">
-        <h1>👾 <span>V</span>IRTUAL <span>V</span>ANGUARD</h1>
+        <h1><span>👾 V</span>IRTUAL <span>V</span>ANGUARD</h1>
       </header>
       {isLoggedIn()}
     </div>
