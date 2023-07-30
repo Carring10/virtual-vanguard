@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import './navbar.css';
+import "./navbar.css";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -34,5 +34,12 @@ const isLoggedIn = () => {
 };
 
 export const Navbar = () => {
-  return <div className="navbar">{isLoggedIn()}</div>;
+  return (
+    <div className="navbar">
+      <header className="logo">
+        <h1>👾 <span>V</span>IRTUAL <span>V</span>ANGUARD</h1>
+      </header>
+      {isLoggedIn()}
+    </div>
+  );
 };
