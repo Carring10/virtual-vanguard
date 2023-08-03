@@ -15,7 +15,7 @@ export const Article = () => {
 
   return (
     <>
-      <Link to="/">Back</Link>
+      <Link to="/" className="back-button">&#8592; Back</Link>
       <div className="article-container">
         <div className="title-contents">
           <h1 className="article-headline">{propsData.title}</h1>

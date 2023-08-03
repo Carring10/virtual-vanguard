@@ -1,3 +1,11 @@
+.back-button {
+  width: 95%;
+  margin: 1rem;
+  text-align: start;
+  color: #dfbb60;
+  text-decoration: none;
+}
+
 .article-container {
   display: flex;
   flex-direction: column;
