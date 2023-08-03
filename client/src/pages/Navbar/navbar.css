@@ -8,7 +8,7 @@
 }
 
 .logo {
-  color: #ffb703;
+  color: #dfbb60;
   margin: 0rem 2.5rem;
   font-family: Audiowide;
   font-size: .6rem;
@@ -22,13 +22,13 @@
   padding: .4rem 1.5rem;
   margin: 1.5rem;
   text-decoration: none;
-  color: #ffb703;
-  border: .1rem solid #ffb703;
+  color: #dfbb60;
+  border: .1rem solid #dfbb60;
   border-radius: 10%;
   transition: 0.5s;
 }
 
 .navbar a:hover {
-  background-color: #ffb703;
+  background-color: #dfbb60;
   color: #151518;
 }

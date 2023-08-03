@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit&family=Audiowide&display=swap");
 
 body {
-  background-image: linear-gradient(black, #382d5c);
+  background-color: black;
   font-family: 'Kanit', sans-serif;
   overflow-x: hidden;
 }
@@ -12,7 +12,7 @@ body {
   align-items: center;
 }
 
-.article-container {
+.feed-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@ body {
 }
 
 .news-header {
-  color: white;
+  color: #fffdec;
   font-size: 1.6rem;
   letter-spacing: 2px;
   margin: .6rem;
@@ -69,7 +69,7 @@ hr {
 }
 
 .headline {
-  color: white;
+  color: #fffdec;;
   padding: 0px;
   margin: 0px;
   font-size: 1.5rem;

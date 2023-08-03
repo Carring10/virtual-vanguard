@@ -23,7 +23,7 @@ export const Feed = () => {
   return (
     <>
     <Navbar />
-    <div className="article-container">
+    <div className="feed-container">
       <h2 className="news-header">Latest MMO News</h2>
       <hr></hr>
       {articles.map((article, index) => (
