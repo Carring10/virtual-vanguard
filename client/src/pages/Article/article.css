@@ -18,8 +18,14 @@
   border-radius: 1%;
 }
 
+.title-contents {
+  width: 100%;
+}
+
 .article-headline {
-  font-size: 1.8rem;
+  text-align: start;
+  font-size: 2.3rem;
+  margin-bottom: 0rem; 
 }
 
 .article-container a {
@@ -33,6 +39,7 @@
 .source {
   font-size: .9rem;
   color: #878794;
+  margin: 0rem;
 }
 
 .article-post img {
