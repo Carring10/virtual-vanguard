@@ -25,7 +25,7 @@ const isLoggedIn = () => {
     return (
       <div>
         <button onClick={handleClick}>Logout</button>
-        <p>{user.username}</p>
+        <p className="username">{user.username}</p>
       </div>
     );
   } else {

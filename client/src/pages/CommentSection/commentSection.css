@@ -1,0 +1,15 @@
+.writeComment {
+  width: 100%;
+}
+
+.comment-input {
+  background-color: #1f1f23;
+  border: .1rem solid #28282c;
+  border-radius: .8rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.send-comment {
+
+}

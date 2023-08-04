@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { Comment } from "./Comment";
+import { Comment } from "../Comment/Comment";
+import "./commentSection.css";
 
 export const CommentSection = ({ articleId }) => {
   const [content, setContent] = useState("");
+  console.log(content);
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
@@ -43,17 +45,28 @@ export const CommentSection = ({ articleId }) => {
     }
   };
 
+  const showSendButton = () => {
+    if (content.length >= 1) {
+      return (
+        <button onClick={handleClick} className="send-comment">
+          Send
+        </button>
+      );
+    }
+  }
+
   return (
     <>
       <div className="writeComment">
-        <p>{currentUser && currentUser.username}</p>
+        <p className="comment-username">{currentUser && currentUser.username}</p>
         <input
           type="text"
           placeholder="Write a comment"
           value={content}
           onChange={(event) => setContent(event.target.value)}
+          className="comment-input"
         />
-        <button onClick={handleClick}>Send</button>
+        {showSendButton()}
       </div>
 
       <div className="comment-section">

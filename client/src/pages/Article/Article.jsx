@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
-import { CommentSection } from "../CommentSection";
+import { CommentSection } from "../CommentSection/CommentSection";
 import "./article.css";
 
 export const Article = () => {
