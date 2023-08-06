@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Comment } from "../Comment/Comment";
 import "./commentSection.css";
@@ -53,22 +54,31 @@ export const CommentSection = ({ articleId }) => {
         </button>
       );
     }
-  }
+  };
+
+  const loginToComment = () => {
+    if (currentUser) {
+      return (
+        <div className="writeComment">
+          <p className="comment-username">{currentUser && currentUser.username}</p>
+          <input
+            type="text"
+            placeholder="Write a comment"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+            className="comment-input"
+          />
+          {showSendButton()}
+        </div>
+      );
+    } else {
+      return <Link to="/login"><button>Sign in to comment</button></Link>;
+    }
+  };
 
   return (
     <>
-      <div className="writeComment">
-        <p className="comment-username">{currentUser && currentUser.username}</p>
-        <input
-          type="text"
-          placeholder="Write a comment"
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
-          className="comment-input"
-        />
-        {showSendButton()}
-      </div>
-
+      {loginToComment()}
       <div className="comment-section">
         {data && data.map((comment, index) => <Comment comment={comment} key={index} />)}
       </div>
