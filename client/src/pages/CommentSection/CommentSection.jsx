@@ -53,6 +53,8 @@ export const CommentSection = ({ articleId }) => {
           Send
         </button>
       );
+    } else {
+      return <button className="send-placeholder">Send</button>
     }
   };
 
@@ -72,16 +74,14 @@ export const CommentSection = ({ articleId }) => {
         </div>
       );
     } else {
-      return <Link to="/login"><button>Sign in to comment</button></Link>;
+      return <Link to="/login" className="comment-sign-in-button">Sign in to comment</Link>;
     }
   };
 
   return (
-    <>
-      {loginToComment()}
       <div className="comment-section">
+      {loginToComment()}
         {data && data.map((comment, index) => <Comment comment={comment} key={index} />)}
       </div>
-    </>
   );
 };

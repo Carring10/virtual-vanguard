@@ -1,3 +1,11 @@
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 3rem;
+}
+
 .writeComment {
   width: 100%;
 }
@@ -10,6 +18,36 @@
   width: 100%;
 }
 
-.send-comment {
+.send-placeholder {
+  color: #575f68;
+  font-size: 1rem;
+  background-color: #343a40;
+  border: .1rem solid #343a40;
+  border-radius: .5rem;
+  padding: .3rem 1.5rem;
+  margin: 1rem 0rem;
+  width: 10%;
+}
 
+.send-comment {
+  color: white;
+  font-size: 1rem;
+  background-color: #219ebc;
+  border: .1rem solid #219ebc;
+  border-radius: .5rem;
+  padding: .3rem 1.5rem;
+  margin: 1rem 0rem;
+  width: 10%;
+  cursor: pointer;
+}
+
+.comment-sign-in-button {
+  background-color: #6a040f;
+  color: white;
+  font-size: .9rem;
+  text-decoration: none;
+  border: .1rem solid #6a040f;
+  border-radius: .2rem;
+  padding: .5rem 2rem;
+  width: 15%;
 }
