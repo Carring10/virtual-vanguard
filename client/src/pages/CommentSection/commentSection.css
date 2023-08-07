@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 3rem;
   width: 100%;
   margin: 3rem;
 }
@@ -18,6 +19,7 @@
 }
 
 .comment-input {
+  font-family: 'Kanit', sans-serif;
   background-color: #1f1f23;
   color: white;
   font-size: 1rem;
@@ -26,8 +28,12 @@
   padding: 1rem;
   width: 95%;
 }
+.comment-input:focus {
+  outline-color: white;
+}
 
 .send-placeholder {
+  font-family: 'Kanit', sans-serif;
   align-self: flex-end;
   color: #575f68;
   font-size: 1rem;
@@ -40,6 +46,7 @@
 }
 
 .send-comment {
+  font-family: 'Kanit', sans-serif;
   align-self: flex-end;
   color: white;
   font-size: 1rem;
@@ -55,10 +62,11 @@
 .comment-sign-in-button {
   background-color: #6a040f;
   color: white;
+  text-align: center;
   font-size: .9rem;
   text-decoration: none;
   border: .1rem solid #6a040f;
   border-radius: .2rem;
   padding: .5rem 2rem;
-  width: 15%;
+  width: 14%;
 }

@@ -5,6 +5,7 @@ import axios from "axios";
 import moment from "moment/moment";
 import { Replies } from "../Replies";
 import { ReplyForm } from "../ReplyForm";
+import "./comment.css";
 
 export const Comment = ({ comment }) => {
   const [showReplies, setShowReplies] = useState(false);
@@ -43,7 +44,11 @@ export const Comment = ({ comment }) => {
   const deleteButton = (comment) => {
     const userId = currentUser.id;
     if (userId && userId === comment.userId) {
-      return <button onClick={() => handleDelete(comment)}>Delete</button>;
+      return (
+        <button onClick={() => handleDelete(comment)} className="delete-button">
+          Delete
+        </button>
+      );
     }
   };
 
@@ -56,30 +61,47 @@ export const Comment = ({ comment }) => {
       const buttonText =
         numReplies > 1 ? `${toggleText} ${numReplies} Replies` : `${toggleText} 1 Reply`;
 
-      const controlClick = showReplies ? () => toggleHideReplies() : () => toggleShowReplies();
+      const controlClick = showReplies
+        ? () => toggleHideReplies()
+        : () => toggleShowReplies();
 
-      return <button onClick={controlClick}>{buttonText}</button>;
+      return (
+        <button onClick={controlClick} className="show-replies-button">
+          {buttonText}
+        </button>
+      );
     }
   };
 
   const replyButton = (comment) => {
     if (currentUser) {
-      return <button onClick={() => showReplyForm(comment)}>Reply</button>;
+      return (
+        <div>
+          <button onClick={() => showReplyForm(comment)} className="reply-button">
+            Reply
+          </button>
+        </div>
+      );
     }
   };
 
   return (
-    <div className="comment" key={comment.createdAt}>
-      <div className="user-info">
-        <h2>{comment.username}</h2>
-        <p>{comment.content}</p>
+    <>
+      <div className="comment" key={comment.createdAt}>
+        <div className="user-info">
+          <h2 className="comment-username">{comment.username}</h2>
+          <p className="date">{moment(comment.createdAt).fromNow()}</p>
+        </div>
+        <p className="comment-content">{comment.content}</p>
+        <div className="reply-delete-buttons-container">
+          {currentUser && replyButton(comment)}
+          {currentUser && deleteButton(comment)}
+        </div>
       </div>
-      <span className="date">{moment(comment.createdAt).fromNow()}</span>
-      {currentUser && deleteButton(comment)}
-      {currentUser && replyButton(comment)}
-      {showRepliesButton(comment)}
+
       {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
+      {showRepliesButton(comment)}
       {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
-    </div>
+    </>
   );
 };
