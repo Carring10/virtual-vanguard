@@ -78,7 +78,7 @@ export const Comment = ({ comment }) => {
       return (
         <div>
           <button onClick={() => showReplyForm(comment)} className="reply-button">
-            Reply
+            Reply <span className="arrow">&#x21b4;</span>
           </button>
         </div>
       );
@@ -87,21 +87,24 @@ export const Comment = ({ comment }) => {
 
   return (
     <>
-      <div className="comment" key={comment.createdAt}>
-        <div className="user-info">
-          <h2 className="comment-username">{comment.username}</h2>
-          <p className="date">{moment(comment.createdAt).fromNow()}</p>
-        </div>
-        <p className="comment-content">{comment.content}</p>
-        <div className="reply-delete-buttons-container">
-          {currentUser && replyButton(comment)}
-          {currentUser && deleteButton(comment)}
+      <div className="comment-container">
+        <span className="comment-user-icon">👤 </span>
+        <div className="comment" key={comment.createdAt}>
+          <div className="user-info">
+            <h2 className="comment-username">{comment.username}</h2>
+            <p className="date">{moment(comment.createdAt).fromNow()}</p>
+          </div>
+          <p className="comment-content">{comment.content}</p>
+          <div className="reply-delete-buttons-container">
+            {currentUser && replyButton(comment)}
+            {currentUser && deleteButton(comment)}
+          </div>
         </div>
       </div>
 
-      {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
-      {showRepliesButton(comment)}
-      {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
+        {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
+        {showRepliesButton(comment)}
+        {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
     </>
   );
 };

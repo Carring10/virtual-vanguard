@@ -63,6 +63,8 @@ export const CommentSection = ({ articleId }) => {
       return (
         <div className="writeComment">
           <p className="comment-username">{currentUser && currentUser.username}</p>
+
+          <div className="input-send-container">
           <input
             type="text"
             placeholder="Write a comment"
@@ -71,6 +73,7 @@ export const CommentSection = ({ articleId }) => {
             className="comment-input"
           />
           {showSendButton()}
+          </div>
         </div>
       );
     } else {

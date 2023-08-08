@@ -1,8 +1,23 @@
+.comment-container {
+  display: flex;
+  width: 100%;
+}
+
+.comment-user-icon {
+  font-size: 1.6rem;
+  background-color: #886ce4;
+  height: 1.58rem;
+  padding: .5rem;
+  margin-top: 1rem;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 100%;
+}
+
 .comment {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  /* border-top: 1px solid grey; */
+  width: 100%;
 }
 
 .user-info {
@@ -20,14 +35,13 @@
 
 .date {
   padding: 0px;
-  margin-top: .6rem;
   text-align: center;
   font-size: .9rem;
   color: gray;
 }
 
 .comment-content {
-  padding: .5rem;
+  padding-left: .5rem;
   margin: 0rem;
 }
 
@@ -37,7 +51,7 @@
 }
 
 .delete-button {
-  align-self: flex-end;
+  align-self: center;
 }
 
 .reply-button {
@@ -48,12 +62,15 @@
   color: white;
   cursor: pointer;
   padding: .5rem .7rem;
-  /* margin: .5rem; */
 }
 
 .reply-button:hover {
-  background-color: #93d2e25e;
+  background-color: #b8d8e05e;
   border-radius: 15px;
+}
+
+.arrow {
+  font-size: 1.1rem;
 }
 
 .show-replies-button {
