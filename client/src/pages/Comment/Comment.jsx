@@ -57,18 +57,20 @@ export const Comment = ({ comment }) => {
 
     if (replies != null) {
       const numReplies = replies.length;
-      const toggleText = showReplies ? "Hide" : "Show";
+      const toggleText = showReplies ? "▲" : "▼";
       const buttonText =
-        numReplies > 1 ? `${toggleText} ${numReplies} Replies` : `${toggleText} 1 Reply`;
+        numReplies > 1 ? `${toggleText} ${numReplies} replies` : `${toggleText} 1 reply`;
 
       const controlClick = showReplies
         ? () => toggleHideReplies()
         : () => toggleShowReplies();
 
       return (
-        <button onClick={controlClick} className="show-replies-button">
-          {buttonText}
-        </button>
+        <div>
+          <button onClick={controlClick} className="show-replies-button">
+            {buttonText}
+          </button>
+        </div>
       );
     }
   };
@@ -78,7 +80,7 @@ export const Comment = ({ comment }) => {
       return (
         <div>
           <button onClick={() => showReplyForm(comment)} className="reply-button">
-            Reply <span className="arrow">&#x21b4;</span>
+            Reply
           </button>
         </div>
       );
@@ -91,7 +93,7 @@ export const Comment = ({ comment }) => {
         <span className="comment-user-icon">👤 </span>
         <div className="comment" key={comment.createdAt}>
           <div className="user-info">
-            <h2 className="comment-username">{comment.username}</h2>
+            <p className="comment-username">{comment.username}</p>
             <p className="date">{moment(comment.createdAt).fromNow()}</p>
           </div>
           <p className="comment-content">{comment.content}</p>
@@ -99,12 +101,12 @@ export const Comment = ({ comment }) => {
             {currentUser && replyButton(comment)}
             {currentUser && deleteButton(comment)}
           </div>
+          {showRepliesButton(comment)}
         </div>
       </div>
 
-        {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
-        {showRepliesButton(comment)}
-        {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
+      {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
+      {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
     </>
   );
 };
