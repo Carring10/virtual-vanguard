@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
-import { Replies } from "../Replies";
+import { Replies } from "../Replies/Replies";
 import { ReplyForm } from "../ReplyForm";
 import "./comment.css";
 
@@ -102,11 +102,14 @@ export const Comment = ({ comment }) => {
             {currentUser && deleteButton(comment)}
           </div>
           {showRepliesButton(comment)}
+          {showForm ? (
+            <ReplyForm comment={comment} hideReplyForm={hideReplyForm} />
+          ) : null}
+          {showReplies ? (
+            <Replies comment={comment} deleteComment={deleteComment} />
+          ) : null}
         </div>
       </div>
-
-      {showForm ? <ReplyForm comment={comment} hideReplyForm={hideReplyForm} /> : null}
-      {showReplies ? <Replies comment={comment} deleteComment={deleteComment} /> : null}
     </>
   );
 };

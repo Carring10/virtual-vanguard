@@ -32,6 +32,7 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
   
       addReply.mutate({ userId, content, articleId, parentId });
       setContent("");
+      hideReplyForm();
     } else {
       console.log("not logged in");
     }

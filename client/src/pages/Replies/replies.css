@@ -1,0 +1,56 @@
+.replies {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.reply-container {
+  display: flex;
+}
+
+.reply-user-icon {
+  font-size: 1.5rem;
+  background-color: #886ce4;
+  height: 1.58rem;
+  padding: .4rem;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 100%;
+}
+
+.reply {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.reply-user-info {
+  display: flex;
+  justify-content: space-between;
+  height: 2.5rem;
+  text-align: center;
+}
+
+.reply-username {
+  margin: 0rem;
+  font-size: 1.4rem;
+  color: #dfbb60;
+}
+
+.reply-date {
+  padding: 0px;
+  text-align: center;
+  font-size: .9rem;
+  color: gray;
+}
+
+.reply-content {
+  margin: 0px;
+}
+
+.delete-reply {
+  align-self: flex-end;
+}

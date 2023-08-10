@@ -8,7 +8,6 @@ import "./commentSection.css";
 
 export const CommentSection = ({ articleId }) => {
   const [content, setContent] = useState("");
-  console.log(content);
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
@@ -54,7 +53,7 @@ export const CommentSection = ({ articleId }) => {
         </button>
       );
     } else {
-      return <button className="send-placeholder">Send</button>
+      return <button className="send-placeholder">Send</button>;
     }
   };
 
@@ -65,26 +64,30 @@ export const CommentSection = ({ articleId }) => {
           <p className="comment-username">{currentUser && currentUser.username}</p>
 
           <div className="input-send-container">
-          <input
-            type="text"
-            placeholder="Write a comment"
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
-            className="comment-input"
-          />
-          {showSendButton()}
+            <input
+              type="text"
+              placeholder="Write a comment"
+              value={content}
+              onChange={(event) => setContent(event.target.value)}
+              className="comment-input"
+            />
+            {showSendButton()}
           </div>
         </div>
       );
     } else {
-      return <Link to="/login" className="comment-sign-in-button">Sign in to comment</Link>;
+      return (
+        <Link to="/login" className="comment-sign-in-button">
+          Sign in to comment
+        </Link>
+      );
     }
   };
 
   return (
-      <div className="comment-section">
+    <div className="comment-section">
       {loginToComment()}
-        {data && data.map((comment, index) => <Comment comment={comment} key={index} />)}
-      </div>
+      {data && data.map((comment, index) => <Comment comment={comment} key={index} />)}
+    </div>
   );
 };
