@@ -64,7 +64,7 @@ export const CommentSection = ({ articleId }) => {
           <p className="comment-username">{currentUser && currentUser.username}</p>
 
           <div className="input-send-container">
-            <input
+            <textarea
               type="text"
               placeholder="Write a comment"
               value={content}
