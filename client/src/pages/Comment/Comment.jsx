@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
 import { Replies } from "../Replies/Replies";
-import { ReplyForm } from "../ReplyForm";
+import { ReplyForm } from "../ReplyForm/ReplyForm";
 import "./comment.css";
 
 export const Comment = ({ comment }) => {

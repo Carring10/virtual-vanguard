@@ -1,7 +1,6 @@
 .comment-section {
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */
   gap: 3rem;
   width: 100%;
   margin: 3rem;
@@ -36,6 +35,7 @@
   height: 2rem;
   width: 95%;
 }
+
 .comment-input:focus {
   outline-color: white;
 }

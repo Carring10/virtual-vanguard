@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../src/context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import "./replyForm.css";
 
 export const ReplyForm = ({ comment, hideReplyForm }) => {
   const [content, setContent] = useState("");
@@ -24,12 +25,12 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    
+
     if (currentUser) {
       const userId = currentUser.id;
       const parentId = comment.commentId;
       const articleId = comment.articleId;
-  
+
       addReply.mutate({ userId, content, articleId, parentId });
       setContent("");
       hideReplyForm();
@@ -39,16 +40,23 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
   };
 
   return (
-    <div className="writeReply">
-    <p>{currentUser && currentUser.username}</p>
-    <input
-      type="text"
-      placeholder="Write a Reply"
-      value={content}
-      onChange={(event) => setContent(event.target.value)}
-    />
-    <button onClick={handleClick}>Send</button>
-    <button onClick={() => hideReplyForm()}>Cancel</button>
-  </div>
-  )
-}
+    <div className="reply-container">
+      <p className="reply-form-username">{currentUser && currentUser.username}</p>
+      <div className="write-reply">
+        <input
+          type="text"
+          placeholder="Write a Reply"
+          value={content}
+          onChange={(event) => setContent(event.target.value)}
+          className="reply-input"
+        />
+        <button onClick={handleClick} className="send-reply">
+          Send
+        </button>
+        <button onClick={() => hideReplyForm()} className="cancel-reply">
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
+};
