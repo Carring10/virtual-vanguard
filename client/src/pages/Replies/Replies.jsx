@@ -11,7 +11,8 @@ export const Replies = ({ comment, deleteComment }) => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const { data } = useQuery(["replies"], () =>
+  // 'articleId' and 'parentId' ensure each comment's replies are fetched separately
+  const { data } = useQuery(["replies", articleId, parentId], () =>
     axios.get(`http://localhost:8800/comments/${articleId}/${parentId}`).then((res) => {
       const data = res.data.replies;
 
@@ -42,7 +43,6 @@ export const Replies = ({ comment, deleteComment }) => {
       {data &&
         data.map((reply, index) => (
           <div className="reply-container" key={index}>
-            {console.log(reply.content)}
             <span className="reply-user-icon">👤 </span>
             <div className="reply" key={reply.createdAt}>
               <div className="reply-user-info">
