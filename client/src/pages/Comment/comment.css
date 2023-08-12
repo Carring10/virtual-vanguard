@@ -23,7 +23,7 @@
 
 .user-info {
   display: flex;
-  justify-content: space-between;
+  gap: .5rem;
   height: 3rem;
 }
 
