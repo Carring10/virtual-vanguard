@@ -40,7 +40,7 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
   };
 
   return (
-    <div className="reply-container">
+    <div className="reply-form-container">
       <p className="reply-form-username">{currentUser && currentUser.username}</p>
       <div className="write-reply">
         <input
@@ -50,12 +50,14 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
           onChange={(event) => setContent(event.target.value)}
           className="reply-input"
         />
-        <button onClick={handleClick} className="send-reply">
-          Send
-        </button>
-        <button onClick={() => hideReplyForm()} className="cancel-reply">
-          Cancel
-        </button>
+        <div className="reply-form-button-container">
+          <button onClick={() => hideReplyForm()} className="cancel-reply">
+            Cancel
+          </button>
+          <button onClick={handleClick} className="send-reply">
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );

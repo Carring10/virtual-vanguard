@@ -1,16 +1,20 @@
-.reply-container {
+.reply-form-container {
   display: flex;
   flex-direction: column;
+  margin: 1rem;
   margin-left: 1rem; 
+  gap: 1rem;
 }
 
 .reply-form-username {
   font-size: 1.2rem;
   color: #dfbb60;
+  margin: 0rem;
 }
 
 .write-reply {
   display: flex;
+  flex-direction: column;
 }
 
 
@@ -23,22 +27,48 @@
   border-radius: .8rem;
   padding: .5rem;
   height: 1.5rem;
-  width: 90%;
+  width: 98%;
 }
 
 .reply-input:focus {
   outline-color: white;
 }
 
+.reply-form-button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 99%;
+  margin: .5rem;
+}
+
 .send-reply {
+  align-self: flex-end;
   font-family: 'Kanit', sans-serif;
-  align-self: center;
   color: white;
-  font-size: .9rem;
+  font-size: .95rem;
+  text-align: center;
   background-color: #219ebc;
   border: .1rem solid #219ebc;
   border-radius: .5rem;
-  padding: .3rem 1.5rem;
-  width: 8%;
+  padding: .3rem 1rem;
   cursor: pointer;
+  width: 9%;
+}
+
+.cancel-reply {
+  background-color: transparent;
+  border: none;
+  border-radius: .5rem;
+  padding: .3rem 1rem;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  font-size: .95rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.cancel-reply:hover {
+  background-color: #b4b4b467;
+  border-radius: 2rem;
 }
