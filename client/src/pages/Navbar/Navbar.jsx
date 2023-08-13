@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { Login } from "../Login";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -20,26 +22,35 @@ const handleClick = async (event) => {
   }
 };
 
-const isLoggedIn = () => {
-  if (user) {
-    return (
-      <div>
-        <button onClick={handleClick}>Logout</button>
-        <p className="username">{user.username}</p>
-      </div>
-    );
-  } else {
-    return <Link to="/login">Sign In</Link>;
-  }
-};
-
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // const onClose = () => setIsOpen(false);
+
+  const isLoggedIn = () => {
+    if (user) {
+      return (
+        <div>
+          <button onClick={handleClick}>Logout</button>
+          <p className="username">{user.username}</p>
+        </div>
+      );
+    } else {
+      return <button onClick={() => setIsOpen(true)}>Sign In</button>;
+    }
+  };
+
   return (
-    <div className="navbar">
-      <header className="logo">
-        <h1><span>👾 V</span>IRTUAL <span>V</span>ANGUARD</h1>
-      </header>
-      {isLoggedIn()}
-    </div>
+    <>
+      <div className="navbar">
+        <header className="logo">
+          <h1>
+            <span>👾 V</span>IRTUAL <span>V</span>ANGUARD
+          </h1>
+        </header>
+        {isLoggedIn()}
+      </div>
+      <Login open={isOpen} />
+    </>
   );
 };

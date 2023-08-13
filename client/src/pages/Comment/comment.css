@@ -44,11 +44,12 @@
 .comment-content {
   padding-left: .5rem;
   margin: 0rem;
+  font-size: 1.2rem;
 }
 
 .reply-delete-buttons-container {
   display: flex;
-  justify-content: space-between;
+  gap: .5rem;
 }
 
 .delete-button {
@@ -57,12 +58,12 @@
 
 .reply-button {
   font-family: 'Kanit', sans-serif;
-  font-size: 1rem;
+  font-size: .9rem;
   background-color: transparent;
   border: none;
   color: white;
   cursor: pointer;
-  padding: .5rem .7rem;
+  padding: .3rem .5rem;
 }
 
 .reply-button:hover {
