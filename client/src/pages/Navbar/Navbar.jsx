@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./navbar.css";
 import { Login } from "../Login";
 
@@ -25,7 +24,7 @@ const handleClick = async (event) => {
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // const onClose = () => setIsOpen(false);
+  const onClose = () => setIsOpen(false);
 
   const isLoggedIn = () => {
     if (user) {
@@ -50,7 +49,7 @@ export const Navbar = () => {
         </header>
         {isLoggedIn()}
       </div>
-      <Login open={isOpen} />
+      <Login open={isOpen} onClose={onClose} />
     </>
   );
 };
