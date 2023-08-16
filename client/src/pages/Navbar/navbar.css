@@ -4,33 +4,101 @@
   width: 100%;
   padding: 0rem;
   background-color: #151518;
-  border-bottom: solid .1rem #28282c;
+  border-bottom: solid 0.1rem #28282c;
 }
 
 .logo {
   color: #dfbb60;
   margin: 0rem 2.5rem;
   font-family: Audiowide;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
 .logo span {
   font-size: 2rem;
 }
 
-.navbar a {
-  padding: .4rem 1.5rem;
+.navbar button {
+  padding: 0.4rem 1.5rem;
   margin: 1.5rem;
   text-decoration: none;
   color: #dfbb60;
-  border: .1rem solid #dfbb60;
+  background-color: transparent;
+  border: 0.1rem solid #dfbb60;
   border-radius: 10%;
   transition: 0.5s;
+  font-family: "Kanit", sans-serif;
+  cursor: pointer;
 }
 
-.navbar a:hover {
+.navbar button:hover {
   background-color: #dfbb60;
   color: #151518;
+}
+
+dialog::backdrop {
+  background-color: #151518b4;
+}
+
+dialog {
+  border: none;
+  padding: 2rem;
+  width: 25%;
+}
+
+.close-button {
+  font-family: "Kanit", sans-serif;
+  color: #7f7f8b;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  top: 0.4rem;
+  right: .5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button:hover {
+}
+
+dialog h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+input {
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-bottom: solid 1px #151518;
+}
+
+.login-button {
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+  color: white;
+  background-color: #765ec7;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+dialog p {
+  color: #7f7f8b;
+  margin: 0px;
+  text-align: center;
+}
+
+dialog a {
+  color: #765ec7;
+  text-decoration: none;
 }
 
 .username {

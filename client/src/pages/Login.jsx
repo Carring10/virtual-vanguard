@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ export const Login = ({ open, onClose }) => {
   const [err, setErr] = useState(null);
 
   const modalRef = useRef(null);
+  console.log(modalRef);
 
   const { current: modal } = modalRef;
 
@@ -47,8 +48,10 @@ export const Login = ({ open, onClose }) => {
 
   return (
     <dialog ref={modalRef}>
-      <h1>Login</h1>
-      <Link to="/register">Don't have an account? Click here to register</Link>
+      <button onClick={() => closeModal()} type="button" className="close-button">
+        X
+      </button>
+      <h1>Sign In</h1>
       <form>
         <input
           type="text"
@@ -62,12 +65,14 @@ export const Login = ({ open, onClose }) => {
           name="password"
           onChange={handleChange}
         />
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin} className="login-button">
+          Sign In
+        </button>
+        <p>
+          Don't have an account?<Link to="/register"> Create one</Link>
+        </p>
         {/* If err is not null, render err message */}
         {err && err}
-        <button onClick={() => closeModal()} type="button">
-          Close
-        </button>
       </form>
     </dialog>
   );
