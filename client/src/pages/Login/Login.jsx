@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ export const Login = ({ open, onClose }) => {
   const [err, setErr] = useState(null);
 
   const modalRef = useRef(null);
-  console.log(modalRef);
 
   const { current: modal } = modalRef;
 

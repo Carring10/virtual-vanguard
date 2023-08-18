@@ -7,8 +7,7 @@ import {
 import { Bookmark } from './pages/Bookmark';
 import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article/Article';
-import { Register } from './pages/Register';
-import { Login } from './pages/Login/Login';
+import { Register } from './pages/Register/Register';
 
 
 function App() {

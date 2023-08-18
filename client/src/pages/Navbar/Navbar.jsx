@@ -24,7 +24,6 @@ const handleClick = async (event) => {
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen)
 
   const onClose = () => setIsOpen(false);
 
