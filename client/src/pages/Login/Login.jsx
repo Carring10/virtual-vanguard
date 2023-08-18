@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { useState, useRef, useEffect } from "react";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./login.css"
 
 export const Login = ({ open, onClose }) => {
   const [input, setInput] = useState({

@@ -1,0 +1,61 @@
+dialog::backdrop {
+  background-color: #151518b4;
+}
+
+dialog {
+  border: none;
+  padding: 2rem;
+  width: 25%;
+}
+
+.close-button {
+  font-family: "Kanit", sans-serif;
+  color: #7f7f8b;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  top: 0.4rem;
+  right: .5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+dialog h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+input {
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-bottom: solid 1px #151518;
+}
+
+.login-button {
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+  color: white;
+  background-color: #765ec7;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+dialog p {
+  color: #7f7f8b;
+  margin: 0px;
+  text-align: center;
+}
+
+dialog a {
+  color: #765ec7;
+  text-decoration: none;
+}
