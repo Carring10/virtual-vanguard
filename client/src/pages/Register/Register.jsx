@@ -10,15 +10,31 @@ export const Register = () => {
     password: "",
   });
 
-  const [password, setPassword] = useState({
+  const [confirmation, setConfirmation] = useState({
     confirm: "",
   });
+
+  // console.log(confirmation)
+  // console.log(input.password)
+  const matchPassword = () => {
+    if (input.password === confirmation.confirm) {
+      console.log(true)
+    } else {
+      console.log(false)
+      return <p>Passwords must match</p>
+    }
+  }
 
   const [err, setErr] = useState(null);
 
   const handleChange = (event) => {
     // Update the key-value object on each change, merging it with the previous input state
     setInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
+  const handleConfirmation = (event) => {
+    // Update the key-value object on each change, merging it with the previous input state
+    setConfirmation((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
   const handleClick = async (event) => {
@@ -34,7 +50,6 @@ export const Register = () => {
 
   const validatePassword = () => {
     const password = input.password;
-    const confirmPassword = document.getElementById("confirm-password");
     const letter = document.getElementById("letter");
     const capital = document.getElementById("capital");
     const number = document.getElementById("number");
@@ -110,9 +125,11 @@ export const Register = () => {
         <input
           type="text"
           placeholder="Confirm password"
-          name="confirm-password"
+          name="confirm"
           id="confirm-password"
+          onChange={handleConfirmation}
         />
+        {matchPassword()}
         <div id="password-requirements-container">
           <h3>Password must contain the following:</h3>
           <p id="letter" className="invalid">
