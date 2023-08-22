@@ -1,5 +1,31 @@
 .register-container {
   background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem;
+  padding: 5rem 8.9rem;
+  height: 40rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.register-form input {
+  padding: .5rem;
+}
+
+.match-password-msg {
+  margin: 0rem;
+}
+
+#password-requirements-container {
+  text-align: left;
+  font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
 /* Add a green text color and a checkmark when the requirements are right */
@@ -9,7 +35,7 @@
 
 .valid:before {
   position: relative;
-  left: -35px;
+  left: -10px;
   content: "✔";
 }
 
@@ -20,6 +46,6 @@
 
 .invalid:before {
   position: relative;
-  left: -35px;
+  left: -10px;
   content: "✖";
 }

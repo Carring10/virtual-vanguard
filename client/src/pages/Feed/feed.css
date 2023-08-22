@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit&family=Audiowide&display=swap");
+/* @import url("../../images/controller-background.webp"); */
 
 body {
   background-color: black;
+  height: 100vh;
+  background-image: url("../../images/controller-background.webp");
+  background-position: center;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.856);
   font-family: 'Kanit', sans-serif;
   overflow-x: hidden;
 }
@@ -10,6 +15,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.bg-img {
+  height: 100%;
+  position: absolute;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .feed-container {

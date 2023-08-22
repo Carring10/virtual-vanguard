@@ -14,16 +14,11 @@ export const Register = () => {
     confirm: "",
   });
 
-  // console.log(confirmation)
-  // console.log(input.password)
   const matchPassword = () => {
-    if (input.password === confirmation.confirm) {
-      console.log(true)
-    } else {
-      console.log(false)
-      return <p>Passwords must match</p>
+    if (input.password !== confirmation.confirm) {
+      return <p className="match-password-msg">Passwords must match</p>;
     }
-  }
+  };
 
   const [err, setErr] = useState(null);
 
@@ -98,7 +93,8 @@ export const Register = () => {
       lowerCaseLetters.test(password) &&
       upperCaseLetters.test(password) &&
       numbers.test(password) &&
-      password.length >= 8
+      password.length >= 8 &&
+      input.password === confirmation.confirm
     ) {
       return <button onClick={handleClick}>Register</button>;
     }
@@ -109,7 +105,7 @@ export const Register = () => {
   return (
     <div className="register-container">
       <h1>Register</h1>
-      <form>
+      <form className="register-form">
         <input
           type="text"
           placeholder="Username"
@@ -122,14 +118,17 @@ export const Register = () => {
           name="password"
           onChange={handleChange}
         />
+        <div style={{ width: "95% "}}>
         <input
           type="text"
           placeholder="Confirm password"
           name="confirm"
           id="confirm-password"
           onChange={handleConfirmation}
+          style={{ width: "100% "}}
         />
         {matchPassword()}
+        </div>
         <div id="password-requirements-container">
           <h3>Password must contain the following:</h3>
           <p id="letter" className="invalid">

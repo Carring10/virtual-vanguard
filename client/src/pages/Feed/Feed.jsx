@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Navbar } from "../Navbar/Navbar";
 import './feed.css';
+import background from "../../images/controller-background.webp"
 
 export const Feed = () => {
   const [articles, setArticles] = useState([]);
@@ -21,6 +22,7 @@ export const Feed = () => {
 
   return (
     <>
+    <div style={{ backgroundImage: `url(${background})` }} className="bg-img"></div>
     <Navbar />
     <div className="feed-container">
       <h2 className="news-header">Latest MMO News</h2>

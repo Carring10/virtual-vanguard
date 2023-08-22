@@ -52,7 +52,7 @@ export const Login = ({ open, onClose }) => {
         X
       </button>
       <h1>Sign In</h1>
-      <form>
+      <form className="login-form">
         <input
           type="text"
           placeholder="Username"
