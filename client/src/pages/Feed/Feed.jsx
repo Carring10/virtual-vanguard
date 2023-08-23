@@ -26,7 +26,6 @@ export const Feed = () => {
     <Navbar />
     <div className="feed-container">
       <h2 className="news-header">Latest MMO News</h2>
-      <hr></hr>
       {articles.map((article, index) => (
         <div className="article" key={article.id} index={index}>
           <Link to="/article" state={articles[index]} className="article-link">
