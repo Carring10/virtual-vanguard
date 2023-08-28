@@ -16,6 +16,8 @@
   background-color: #1f1f23;
   color: #fffdec;
   border-radius: 1%;
+  overflow-y: auto;
+  height: 100vh;
 }
 
 .title-contents {
