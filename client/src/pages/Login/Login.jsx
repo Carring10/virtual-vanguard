@@ -51,7 +51,7 @@ export const Login = ({ open, onClose }) => {
       <button onClick={() => closeModal()} type="button" className="close-button">
         X
       </button>
-      <h1>Sign In</h1>
+      <p className="sign-in">Sign In</p>
       <form className="login-form">
         <input
           type="text"

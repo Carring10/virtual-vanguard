@@ -4,8 +4,10 @@ dialog::backdrop {
 
 dialog {
   border: none;
+  border-radius: 2%;
   padding: 2rem;
-  width: 25%;
+  width: 20%;
+  background-color: #ffffff;
 }
 
 .close-button {
@@ -21,18 +23,24 @@ dialog {
   cursor: pointer;
 }
 
-dialog h1 {
+.sign-in {
   text-align: center;
+  font-size: 2.5rem;
+  color: black;
+  margin: 1.5rem;
 }
 
 .login-form {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 input {
   font-family: "Kanit", sans-serif;
+  background-color: transparent;
+  width: 80%;
   font-size: 1rem;
   border: none;
   border-bottom: solid 1px #151518;
@@ -40,6 +48,7 @@ input {
 
 .login-button {
   font-family: "Kanit", sans-serif;
+  width: 80%;
   font-size: 1rem;
   color: white;
   background-color: #765ec7;
@@ -47,6 +56,10 @@ input {
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #604da1;
 }
 
 dialog p {
