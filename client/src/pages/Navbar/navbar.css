@@ -4,7 +4,7 @@
   width: 100%;
   padding: 0rem;
   background-color: #151518;
-  border-bottom: solid 0.1rem #28282c;
+  border: solid 1.5px #3e3e44;
 }
 
 .logo {
@@ -16,6 +16,20 @@
 
 .logo span {
   font-size: 2rem;
+}
+
+.categories {
+  display: flex;
+  gap: 1.5rem;
+  align-self: center;
+  text-align: center;
+  height: 2rem;
+}
+
+.categories a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #727272;
 }
 
 .navbar button {

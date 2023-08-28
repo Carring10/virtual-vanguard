@@ -49,9 +49,9 @@ export const Navbar = () => {
           </h1>
         </header>
         <div className="categories">
-          <Link>🌐 News</Link>
-          <Link>🚀 Discover</Link>
-          <Link>🎁 Giveaways</Link>
+          <Link>🌐 News </Link>
+          <Link>🚀 Discover </Link>
+          <Link>🎁 Giveaways </Link>
         </div>
         {isLoggedIn()}
       </div>
