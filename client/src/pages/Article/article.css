@@ -1,5 +1,5 @@
 .back-button {
-  width: 95%;
+  align-self: flex-start;
   margin: 1rem;
   text-align: start;
   color: #dfbb60;
@@ -17,7 +17,10 @@
   color: #fffdec;
   border-radius: 1%;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
+  top: 0rem;
+  position: fixed;
 }
 
 .title-contents {

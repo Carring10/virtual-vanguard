@@ -5,6 +5,7 @@
   padding: 0rem;
   background-color: #151518;
   border: solid 1.5px #3e3e44;
+  z-index: 1;
 }
 
 .logo {
@@ -12,6 +13,7 @@
   margin: 0rem 2.5rem;
   font-family: Audiowide;
   font-size: 0.6rem;
+  width: 20%;
 }
 
 .logo span {
@@ -24,6 +26,7 @@
   align-self: center;
   text-align: center;
   height: 2rem;
+  width: 25%;
 }
 
 .categories a {
@@ -39,10 +42,11 @@
   color: #dfbb60;
   background-color: transparent;
   border: 0.1rem solid #dfbb60;
-  border-radius: 10%;
+  border-radius: 7px;
   transition: 0.5s;
   font-family: "Kanit", sans-serif;
   cursor: pointer;
+  width: 8%;
 }
 
 .navbar button:hover {
