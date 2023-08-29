@@ -37,7 +37,7 @@ dialog {
   gap: 2rem;
 }
 
-input {
+.login-input {
   font-family: "Kanit", sans-serif;
   background-color: transparent;
   width: 80%;

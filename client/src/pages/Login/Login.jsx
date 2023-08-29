@@ -58,12 +58,14 @@ export const Login = ({ open, onClose }) => {
           placeholder="Username"
           name="username"
           onChange={handleChange}
+          className="login-input"
         />
         <input
           type="text"
           placeholder="Password"
           name="password"
           onChange={handleChange}
+          className="login-input"
         />
         <button onClick={handleLogin} className="login-button">
           Sign In

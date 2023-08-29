@@ -44,8 +44,8 @@
 .send-placeholder {
   font-family: 'Kanit', sans-serif;
   align-self: flex-end;
-  color: #575f68;
   font-size: .95rem;
+  color: #575f68;
   background-color: #343a40;
   border: .1rem solid #343a40;
   border-radius: .5rem;

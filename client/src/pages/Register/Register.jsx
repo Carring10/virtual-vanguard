@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./register.css";
 
@@ -97,9 +96,9 @@ export const Register = () => {
       input.password === confirmation.confirm
     ) {
       return <button onClick={handleClick}>Register</button>;
+    } else {
+      return <button type="button" className="register-placeholder">Register</button>
     }
-
-    // console.log(confirmPassword.value)
   };
 
   return (

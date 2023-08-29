@@ -4,18 +4,29 @@
   display: flex;
   flex-direction: column;
   margin: 5rem;
-  padding: 5rem 8.9rem;
+  padding: 3.5rem;
   height: 40rem;
+  border-radius: 2%;
+}
+
+.register-container h1 {
+  margin: 0px;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 4rem;
 }
 
 .register-form input {
   padding: .5rem;
+  font-family: "Kanit", sans-serif;
+  background-color: transparent;
+  font-size: 1rem;
+  border: none;
+  border-bottom: solid 1px #151518;
 }
 
 .match-password-msg {
@@ -48,4 +59,14 @@
   position: relative;
   left: -10px;
   content: "✖";
+}
+
+.register-placeholder {
+  padding: .5rem;
+  color: #353a3f;
+  font-size: 1rem;
+  background-color: #343a40a4;
+  border: 2px solid #c0c0c0;
+  border-radius: 8px;
+  font-family: "Kanit", sans-serif;
 }
