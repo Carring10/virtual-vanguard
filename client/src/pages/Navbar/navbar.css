@@ -35,7 +35,7 @@
   color: #727272;
 }
 
-.navbar button {
+.nav-login-button {
   padding: 0.4rem 1.5rem;
   margin: 1.5rem;
   text-decoration: none;
@@ -49,11 +49,35 @@
   width: 8%;
 }
 
-.navbar button:hover {
+.nav-login-button:hover {
+  background-color: #dfbb60;
+  color: #151518;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+}
+
+.logout-button {
+  padding: 0.4rem 1.5rem;
+  margin: 1.5rem;
+  text-decoration: none;
+  color: #dfbb60;
+  background-color: transparent;
+  border: 0.1rem solid #dfbb60;
+  border-radius: 7px;
+  transition: 0.5s;
+  font-family: "Kanit", sans-serif;
+  cursor: pointer;
+}
+
+.logout-button:hover {
   background-color: #dfbb60;
   color: #151518;
 }
 
 .username {
   color: #dfbb60;
+  text-align: center;
 }

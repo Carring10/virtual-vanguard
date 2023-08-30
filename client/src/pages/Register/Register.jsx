@@ -15,7 +15,7 @@ export const Register = () => {
 
   const matchPassword = () => {
     if (input.password !== confirmation.confirm) {
-      return <p className="match-password-msg">Passwords must match</p>;
+      return <p className="match-password-msg">🛈 Passwords must match</p>;
     }
   };
 
@@ -95,7 +95,7 @@ export const Register = () => {
       password.length >= 8 &&
       input.password === confirmation.confirm
     ) {
-      return <button onClick={handleClick}>Register</button>;
+      return <button onClick={handleClick} className="register-button">Register</button>;
     } else {
       return <button type="button" className="register-placeholder">Register</button>
     }

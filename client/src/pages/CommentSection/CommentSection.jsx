@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Login } from "../Login/Login";
 import axios from "axios";
 import { Comment } from "../Comment/Comment";
 import "./commentSection.css";
 
 export const CommentSection = ({ articleId }) => {
   const [content, setContent] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClose = () => setIsOpen(false);
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
@@ -77,9 +80,9 @@ export const CommentSection = ({ articleId }) => {
       );
     } else {
       return (
-        <Link to="/login" className="comment-sign-in-button">
+        <button className="comment-sign-in-button" onClick={() => setIsOpen(true)}>
           Sign in to comment
-        </Link>
+        </button>
       );
     }
   };
@@ -87,6 +90,7 @@ export const CommentSection = ({ articleId }) => {
   return (
     <div className="comment-section">
       {loginToComment()}
+      <Login open={isOpen} onClose={onClose} />
       {data && data.map((comment, index) => <Comment comment={comment} key={index} />)}
     </div>
   );

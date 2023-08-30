@@ -30,13 +30,13 @@ export const Navbar = () => {
   const isLoggedIn = () => {
     if (user) {
       return (
-        <div>
-          <button onClick={handleClick}>Logout</button>
+        <div className="logout-container">
           <p className="username">{user.username}</p>
+          <button onClick={handleClick} className="logout-button">Logout</button>
         </div>
       );
     } else {
-      return <button onClick={() => setIsOpen(true)}>Sign In</button>;
+      return <button onClick={() => setIsOpen(true)} className="nav-login-button">Sign In</button>;
     }
   };
 

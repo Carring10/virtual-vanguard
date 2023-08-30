@@ -31,6 +31,10 @@
 
 .match-password-msg {
   margin: 0rem;
+  font-size: .9rem;
+  position: absolute;
+  color: #8a8a8a;
+  margin-top: .5rem;
 }
 
 #password-requirements-container {
@@ -67,6 +71,16 @@
   font-size: 1rem;
   background-color: #343a40a4;
   border: 2px solid #c0c0c0;
+  border-radius: 8px;
+  font-family: "Kanit", sans-serif;
+}
+
+.register-button { 
+  padding: .5rem;
+  color: white;
+  font-size: 1rem;
+  background-color: #765ec7;
+  border: 2px solid #9182c5;
   border-radius: 8px;
   font-family: "Kanit", sans-serif;
 }
