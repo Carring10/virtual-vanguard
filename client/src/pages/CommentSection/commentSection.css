@@ -67,13 +67,20 @@
 }
 
 .comment-sign-in-button {
+  font-family: 'Kanit', sans-serif;
   background-color: #6a040f;
-  color: white;
+  color: #dfbb60;
   text-align: center;
   font-size: .9rem;
   text-decoration: none;
-  border: .1rem solid #6a040f;
   border-radius: .2rem;
-  padding: .5rem 2rem;
-  width: 14%;
+  padding: .5rem 1.5rem;
+  width: 16%;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.815);
+  transition: .5s;
+}
+
+.comment-sign-in-button:hover {
+  background-color: #a00717;
 }

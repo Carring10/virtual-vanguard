@@ -68,7 +68,7 @@ dialog p {
   text-align: center;
 }
 
-dialog a {
-  color: #765ec7;
+.create-account-link {
+  color: #765ec7 !important;
   text-decoration: none;
 }

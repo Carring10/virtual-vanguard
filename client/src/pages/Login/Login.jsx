@@ -71,7 +71,7 @@ export const Login = ({ open, onClose }) => {
           Sign In
         </button>
         <p>
-          Don't have an account?<Link to="/register"> Create one</Link>
+          Don't have an account?<Link to="/register" className="create-account-link"> Create one</Link>
         </p>
         {/* If err is not null, render err message */}
         {err && err}
