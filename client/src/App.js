@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import { Bookmark } from './pages/Bookmark';
+import { Discover } from './pages/Discover';
 import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article/Article';
 import { Register } from './pages/Register/Register';
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Feed />} />
-          <Route path='/bookmark' element={<Bookmark />} />
+          <Route path='/discover' element={<Discover />} />
           <Route path='/article' Component={Article} />
           <Route path='/register' element={<Register />} />
           {/* <Route path='/login' element={<Login />} /> */}

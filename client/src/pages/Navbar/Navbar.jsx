@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import "./navbar.css";
 import { Login } from "../Login/Login";
+import { Discover } from "../Discover";
 import { Link } from "react-router-dom";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
@@ -50,7 +51,7 @@ export const Navbar = () => {
         </header>
         <div className="categories">
           <Link>🌐 News </Link>
-          <Link>🚀 Discover </Link>
+          <Link to="/discover">🚀 Discover </Link>
           <Link>🎁 Giveaways </Link>
         </div>
         {isLoggedIn()}
