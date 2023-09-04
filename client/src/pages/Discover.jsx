@@ -3,32 +3,36 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const Discover = () => {
-  const [games, setGames] = useState([]);
+  let [param, setParam] = useState("");
+  const tagArray = [];
 
   useEffect(() => {
+    const api = "https://www.mmobomb.com/api1/filter?tag=" + param;
+
     const fetchAllGames = async () => {
       try {
-        const response = await axios.get(
-          "https://www.mmobomb.com/api1/filter?tag=mmorpg.fantasy.open-world.pvp"
-        );
-        setGames(response.data);
+        const response = await axios.get(api);
+        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllGames();
-  }, []);
 
-  console.log(games);
-  const searchParam = [];
+    // Call fetchAllGames when param changes
+    fetchAllGames();
+  }, [param]);
 
   const getTag = (event) => {
     const tags = event.target.textContent;
+    tagArray.push(tags);
+    console.log(tagArray);
+  };
 
-    searchParam.push(tags);
-
-    console.log(searchParam)
-  }
+  const searchGames = () => {
+    tagArray.forEach((tag) => {
+      setParam((prevParam) => prevParam + "." + tag);
+    });
+  };
 
   return (
     <>
@@ -81,6 +85,7 @@ export const Discover = () => {
           <button onClick={getTag}>martial-arts</button>
           <button onClick={getTag}>flight</button>
         </div>
+        <button onClick={searchGames}>GO!</button>
       </div>
     </>
   );
