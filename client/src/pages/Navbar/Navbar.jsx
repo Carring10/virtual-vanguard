@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 import "./navbar.css";
 import { Login } from "../Login/Login";
-import { Discover } from "../Discover";
 import { Link } from "react-router-dom";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
