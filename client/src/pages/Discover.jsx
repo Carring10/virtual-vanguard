@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 
 export const Discover = () => {
   let [param, setParam] = useState("");
-  const tagArray = [];
+  const [selectTag, setSelectTag] = useState(false);
+
+  let tagArray = [];
+  console.log(tagArray);
+  console.log(param);
 
   useEffect(() => {
     const api = "https://www.mmobomb.com/api1/filter?tag=" + param;
@@ -17,18 +21,24 @@ export const Discover = () => {
         console.log(err);
       }
     };
-
     // Call fetchAllGames when param changes
     fetchAllGames();
   }, [param]);
 
   const getTag = (event) => {
     const tags = event.target.textContent;
-    tagArray.push(tags);
-    console.log(tagArray);
-  };
+    const button = event.target;
 
-  const searchGames = () => {
+    if (button.style.border === "2px solid green") {
+      button.style.border = "";
+
+      setParam(param.replace("." + tags, ""));
+    } else {
+      button.style.border = "2px solid green";
+
+      tagArray.push(tags);
+    }
+
     tagArray.forEach((tag) => {
       setParam((prevParam) => prevParam + "." + tag);
     });
@@ -85,7 +95,6 @@ export const Discover = () => {
           <button onClick={getTag}>martial-arts</button>
           <button onClick={getTag}>flight</button>
         </div>
-        <button onClick={searchGames}>GO!</button>
       </div>
     </>
   );
