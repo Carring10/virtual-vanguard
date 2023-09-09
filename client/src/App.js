@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import { Discover } from './pages/Discover';
+import { Discover } from './pages/Discover/Discover';
 import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article/Article';
 import { Register } from './pages/Register/Register';
