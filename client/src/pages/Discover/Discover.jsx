@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navbar } from "../Navbar/Navbar";
+import "./discover.css";
 
 export const Discover = () => {
   let [param, setParam] = useState("");
@@ -103,10 +104,18 @@ export const Discover = () => {
         <div className="game-results-container">
           {games.map((game) => (
             <div className="game-container">
-              <h1>{game.title}</h1>
-              <p>{game.developer}</p>
-              <img src={game.thumbnail} alt="Game Thumbnail" />
-              <p>{game.short_description}</p>
+              <div className="game-contents">
+                <img
+                  src={game.thumbnail}
+                  alt="Game Thumbnail"
+                  className="game-thumbnail"
+                />
+                <div>
+                  <h1 className="game-title">{game.title}</h1>
+                  <p className="game-developer">{game.developer}</p>
+                  <p className="game-description">{game.short_description}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

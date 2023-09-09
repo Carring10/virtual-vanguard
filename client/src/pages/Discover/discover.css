@@ -1,0 +1,48 @@
+.discover-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  width: 80%;
+  background-color: #1f1f23;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 93vh;
+}
+
+.game-results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 1rem;
+  background-color: #28282c;
+  color: white;
+}
+
+.game-contents {
+  display: flex;
+  gap: 1rem;
+}
+
+.game-title {
+  margin: 0px;
+  font-size: 2rem;
+}
+
+.game-developer {
+  margin: 0px;
+  font-size: 1rem;
+  color: #676770;
+}
+
+.game-thumbnail {
+  width: 25%;
+  height: auto;
+}
