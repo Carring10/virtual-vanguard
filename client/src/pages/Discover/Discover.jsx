@@ -33,10 +33,12 @@ export const Discover = () => {
 
     if (button.style.border === "2px solid green") {
       button.style.border = "";
+      button.style.backgroundColor = "";
 
       setParam(param.replace("." + tags, ""));
     } else {
       button.style.border = "2px solid green";
+      button.style.backgroundColor = "#05581a59";
 
       tagArray.push(tags);
     }
@@ -50,10 +52,9 @@ export const Discover = () => {
     <>
       <Navbar />
       <div className="discover-container">
-        <h1>Discover Games</h1>
         <div className="search-params-container">
-          <p>Genre</p>
           <div className="genre">
+            <p>Genre</p>
             <button onClick={getTag}>mmorpg</button>
             <button onClick={getTag}>shooter</button>
             <button onClick={getTag}>strategy</button>
@@ -65,10 +66,7 @@ export const Discover = () => {
             <button onClick={getTag}>mmofps</button>
             <button onClick={getTag}>mmotps</button>
             <button onClick={getTag}>mmorts</button>
-            <button onClick={getTag}>horror</button>
             <button onClick={getTag}>racing</button>
-            <button onClick={getTag}>tower-defense</button>
-            <button onClick={getTag}>card</button>
           </div>
 
           <div className="style">
@@ -82,10 +80,13 @@ export const Discover = () => {
             <button onClick={getTag}>turn-based</button>
             <button onClick={getTag}>top-down</button>
             <button onClick={getTag}>side-scroller</button>
+            <button onClick={getTag}>tower-defense</button>
+            <button onClick={getTag}>card</button>
           </div>
 
           <div className="theme">
             <p>Theme</p>
+            <button onClick={getTag}>horror</button>
             <button onClick={getTag}>zombie</button>
             <button onClick={getTag}>space</button>
             <button onClick={getTag}>sailing</button>
