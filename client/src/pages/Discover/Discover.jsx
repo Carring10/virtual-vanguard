@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import "./discover.css";
 
@@ -104,20 +105,20 @@ export const Discover = () => {
 
         <div className="game-results-container">
           {games.map((game) => (
-            <div className="game-container">
-              <div className="game-contents">
-                <img
-                  src={game.thumbnail}
-                  alt="Game Thumbnail"
-                  className="game-thumbnail"
-                />
-                <div>
-                  <h1 className="game-title">{game.title}</h1>
-                  <p className="game-developer">{game.developer}</p>
-                  <p className="game-description">{game.short_description}</p>
+            <Link className="game-container">
+                <div className="game-contents">
+                  <img
+                    src={game.thumbnail}
+                    alt="Game Thumbnail"
+                    className="game-thumbnail"
+                  />
+                  <div>
+                    <h1 className="game-title">{game.title}</h1>
+                    <p className="game-developer">{game.developer}</p>
+                    <p className="game-description">{game.short_description}</p>
+                  </div>
                 </div>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
