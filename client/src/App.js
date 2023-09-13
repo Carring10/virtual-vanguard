@@ -8,6 +8,7 @@ import { Discover } from './pages/Discover/Discover';
 import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article/Article';
 import { Register } from './pages/Register/Register';
+import { Game } from './pages/Game/Game';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <Route path='/discover' element={<Discover />} />
           <Route path='/article' Component={Article} />
           <Route path='/register' element={<Register />} />
-          {/* <Route path='/login' element={<Login />} /> */}
+          <Route path='/game' element={<Game />} />
         </Routes>
       </BrowserRouter>
     </div>

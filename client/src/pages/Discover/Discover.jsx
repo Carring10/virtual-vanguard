@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
+import { Game } from "../Game/Game";
 import "./discover.css";
 
 export const Discover = () => {
@@ -105,7 +106,7 @@ export const Discover = () => {
 
         <div className="game-results-container">
           {games.map((game) => (
-            <Link className="game-container">
+            <Link className="game-container" to="/game">
                 <div className="game-contents">
                   <img
                     src={game.thumbnail}
