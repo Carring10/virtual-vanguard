@@ -18,7 +18,6 @@ export const Discover = () => {
     const fetchAllGames = async () => {
       try {
         const response = await axios.get(api);
-        // console.log(response.data);
         setGames(response.data);
       } catch (err) {
         console.log(err);
@@ -106,7 +105,7 @@ export const Discover = () => {
 
         <div className="game-results-container">
           {games.map((game) => (
-            <Link className="game-container" to="/game">
+            <Link className="game-container" to="/game" state={game.id}>
                 <div className="game-contents">
                   <img
                     src={game.thumbnail}
