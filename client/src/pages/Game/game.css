@@ -10,10 +10,13 @@
   height: 93vh;
   padding: 1rem 3.5rem;
   color: white;
+  font-size: 18px;
 }
 
 .play-button {
   padding: .6rem;
+  text-decoration: none;
+  text-align: center;
   border: none;
   border-radius: 5px;
   background-color: #dfbb60;
@@ -22,6 +25,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 a {
@@ -68,4 +72,11 @@ a:hover {
   justify-content: space-between;
   width: 100%;
   margin: 1rem;
+  font-size: 16px;
+}
+
+.more-game-info h3 {
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #3a3a3f;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import "./game.css";
@@ -14,6 +15,7 @@ export const Game = () => {
     release_date: "",
     screenshots: [],
     description: "",
+    minimum_system_requirements: []
   });
 
   const location = useLocation();
@@ -49,7 +51,7 @@ export const Game = () => {
         <div className="game-contents-container">
           <div className="game-info">
             <img src={game.thumbnail} alt="game-thumbnail" />
-            <button className="play-button">Play Now</button>
+            <Link to={game.game_url} target="_blank" className="play-button">Play Now</Link>
           </div>
           <div className="game-description">
             <div className="screenshots-container">
@@ -64,20 +66,20 @@ export const Game = () => {
             </div>
             <div dangerouslySetInnerHTML={sanitizedData()} />
             <div className="more-game-info">
-            <div className="studio-info">
-              <p>Additional Info</p>
-              <p>Developer: {game.developer}</p>
-              <p>Publisher: {game.publisher}</p>
-              <p>Release Date: {game.release_date}</p>
-            </div>
-            <div className="system-requirements">
-              <p>Minimum System Requirements</p>
-              <p>Graphics: {game.minimum_system_requirements.graphics}</p>
-              <p>Memory: {game.minimum_system_requirements.memory}</p>
-              <p>OS: {game.minimum_system_requirements.os}</p>
-              <p>Processor: {game.minimum_system_requirements.processor}</p>
-              <p>Storage: {game.minimum_system_requirements.storage}</p>
-            </div>
+              <div className="studio-info">
+                <h3>Additional Info</h3>
+                <p>Developer: {game.developer}</p>
+                <p>Publisher: {game.publisher}</p>
+                <p>Release Date: {game.release_date}</p>
+              </div>
+              <div className="system-requirements">
+                <h3>Minimum System Requirements</h3>
+                <p>Graphics: {game.minimum_system_requirements.graphics}</p>
+                <p>Memory: {game.minimum_system_requirements.memory}</p>
+                <p>OS: {game.minimum_system_requirements.os}</p>
+                <p>Processor: {game.minimum_system_requirements.processor}</p>
+                <p>Storage: {game.minimum_system_requirements.storage}</p>
+              </div>
             </div>
           </div>
         </div>
