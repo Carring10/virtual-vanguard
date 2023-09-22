@@ -8,12 +8,33 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: 93vh;
-  padding: 0rem 3.5rem;
+  padding: 1rem 3.5rem;
+  color: white;
+}
+
+.play-button {
+  padding: .6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #dfbb60;
+  color: #1f1f23;
+  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+a {
+  color: #dfbb60;
+}
+
+a:hover {
+  color: white;
 }
 
 .game-contents-container {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .game-info {
@@ -26,6 +47,7 @@
 .game-description {
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 
 .screenshots-container {
@@ -39,4 +61,11 @@
   height: 9rem;
   width: 100%;
   border-radius: 5px;
+}
+
+.more-game-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem;
 }
