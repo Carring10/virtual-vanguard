@@ -1,0 +1,38 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+  width: 80%;
+  background-color: #1f1f23;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 93vh;
+  padding: 0rem 3.5rem;
+}
+
+.game-contents-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-self: flex-start;
+}
+
+.game-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.screenshots-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.game-screenshots {
+  height: 9rem;
+}

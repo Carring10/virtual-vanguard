@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
-import { Game } from "../Game/Game";
 import "./discover.css";
 
 export const Discover = () => {

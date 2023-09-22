@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import axios from "axios";
 import DOMPurify from "dompurify";
+import "./game.css";
 
 export const Game = () => {
   const [game, setGame] = useState([]);
 
   const location = useLocation();
   const gameId = location.state;
-  console.log(gameId)
+  console.log(gameId);
 
   const sanitizedData = () => ({
     __html: DOMPurify.sanitize(game.description),
@@ -21,8 +22,8 @@ export const Game = () => {
     const fetchGame = async () => {
       try {
         const response = await axios.get(api);
-        console.log(response.data)
-        setGame(response.data)
+        console.log(response.data);
+        setGame(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -30,15 +31,38 @@ export const Game = () => {
     fetchGame();
   }, [gameId]);
 
-  console.log(game)
+  console.log(game);
 
   return (
     <>
-    <Navbar />
-    <div className="game-container">
-      <h1>{game.title}</h1>
-      <div dangerouslySetInnerHTML={sanitizedData()} />
-    </div>
+      <Navbar />
+      <div className="game-container">
+        <h1>{game.title}</h1>
+        <div className="game-contents-container">
+          <div className="game-info">
+            <img src={game.thumbnail} alt="game-thumbnail" />
+          </div>
+          <div className="game-description">
+            <div className="screenshots-container">
+              {game.screenshots.map((screenshot) => (
+                <img
+                  src={screenshot.image}
+                  alt="game-screenshot"
+                  className="game-screenshots"
+                  key={screenshot.id}
+                />
+              ))}
+            </div>
+            {console.log(game)}
+            <div dangerouslySetInnerHTML={sanitizedData()} />
+          </div>
+        </div>
+        <div className="studio-info">
+          <p>Developer: {game.developer}</p>
+          <p>Publisher: {game.publisher}</p>
+          <p>Release Date: {game.release_date}</p>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
