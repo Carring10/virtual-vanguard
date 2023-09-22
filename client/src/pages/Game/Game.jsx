@@ -6,7 +6,15 @@ import DOMPurify from "dompurify";
 import "./game.css";
 
 export const Game = () => {
-  const [game, setGame] = useState([]);
+  const [game, setGame] = useState({
+    title: "",
+    thumbnail: "",
+    developer: "",
+    publisher: "",
+    release_date: "",
+    screenshots: [],
+    description: "",
+  });
 
   const location = useLocation();
   const gameId = location.state;
@@ -41,6 +49,11 @@ export const Game = () => {
         <div className="game-contents-container">
           <div className="game-info">
             <img src={game.thumbnail} alt="game-thumbnail" />
+            <div className="studio-info">
+              <p>Developer: {game.developer}</p>
+              <p>Publisher: {game.publisher}</p>
+              <p>Release Date: {game.release_date}</p>
+            </div>
           </div>
           <div className="game-description">
             <div className="screenshots-container">
@@ -53,14 +66,8 @@ export const Game = () => {
                 />
               ))}
             </div>
-            {console.log(game)}
             <div dangerouslySetInnerHTML={sanitizedData()} />
           </div>
-        </div>
-        <div className="studio-info">
-          <p>Developer: {game.developer}</p>
-          <p>Publisher: {game.publisher}</p>
-          <p>Release Date: {game.release_date}</p>
         </div>
       </div>
     </>

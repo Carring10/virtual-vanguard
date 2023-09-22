@@ -31,8 +31,12 @@
 .screenshots-container {
   display: flex;
   gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #3a3a3f;
 }
 
 .game-screenshots {
   height: 9rem;
+  width: 100%;
+  border-radius: 5px;
 }
