@@ -50,7 +50,9 @@ export const Game = () => {
         <h1>{game.title}</h1>
         <div className="game-contents-container">
           <div className="game-info">
-            <img src={game.thumbnail} alt="game-thumbnail" />
+            <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
+            <p>Developed by {game.developer}</p>
+            <p>Released on {game.release_date}</p>
             <Link to={game.game_url} target="_blank" className="play-button">Play Now</Link>
           </div>
           <div className="game-description">
@@ -66,12 +68,6 @@ export const Game = () => {
             </div>
             <div dangerouslySetInnerHTML={sanitizedData()} />
             <div className="more-game-info">
-              <div className="studio-info">
-                <h3>Additional Info</h3>
-                <p>Developer: {game.developer}</p>
-                <p>Publisher: {game.publisher}</p>
-                <p>Release Date: {game.release_date}</p>
-              </div>
               <div className="system-requirements">
                 <h3>Minimum System Requirements</h3>
                 <p>Graphics: {game.minimum_system_requirements.graphics}</p>
