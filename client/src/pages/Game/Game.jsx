@@ -47,7 +47,7 @@ export const Game = () => {
     <>
       <Navbar />
       <div className="game-container">
-        <h1>{game.title}</h1>
+        <h1 className="game-title">{game.title}</h1>
         <div className="game-contents-container">
           <div className="game-info">
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />

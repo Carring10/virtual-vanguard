@@ -49,7 +49,7 @@ export const Navbar = () => {
           </h1>
         </header>
         <div className="categories">
-          <Link>🌐 News </Link>
+          <Link to="/">🌐 News </Link>
           <Link to="/discover">🚀 Discover </Link>
           <Link>🎁 Giveaways </Link>
         </div>
