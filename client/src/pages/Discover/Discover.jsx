@@ -26,7 +26,7 @@ export const Discover = () => {
     fetchAllGames();
   }, [param]);
 
-  console.log("GAMES", games);
+  console.log("GAMES", games.status);
   const getTag = (event) => {
     const tags = event.target.textContent;
     const button = event.target;
@@ -46,6 +46,37 @@ export const Discover = () => {
     tagArray.forEach((tag) => {
       setParam((prevParam) => prevParam + "." + tag);
     });
+  };
+
+  const showResults = () => {
+    if (games.status === 0) {
+      return (
+        <div>
+          <h2>No games match that description...</h2>
+        </div>
+      );
+    } else {
+      return (
+        <div className="game-results-container">
+          {games.map((game) => (
+            <Link className="discover-game-container" to="/game" state={game.id}>
+              <div className="game-contents">
+                <img
+                  src={game.thumbnail}
+                  alt="Game Thumbnail"
+                  className="game-thumbnail"
+                />
+                <div>
+                  <h1 className="game-title">{game.title}</h1>
+                  <p className="game-developer">{game.developer}</p>
+                  <p className="game-description">{game.short_description}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      );
+    }
   };
 
   return (
@@ -101,25 +132,7 @@ export const Discover = () => {
             <button onClick={getTag}>flight</button>
           </div>
         </div>
-
-        <div className="game-results-container">
-          {games.map((game) => (
-            <Link className="discover-game-container" to="/game" state={game.id}>
-                <div className="game-contents">
-                  <img
-                    src={game.thumbnail}
-                    alt="Game Thumbnail"
-                    className="game-thumbnail"
-                  />
-                  <div>
-                    <h1 className="game-title">{game.title}</h1>
-                    <p className="game-developer">{game.developer}</p>
-                    <p className="game-description">{game.short_description}</p>
-                  </div>
-                </div>
-            </Link>
-          ))}
-        </div>
+        {showResults()}
       </div>
     </>
   );
