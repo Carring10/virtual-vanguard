@@ -69,7 +69,7 @@ export const Discover = () => {
                 <div>
                   <h1 className="game-title">{game.title}</h1>
                   <p className="game-developer">{game.developer}</p>
-                  <p className="game-description">{game.short_description}</p>
+                  <p className="discover-game-description">{game.short_description}</p>
                 </div>
               </div>
             </Link>
