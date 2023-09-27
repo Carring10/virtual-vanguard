@@ -15,7 +15,7 @@ export const Game = () => {
     release_date: "",
     screenshots: [],
     description: "",
-    minimum_system_requirements: []
+    minimum_system_requirements: [],
   });
 
   const location = useLocation();
@@ -47,13 +47,15 @@ export const Game = () => {
     <>
       <Navbar />
       <div className="game-container">
-        <h1 className="game-title">{game.title}</h1>
         <div className="game-contents-container">
           <div className="game-info">
+            <h1 className="game-title">{game.title}</h1>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
             <p>Released on {game.release_date}</p>
-            <Link to={game.game_url} target="_blank" className="play-button">Play Now</Link>
+            <Link to={game.game_url} target="_blank" className="play-button">
+              Play Now
+            </Link>
           </div>
           <div className="game-description">
             <div className="screenshots-container">

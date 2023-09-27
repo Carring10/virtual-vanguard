@@ -24,7 +24,7 @@ body {
   align-items: center;
   gap: .5rem;
   width: 80%;
-  background-color: #1f1f23;
+  background: #1f1f23;
   overflow-y: auto;
   overflow-x: hidden;
   height: 93vh;
