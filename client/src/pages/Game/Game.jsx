@@ -72,11 +72,11 @@ export const Game = () => {
             <div className="more-game-info">
               <div className="system-requirements">
                 <h3>Minimum System Requirements</h3>
-                <p>Graphics: {game.minimum_system_requirements.graphics}</p>
-                <p>Memory: {game.minimum_system_requirements.memory}</p>
-                <p>OS: {game.minimum_system_requirements.os}</p>
-                <p>Processor: {game.minimum_system_requirements.processor}</p>
-                <p>Storage: {game.minimum_system_requirements.storage}</p>
+                <li>{game.minimum_system_requirements.graphics}</li>
+                <li>Memory: {game.minimum_system_requirements.memory}</li>
+                <li>OS: {game.minimum_system_requirements.os}</li>
+                <li>{game.minimum_system_requirements.processor}</li>
+                <li>Storage: {game.minimum_system_requirements.storage}</li>
               </div>
             </div>
           </div>
