@@ -49,9 +49,9 @@ exports.login = async (req, res) => {
 
     res.cookie('accessToken', token, {
       httpOnly: true,
-      sameSite: "none"
     }).status(200).json(data);
 
+    
   } catch (err) {
     console.log(err);
   }
