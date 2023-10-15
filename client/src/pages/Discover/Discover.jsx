@@ -12,14 +12,33 @@ export const Discover = () => {
     if (!paramStorage) {
       return defaultValue;
     }
+
     return JSON.parse(paramStorage);
+  };
+
+  const tagStorage = (key, defaultValue) => {
+    const getTagStorage = sessionStorage.getItem(key);
+
+    if (!getTagStorage) {
+      return defaultValue;
+    }
+
+    return JSON.parse(getTagStorage);
   };
 
   let [param, setParam] = useState(getSessionStorage("param", ""));
   let [games, setGames] = useState([]);
-  const [buttonStyles, setButtonStyles] = useState({});
+  const [tagArray, setTagArray] = useState(tagStorage("tagStorage", []));
+  const buttonElements = document.getElementsByTagName("button");
 
-  let tagArray = [];
+  sessionStorage.setItem("tagStorage", JSON.stringify(tagArray));
+
+  [...buttonElements].forEach((buttonElement) => {
+    if (tagArray.includes(buttonElement.textContent)) {
+      buttonElement.style.border = "2px solid green";
+      buttonElement.style.backgroundColor = "#05581a59";
+    }
+  });
 
   useEffect(() => {
     sessionStorage.setItem("param", JSON.stringify(param));
@@ -47,16 +66,19 @@ export const Discover = () => {
       button.style.backgroundColor = "";
 
       setParam(param.replace("." + tagName, ""));
+      setTagArray((prevTags) => prevTags.filter((tag) => tag !== tagName));
     } else {
       button.style.border = "2px solid green";
       button.style.backgroundColor = "#05581a59";
 
-      tagArray.push(tagName);
+      setParam((prevParam) => prevParam + "." + tagName);
+      setTagArray((prevTags) => {
+        if (prevTags.includes(tagName)) {
+          return prevTags;
+        }
+        return [...prevTags, tagName];
+      });
     }
-    
-    tagArray.forEach((tag) => {
-      setParam((prevParam) => prevParam + "." + tag);
-    });
   };
 
   const showResults = () => {
