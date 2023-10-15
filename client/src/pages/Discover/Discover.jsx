@@ -6,12 +6,24 @@ import { Navbar } from "../Navbar/Navbar";
 import "./discover.css";
 
 export const Discover = () => {
-  let [param, setParam] = useState("");
+  const getSessionStorage = (key, defaultValue) => {
+    const paramStorage = sessionStorage.getItem(key);
+
+    if (!paramStorage) {
+      return defaultValue;
+    }
+    return JSON.parse(paramStorage);
+  };
+
+  let [param, setParam] = useState(getSessionStorage("param", ""));
   let [games, setGames] = useState([]);
+  const [buttonStyles, setButtonStyles] = useState({});
 
   let tagArray = [];
 
   useEffect(() => {
+    sessionStorage.setItem("param", JSON.stringify(param));
+
     const api = "https://www.mmobomb.com/api1/filter?tag=" + param;
 
     const fetchAllGames = async () => {
@@ -26,23 +38,22 @@ export const Discover = () => {
     fetchAllGames();
   }, [param]);
 
-  console.log("GAMES", games.status);
   const getTag = (event) => {
-    const tags = event.target.textContent;
+    const tagName = event.target.textContent;
     const button = event.target;
 
     if (button.style.border === "2px solid green") {
       button.style.border = "";
       button.style.backgroundColor = "";
 
-      setParam(param.replace("." + tags, ""));
+      setParam(param.replace("." + tagName, ""));
     } else {
       button.style.border = "2px solid green";
       button.style.backgroundColor = "#05581a59";
 
-      tagArray.push(tags);
+      tagArray.push(tagName);
     }
-
+    
     tagArray.forEach((tag) => {
       setParam((prevParam) => prevParam + "." + tag);
     });
