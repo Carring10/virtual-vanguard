@@ -78,8 +78,13 @@ hr {
   flex-direction: column;
   align-items: center;
   width: 80%;
-  padding-bottom: 2.5rem;
+  padding: 1rem;
   border-bottom: solid 2px #28282c;
+  transition: .4s;
+}
+
+.article:hover {
+  background-color: #28282c;
 }
 
 .article-link {
@@ -93,7 +98,6 @@ hr {
 
 .article-img {
   width: 28%;
-  margin-top: 1rem;
 }
 
 .article-contents {

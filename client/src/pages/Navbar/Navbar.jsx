@@ -32,11 +32,30 @@ export const Navbar = () => {
       return (
         <div className="logout-container">
           <p className="username">{user.username}</p>
-          <button onClick={handleClick} className="logout-button">Logout</button>
+          <button onClick={handleClick} className="logout-button">
+            Logout
+          </button>
         </div>
       );
     } else {
-      return <button onClick={() => setIsOpen(true)} className="nav-login-button">Sign In</button>;
+      return (
+        <button onClick={() => setIsOpen(true)} className="nav-login-button">
+          Sign In
+        </button>
+      );
+    }
+  };
+
+  const focusLink = () => {
+    const newsLink = document.getElementById("news");
+    const discoverLink = document.getElementById("discover");
+    const giveawayLink = document.getElementById("giveaway");
+    if (window.location.pathname === "/discover") {
+      discoverLink.style.color = "white";
+    } else if (window.location.pathname === "/giveaway") {
+      giveawayLink.style.color = "white"
+    } else {
+      newsLink.style.color = "white";
     }
   };
 
@@ -49,11 +68,16 @@ export const Navbar = () => {
           </h1>
         </header>
         <div className="categories">
-          <Link to="/">🌐 News </Link>
-          <Link to="/discover">🚀 Discover </Link>
-          <Link>🎁 Giveaways </Link>
+          <Link to="/" id="news">
+            🌐 News
+          </Link>
+          <Link to="/discover" id="discover">
+            🚀 Discover
+          </Link>
+          <Link id="giveaway">🎁 Giveaways </Link>
         </div>
         {isLoggedIn()}
+        {focusLink()}
       </div>
       <Login open={isOpen} onClose={onClose} />
     </>

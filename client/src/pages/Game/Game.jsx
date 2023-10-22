@@ -59,7 +59,7 @@ export const Game = () => {
           </div>
           <div className="game-description">
             <div className="screenshots-container">
-              {game.screenshots.map((screenshot) => (
+              {game.screenshots.slice(0, 4).map((screenshot) => (
                 <img
                   src={screenshot.image}
                   alt="game-screenshot"
@@ -69,16 +69,6 @@ export const Game = () => {
               ))}
             </div>
             <div dangerouslySetInnerHTML={sanitizedData()} />
-            <div className="more-game-info">
-              <div className="system-requirements">
-                <h3>Minimum System Requirements</h3>
-                <li>{game.minimum_system_requirements.graphics}</li>
-                <li>Memory: {game.minimum_system_requirements.memory}</li>
-                <li>OS: {game.minimum_system_requirements.os}</li>
-                <li>{game.minimum_system_requirements.processor}</li>
-                <li>Storage: {game.minimum_system_requirements.storage}</li>
-              </div>
-            </div>
           </div>
         </div>
       </div>
