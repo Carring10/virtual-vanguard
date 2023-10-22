@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./navbar.css";
 import { Login } from "../Login/Login";
 import { Link } from "react-router-dom";
@@ -46,10 +46,13 @@ export const Navbar = () => {
     }
   };
 
-  const focusLink = () => {
+  console.log(window.location.pathname)
+
+  useEffect(() => {
     const newsLink = document.getElementById("news");
     const discoverLink = document.getElementById("discover");
     const giveawayLink = document.getElementById("giveaway");
+
     if (window.location.pathname === "/discover") {
       discoverLink.style.color = "white";
     } else if (window.location.pathname === "/giveaway") {
@@ -57,7 +60,7 @@ export const Navbar = () => {
     } else {
       newsLink.style.color = "white";
     }
-  };
+  }, []);
 
   return (
     <>
@@ -77,7 +80,7 @@ export const Navbar = () => {
           <Link id="giveaway">🎁 Giveaways </Link>
         </div>
         {isLoggedIn()}
-        {focusLink()}
+        {/* {focusLink()} */}
       </div>
       <Login open={isOpen} onClose={onClose} />
     </>
