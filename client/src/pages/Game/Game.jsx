@@ -20,7 +20,6 @@ export const Game = () => {
 
   const location = useLocation();
   const gameId = location.state;
-  console.log(gameId);
 
   const sanitizedData = () => ({
     __html: DOMPurify.sanitize(game.description),
@@ -32,7 +31,6 @@ export const Game = () => {
     const fetchGame = async () => {
       try {
         const response = await axios.get(api);
-        console.log(response.data);
         setGame(response.data);
       } catch (err) {
         console.log(err);

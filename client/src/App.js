@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import { Discover } from './pages/Discover/Discover';
+import { Giveaways } from './pages/Giveaways/Giveaways';
 import { Feed } from './pages/Feed/Feed';
 import { Article } from './pages/Article/Article';
 import { Register } from './pages/Register/Register';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Feed />} />
           <Route path='/discover' element={<Discover />} />
+          <Route path='/giveaways' element={<Giveaways />} />
           <Route path='/article' Component={Article} />
           <Route path='/register' element={<Register />} />
           <Route path='/game' element={<Game />} />

@@ -46,17 +46,15 @@ export const Navbar = () => {
     }
   };
 
-  console.log(window.location.pathname)
-
   useEffect(() => {
     const newsLink = document.getElementById("news");
     const discoverLink = document.getElementById("discover");
-    const giveawayLink = document.getElementById("giveaway");
+    const giveawayLink = document.getElementById("giveaways");
 
     if (window.location.pathname === "/discover") {
       discoverLink.style.color = "white";
     } else if (window.location.pathname === "/giveaway") {
-      giveawayLink.style.color = "white"
+      giveawayLink.style.color = "white";
     } else {
       newsLink.style.color = "white";
     }
@@ -77,7 +75,9 @@ export const Navbar = () => {
           <Link to="/discover" id="discover">
             🚀 Discover
           </Link>
-          <Link id="giveaway">🎁 Giveaways </Link>
+          <Link to="/giveaways" id="giveaways">
+            🎁 Giveaways
+          </Link>
         </div>
         {isLoggedIn()}
         {/* {focusLink()} */}
