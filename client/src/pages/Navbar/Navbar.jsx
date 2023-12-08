@@ -45,7 +45,7 @@ export const Navbar = () => {
       );
     }
   };
-
+  console.log(window.location.pathname);
   useEffect(() => {
     const newsLink = document.getElementById("news");
     const discoverLink = document.getElementById("discover");
@@ -53,9 +53,13 @@ export const Navbar = () => {
 
     if (window.location.pathname === "/discover") {
       discoverLink.style.color = "white";
-    } else if (window.location.pathname === "/giveaway") {
+    }
+
+    if (window.location.pathname === "/giveaways") {
       giveawayLink.style.color = "white";
-    } else {
+    }
+
+    if (window.location.pathname === "/") {
       newsLink.style.color = "white";
     }
   }, []);

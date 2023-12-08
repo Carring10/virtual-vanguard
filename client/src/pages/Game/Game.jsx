@@ -39,8 +39,6 @@ export const Game = () => {
     fetchGame();
   }, [gameId]);
 
-  console.log(game);
-
   return (
     <>
       <Navbar />
