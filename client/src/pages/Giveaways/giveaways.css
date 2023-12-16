@@ -1,0 +1,12 @@
+.giveaways-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  background-color: #1f1f23;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 93vh;
+  color: #c7c7c7;
+  font-size: 18px;
+}
