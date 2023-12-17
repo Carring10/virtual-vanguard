@@ -25,20 +25,22 @@ export const Giveaways = () => {
   return (
     <>
       <Navbar />
-      <div className="giveaways-container">
+      <div className="main-container">
         <h1>Giveaways</h1>
-        {giveAways.map((giveAway, index) => (
-          <div className="give-aways-container">
-            <div>
-              <p>{giveAway.title}</p>
-              <img src={giveAway.thumbnail} alt="Giveaway Thumbnail" />
-              <p>{giveAway.short_description}</p>
-            </div>
-            <div>
-              <p>ONLY {giveAway.keys_left} OF KEYS LEFT!</p>
-            </div>
+        <div className="give-aways-container">
+          {giveAways.map((giveAway, index) => (
+              <div className="give-away">
+                <div className="title-container">
+                  <p>{giveAway.title}</p>
+                  <img src={giveAway.thumbnail} alt="Giveaway Thumbnail" />
+                </div>
+                <div className="give-away-details">
+                  <p>Only {giveAway.keys_left} of Keys Left!</p>
+                  <a href={giveAway.giveaway_url}>Click Here to Redeem</a>
+                </div>
+              </div>
+          ))}
           </div>
-        ))}
       </div>
     </>
   );
