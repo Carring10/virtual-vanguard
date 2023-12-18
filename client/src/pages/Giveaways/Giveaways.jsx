@@ -20,7 +20,6 @@ export const Giveaways = () => {
     };
     fetchGiveAways();
   }, []);
-  console.log(giveAways);
 
   return (
     <>
@@ -30,12 +29,14 @@ export const Giveaways = () => {
         <div className="give-aways-container">
           {giveAways.map((giveAway, index) => (
               <div className="give-away">
+                {console.log(giveAway.keys_left.slice(0, -1))}
                 <div className="title-container">
                   <p>{giveAway.title}</p>
                   <img src={giveAway.thumbnail} alt="Giveaway Thumbnail" />
                 </div>
                 <div className="give-away-details">
                   <p>Only {giveAway.keys_left} of Keys Left!</p>
+                  <progress className="progress-bar" id="keys" value={giveAway.keys_left.slice(0, -1)} max="100">{giveAway.keys_left}</progress>
                   <a href={giveAway.giveaway_url}>Click Here to Redeem</a>
                 </div>
               </div>

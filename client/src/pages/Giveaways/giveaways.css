@@ -10,6 +10,10 @@
   font-size: 18px;
 }
 
+h1 {
+  padding-left: 3rem;
+}
+
 .give-aways-container {
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +29,7 @@
   background-color: #28282c;
   padding: 2rem;
   border-radius: 8px;
+  box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .title-container {
@@ -35,8 +40,28 @@
   height: auto;
 }
 
+.title-container p {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
 .give-away-details {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+  background-color: white;
+  height: .5rem;
+  border-radius: 5px;
+}
+
+::-webkit-progress-value {
+  background-color: green;
+  border-radius: 5px;
 }
