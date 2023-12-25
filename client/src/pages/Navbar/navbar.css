@@ -13,7 +13,7 @@
   margin: 0rem 2.5rem;
   font-family: Audiowide;
   font-size: 0.6rem;
-  width: 20%;
+  /* width: 20%; */
 }
 
 .logo span {
@@ -22,11 +22,11 @@
 
 .categories {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-self: center;
   text-align: center;
   height: 2rem;
-  width: 25%;
+  /* width: 25%; */
 }
 
 .categories a {

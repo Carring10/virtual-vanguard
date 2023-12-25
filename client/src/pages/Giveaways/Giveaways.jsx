@@ -25,7 +25,7 @@ export const Giveaways = () => {
     <>
       <Navbar />
       <div className="main-container">
-        <h1>Giveaways</h1>
+        <h1 className="giveaways-header">Giveaways</h1>
         <div className="give-aways-container">
           {giveAways.map((giveAway, index) => (
               <div className="give-away">
@@ -35,7 +35,7 @@ export const Giveaways = () => {
                   <img src={giveAway.thumbnail} alt="Giveaway Thumbnail" />
                 </div>
                 <div className="give-away-details">
-                  <p>Only {giveAway.keys_left} of Keys Left!</p>
+                  <p>{giveAway.keys_left} of Keys Left!</p>
                   <progress className="progress-bar" id="keys" value={giveAway.keys_left.slice(0, -1)} max="100">{giveAway.keys_left}</progress>
                   <a href={giveAway.giveaway_url}>Click Here to Redeem</a>
                 </div>

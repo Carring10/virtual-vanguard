@@ -1,9 +1,15 @@
 .back-button {
   align-self: flex-start;
-  margin: 1rem;
+  margin: 1.5rem;
   text-align: start;
   color: #dfbb60;
+  font-size: 18px;
   text-decoration: none;
+  transition: .3s;
+}
+
+.back-button:hover {
+  color: white;
 }
 
 .article-container {
@@ -14,7 +20,7 @@
   width: 60%;
   padding: 0rem 6rem;
   background-color: #1f1f23;
-  color: #fffdec;
+  color: white;
   border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;

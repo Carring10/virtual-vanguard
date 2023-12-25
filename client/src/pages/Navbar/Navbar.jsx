@@ -69,7 +69,7 @@ export const Navbar = () => {
       <div className="navbar">
         <header className="logo">
           <h1>
-            <span>👾 V</span>IRTUAL <span>V</span>ANGUARD
+            <span>V</span>IRTUAL <span>V</span>ANGUARD
           </h1>
         </header>
         <div className="categories">

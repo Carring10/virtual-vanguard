@@ -84,8 +84,9 @@ export const Discover = () => {
   const showResults = () => {
     if (games.status === 0) {
       return (
-        <div>
-          <h2>No games match that description...</h2>
+        <div className="error-container">
+          <h2>Oops! That's too specific, can't find any games that match that description...</h2>
+          <h3>Try removing a tag</h3>
         </div>
       );
     } else {
