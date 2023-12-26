@@ -51,7 +51,13 @@
   padding: 1rem;
   background-color: #28282c;
   color: white;
+  border-radius: 10px;
   text-decoration: none;
+  transition: 0.4s;
+}
+
+.discover-game-container:hover {
+  background-color: #3c3c42;
 }
 
 .game-contents {
@@ -73,6 +79,7 @@
 .game-thumbnail {
   width: 25%;
   height: auto;
+  border-radius: 5px;
 }
 
 .error-container {
