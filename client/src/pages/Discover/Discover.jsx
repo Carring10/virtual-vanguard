@@ -102,7 +102,7 @@ export const Discover = () => {
                   className="game-thumbnail"
                 />
                 <div>
-                  <h1 className="game-title">{game.title}</h1>
+                  <h1 className="discover-game-title">{game.title}</h1>
                   <p className="game-developer">{game.developer}</p>
                   <p className="discover-game-description">{game.short_description}</p>
                 </div>
@@ -132,7 +132,6 @@ export const Discover = () => {
             <button onClick={getTag}>mmofps</button>
             <button onClick={getTag}>mmotps</button>
             <button onClick={getTag}>mmorts</button>
-            <button onClick={getTag}>racing</button>
           </div>
 
           <div className="style">

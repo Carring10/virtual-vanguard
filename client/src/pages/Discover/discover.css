@@ -65,22 +65,26 @@
   gap: 1rem;
 }
 
-.game-title {
+.discover-game-title {
   margin: 0px;
-  font-size: 2rem;
+  font-size: 30px;
 }
 
 .game-developer {
   margin: 0px;
-  font-size: 1rem;
+  font-size: 15px;
   color: #676770;
 }
 
 .game-thumbnail {
-  width: 25%;
-  object-fit: contain;
-  /* height: auto; */
+  width: auto;
+  height: auto;
+  /* object-fit: contain; */
   border-radius: 5px;
+}
+
+.discover-game-description {
+  margin: 0px;
 }
 
 .error-container {
