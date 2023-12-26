@@ -99,7 +99,7 @@ export const Discover = () => {
                 <img
                   src={game.thumbnail}
                   alt="Game Thumbnail"
-                  className="game-thumbnail"
+                  className="discover-game-thumbnail"
                 />
                 <div>
                   <h1 className="discover-game-title">{game.title}</h1>

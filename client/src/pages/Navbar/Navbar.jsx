@@ -77,13 +77,13 @@ export const Navbar = () => {
         </header>
         <div className="categories">
           <Link to="/" id="news">
-            News
+            NEWS
           </Link>
           <Link to="/discover" id="discover">
-            Discover
+            DISCOVER
           </Link>
           <Link to="/giveaways" id="giveaways">
-            Giveaways
+            GIVEAWAYS
           </Link>
         </div>
         {isLoggedIn()}
