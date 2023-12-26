@@ -53,14 +53,17 @@ export const Navbar = () => {
 
     if (window.location.pathname === "/discover") {
       discoverLink.style.color = "white";
+      discoverLink.style.textDecoration = "underline";
     }
 
     if (window.location.pathname === "/giveaways") {
       giveawayLink.style.color = "white";
+      giveawayLink.style.textDecoration = "underline";
     }
 
     if (window.location.pathname === "/") {
       newsLink.style.color = "white";
+      newsLink.style.textDecoration = "underline";
     }
   }, []);
 
@@ -74,13 +77,13 @@ export const Navbar = () => {
         </header>
         <div className="categories">
           <Link to="/" id="news">
-            🌐 News
+            News
           </Link>
           <Link to="/discover" id="discover">
-            🚀 Discover
+            Discover
           </Link>
           <Link to="/giveaways" id="giveaways">
-            🎁 Giveaways
+            Giveaways
           </Link>
         </div>
         {isLoggedIn()}

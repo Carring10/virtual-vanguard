@@ -51,7 +51,7 @@
   transition: 0.5s;
   font-family: "Kanit", sans-serif;
   cursor: pointer;
-  width: 8%;
+  width: 9rem;
 }
 
 .nav-login-button:hover {
