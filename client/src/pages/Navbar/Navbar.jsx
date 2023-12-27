@@ -6,6 +6,19 @@ import { Login } from "../Login/Login";
 import { Link } from "react-router-dom";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
+const dropdownBtn = document.getElementById("btn");
+const dropdownMenu = document.getElementById("dropdown");
+const toggleArrow = document.getElementById("arrow");
+
+const toggleDropdown = function () {
+  dropdownMenu.classList.toggle("show");
+  toggleArrow.classList.toggle("arrow");
+};
+
+dropdownBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
+  toggleDropdown();
+});
 
 const handleClick = async (event) => {
   event.preventDefault();
@@ -30,12 +43,30 @@ export const Navbar = () => {
   const isLoggedIn = () => {
     if (user) {
       return (
-        <div className="logout-container">
+        <>
+          {/* <div className="logout-container">
           <p className="username">{user.username}</p>
           <button onClick={handleClick} className="logout-button">
             Logout
           </button>
-        </div>
+        </div> */}
+          <div>
+            <button class="btn" id="btn">
+              Dropdown
+              <i class="bx bx-chevron-down" id="arrow"></i>
+            </button>
+            <div class="dropdown" id="dropdown">
+              <a href="#logout">
+                <i class="bx bx-log-out"></i>
+                Logout
+              </a>
+              <a href="#profile">
+                <i class="bx bx-user"></i>
+                Profile
+              </a>
+            </div>
+          </div>
+        </>
       );
     } else {
       return (

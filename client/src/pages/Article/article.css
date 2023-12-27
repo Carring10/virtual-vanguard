@@ -21,6 +21,7 @@
   padding: 0rem 6rem;
   background-color: #1f1f23;
   color: white;
+  border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
@@ -29,7 +30,7 @@
 }
 
 .title-contents {
-  width: 100%;
+  width: 100%; 
 }
 
 .article-headline {
