@@ -6,19 +6,19 @@ import { Login } from "../Login/Login";
 import { Link } from "react-router-dom";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
-const dropdownBtn = document.getElementById("btn");
-const dropdownMenu = document.getElementById("dropdown");
-const toggleArrow = document.getElementById("arrow");
 
 const toggleDropdown = function () {
+  const dropdownMenu = document.getElementById("dropdown");
+  const toggleArrow = document.getElementById("arrow");
+
   dropdownMenu.classList.toggle("show");
   toggleArrow.classList.toggle("arrow");
 };
 
-dropdownBtn.addEventListener("click", function (e) {
-  e.stopPropagation();
+const showDropdownMenu = (event) => {
+  event.stopPropagation();
   toggleDropdown();
-});
+};
 
 const handleClick = async (event) => {
   event.preventDefault();
@@ -50,18 +50,18 @@ export const Navbar = () => {
             Logout
           </button>
         </div> */}
-          <div>
-            <button class="btn" id="btn">
-              Dropdown
-              <i class="bx bx-chevron-down" id="arrow"></i>
+          <div className="dropdown-container">
+            <button className="btn" id="btn" onClick={showDropdownMenu}>
+              {user.username}
+              <i className="bx bx-chevron-down" id="arrow"></i>
             </button>
-            <div class="dropdown" id="dropdown">
+            <div className="dropdown" id="dropdown">
               <a href="#logout">
-                <i class="bx bx-log-out"></i>
+                <i className="bx bx-log-out"></i>
                 Logout
               </a>
               <a href="#profile">
-                <i class="bx bx-user"></i>
+                <i className="bx bx-user"></i>
                 Profile
               </a>
             </div>
@@ -76,6 +76,7 @@ export const Navbar = () => {
       );
     }
   };
+
   console.log(window.location.pathname);
   useEffect(() => {
     const newsLink = document.getElementById("news");
