@@ -44,19 +44,13 @@ export const Navbar = () => {
     if (user) {
       return (
         <>
-          {/* <div className="logout-container">
-          <p className="username">{user.username}</p>
-          <button onClick={handleClick} className="logout-button">
-            Logout
-          </button>
-        </div> */}
           <div className="dropdown-container">
             <button className="btn" id="btn" onClick={showDropdownMenu}>
               {user.username}
               <i className="bx bx-chevron-down" id="arrow"></i>
             </button>
             <div className="dropdown" id="dropdown">
-              <a href="#logout">
+              <a href="#logout" onClick={handleClick}>
                 <i className="bx bx-log-out"></i>
                 Logout
               </a>
