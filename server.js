@@ -25,7 +25,7 @@ app.use(express.json());
 // Requests
 app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
-app.use("/", require("./server/routes/bookmarkRoutes"));
+app.use("/", require("./server/routes/profileRoutes"));
 app.use("/", require("./server/routes/articleRoutes"));
 app.use("/", require("./server/routes/authRoutes"));
 

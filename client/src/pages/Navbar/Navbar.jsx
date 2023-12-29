@@ -42,11 +42,14 @@ export const Navbar = () => {
 
   const isLoggedIn = () => {
     if (user) {
+      const username = user.username;
+      const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
+      
       return (
         <>
           <div className="dropdown-container">
             <button className="btn" id="btn" onClick={showDropdownMenu}>
-              {user.username}
+              {capitalizedUsername}
               <i className="bx bx-chevron-down" id="arrow"></i>
             </button>
             <div className="dropdown" id="dropdown">
@@ -54,7 +57,7 @@ export const Navbar = () => {
                 <i className="bx bx-log-out"></i>
                 Logout
               </a>
-              <a href="#profile">
+              <a href="/profile">
                 <i className="bx bx-user"></i>
                 Profile
               </a>
