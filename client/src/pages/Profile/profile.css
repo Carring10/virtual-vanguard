@@ -1,0 +1,17 @@
+.profile-container {
+  display: flex;
+  gap: 3rem;
+  background-color: #1f1f23;
+  height: 100vh;
+  width: 60%;
+  padding: 4rem;
+}
+
+.profile-pic-container {
+  width: 20%;
+}
+
+.profile-pic {
+  width: 100%;
+  border-radius: 100%;
+}
