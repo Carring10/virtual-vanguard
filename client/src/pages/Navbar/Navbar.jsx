@@ -44,7 +44,7 @@ export const Navbar = () => {
     if (user) {
       const username = user.username;
       const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
-      
+
       return (
         <>
           <div className="dropdown-container">
@@ -82,17 +82,14 @@ export const Navbar = () => {
 
     if (window.location.pathname === "/discover") {
       discoverLink.style.color = "white";
-      discoverLink.style.textDecoration = "underline";
     }
 
     if (window.location.pathname === "/giveaways") {
       giveawayLink.style.color = "white";
-      giveawayLink.style.textDecoration = "underline";
     }
 
     if (window.location.pathname === "/") {
       newsLink.style.color = "white";
-      newsLink.style.textDecoration = "underline";
     }
   }, []);
 
@@ -106,13 +103,13 @@ export const Navbar = () => {
         </header>
         <div className="categories">
           <Link to="/" id="news">
-            NEWS
+            <i className="bx bx-news"></i> NEWS
           </Link>
           <Link to="/discover" id="discover">
-            DISCOVER
+            <i className="bx bx-rocket"></i> DISCOVER
           </Link>
           <Link to="/giveaways" id="giveaways">
-            GIVEAWAYS
+            <i className="bx bx-gift"></i> GIVEAWAYS
           </Link>
         </div>
         {isLoggedIn()}

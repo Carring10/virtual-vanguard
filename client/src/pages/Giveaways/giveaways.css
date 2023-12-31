@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -10,8 +12,23 @@
   font-size: 18px;
 }
 
+.giveaway-header-container {
+  padding: 3rem;
+}
+
 .giveaways-header {
-  padding-left: 3rem;
+  margin: 0px;
+  letter-spacing: 2px;
+}
+
+#info-circle {
+  font-size: 15px;
+}
+
+.giveaway-info {
+  margin: 0px;
+  font-size: 15px;
+  color: rgb(139, 139, 139);
 }
 
 .give-aways-container {

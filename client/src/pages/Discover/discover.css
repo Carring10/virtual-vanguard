@@ -10,13 +10,21 @@
   scrollbar-gutter: stable;
 }
 
+.discover-info {
+  color: grey;
+  width: 95%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+}
+
 .search-params-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   align-self: flex-start;
   gap: 1.5rem;
-  margin: 3rem;
+  margin: 0rem 3rem 3rem;
   color: white;
   font-size: 1.5rem;
 }
@@ -35,6 +43,10 @@
 
 .search-params-container button:hover {
   border: 2px solid #8e8e99;
+}
+
+.search-params-container p {
+  margin: 0px;
 }
 
 .game-results-container {

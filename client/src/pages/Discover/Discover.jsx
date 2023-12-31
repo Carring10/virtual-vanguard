@@ -118,6 +118,7 @@ export const Discover = () => {
     <>
       <Navbar />
       <div className="discover-container">
+        <p className="discover-info">Choose from these tags to discover games according to their genre, style, and theme</p>
         <div className="search-params-container">
           <div className="genre">
             <p>Genre</p>

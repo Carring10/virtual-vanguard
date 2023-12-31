@@ -8,17 +8,20 @@ import './profile.css';
 
 export const Profile = () => {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  const username = currentUser.username;
+  const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
+  
   return (
     <>
       <Navbar />
       <div className="profile-container">
         <div className="profile-pic-container">
           <img src={defaultPic} alt="Default" className="profile-pic" />
+          <button>Change Profile Picture</button>
         </div>
         <div className="user-info-container">
           <p>Username</p>
-          <p>{currentUser.username}</p>
+          <p>{capitalizedUsername}</p>
         </div>
       </div>
     </>
