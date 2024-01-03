@@ -1,9 +1,10 @@
 const db = require('../config/connection');
 
 class User {
-  constructor(username, password) {
+  constructor(username, password, profilePic) {
     this.username = username;
     this.password = password;
+    this.profilePic = profilePic;
   }
 
   static findUser(username) {
@@ -27,6 +28,12 @@ class User {
     const newUser = db.execute(sql);
 
     return newUser;
+  }
+
+  static update(username, profilePic) {
+    let sql = `UPDATE users SET profilePic = "${profilePic}" WHERE username = "${username}";`
+
+    return db.execute(sql);
   }
 }
 

@@ -66,3 +66,17 @@ exports.logout = async (req, res) => {
     console.log(err)
   }
 }
+
+exports.updatePic = async (req, res) => {
+  try {
+    const username = req.body.username;
+    const profilePic = req.body.profilePic;
+
+    await User.update(username, profilePic);
+
+    res.json("success")
+
+  } catch (err) {
+    console.log(err)
+  }
+}
