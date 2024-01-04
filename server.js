@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const multer = require("multer");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
@@ -22,7 +23,24 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './client/public/upload')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage })
+
 // Requests
+app.post("/", require("./server/routes/authRoutes"));
+app.post("/upload", upload.single("file"), (req, res) => {
+  const file = req.file;
+  res.status(200).json(file.filename);
+});
+
 app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
 app.use("/", require("./server/routes/profileRoutes"));
