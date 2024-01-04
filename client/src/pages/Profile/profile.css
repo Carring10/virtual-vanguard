@@ -9,9 +9,12 @@
 
 .profile-pic-container {
   width: 20%;
+  height: auto;
 }
 
 .profile-pic {
-  width: 100%;
-  border-radius: 100%;
+  object-fit: cover;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
 }

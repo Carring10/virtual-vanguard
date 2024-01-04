@@ -9,6 +9,7 @@ import "./profile.css";
 export const Profile = () => {
   const [file, setFile] = useState(null);
   const { currentUser } = useContext(AuthContext);
+  console.log(currentUser)
 
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
@@ -31,12 +32,12 @@ export const Profile = () => {
   const updatePic = useMutation(
     (newPic) => {
       console.log(newPic)
-      return axios.put("http://localhost:8800/auth/updatePic", newPic);
+      return axios.put("http://localhost:8800/users/updatePic", newPic);
     },
     {
       onSuccess: () => {
         // Invalidate and refetch
-        queryClient.invalidateQueries(["user"]);
+        queryClient.invalidateQueries(["users"]);
       },
     }
   );
@@ -48,8 +49,7 @@ export const Profile = () => {
     profileUrl = await upload(file)
 
     if (file) {
-      await upload(file);
-      updatePic.mutate({ profilePic : profileUrl });
+      updatePic.mutate({ username, profilePic:profileUrl });
     }
   };
 
@@ -58,7 +58,7 @@ export const Profile = () => {
       <Navbar />
       <div className="profile-container">
         <div className="profile-pic-container">
-          <img src={defaultPic} alt="Default" className="profile-pic" />
+          <img src={"/upload/" + currentUser.profilePic} alt="Default" className="profile-pic" />
           <button onClick={handleClick}>Change Profile Picture</button>
           <input
             type="file"
