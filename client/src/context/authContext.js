@@ -3,6 +3,7 @@ import {createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
+
 export const AuthContextProvider = ({ children }) => {
   // children refers to the nested components enclosed within <BrowserRouter>
   const [currentUser, setCurrentUser] = useState(
@@ -17,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
     });
     setCurrentUser(res.data);
   }
-
+  
   console.log(currentUser)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [currentUser]);
   
   return (
-    <AuthContext.Provider value={{ currentUser, login }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, login }}>
       {/* children allows the nested components to access the shared data provided by the context api */}
       {children}
     </AuthContext.Provider>

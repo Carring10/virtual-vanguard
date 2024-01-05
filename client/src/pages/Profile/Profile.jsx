@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -8,12 +8,23 @@ import "./profile.css";
 
 export const Profile = () => {
   const [file, setFile] = useState(null);
-  const { currentUser } = useContext(AuthContext);
-  console.log(currentUser)
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8800/users/get/${username}`);
+        setCurrentUser(response.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUser();
+  }, [setCurrentUser, username]);
+  
   const upload = async (file) => {
     try {
       const formData = new FormData();

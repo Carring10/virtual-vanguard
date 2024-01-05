@@ -7,7 +7,7 @@ class User {
     this.profilePic = profilePic;
   }
 
-  static findUser(username) {
+  static get(username) {
     let sql = `SELECT * FROM users WHERE username = "${username}";`;
 
     return db.execute(sql);

@@ -4,6 +4,18 @@ exports.getAllUsers = async (req, res) => {
   res.send("Get all users route!")
 }
 
+exports.findUser = async (req, res) => {
+  try {
+    const username = req.params.username;
+
+    const [user, _] = await User.get(username);
+
+    res.json(user)
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 exports.updatePic = async (req, res) => {
   try {
     const username = req.body.username;
