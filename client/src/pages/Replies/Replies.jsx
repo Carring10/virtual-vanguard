@@ -11,6 +11,9 @@ export const Replies = ({ comment, deleteComment }) => {
 
   const { currentUser } = useContext(AuthContext);
 
+  const username = currentUser.username;
+  const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
+
   // 'articleId' and 'parentId' ensure each comment's replies are fetched separately
   const { data } = useQuery(["replies", articleId, parentId], () =>
     axios.get(`http://localhost:8800/comments/${articleId}/${parentId}`).then((res) => {
@@ -43,10 +46,10 @@ export const Replies = ({ comment, deleteComment }) => {
       {data &&
         data.map((reply, index) => (
           <div className="reply-container" key={index}>
-            <span className="reply-user-icon">👤 </span>
+            <img src={"/upload/" + currentUser.profilePic} alt="Default" className="comment-profile-pic" />
             <div className="reply" key={reply.createdAt}>
               <div className="reply-user-info">
-                <p className="reply-username">{reply.username}</p>
+                <p className="reply-username">{capitalizedUsername}</p>
                 <span className="reply-date">{moment(reply.createdAt).fromNow()}</span>
               </div>
               <p className="reply-content">{reply.content}</p>

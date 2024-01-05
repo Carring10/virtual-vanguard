@@ -15,6 +15,9 @@ export const CommentSection = ({ articleId }) => {
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
+  const username = currentUser.username;
+  const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
+
   const { data } = useQuery(["comments"], () =>
     axios.get(`http://localhost:8800/comments/${articleId}`).then((res) => {
       const data = res.data.comments;
@@ -64,7 +67,7 @@ export const CommentSection = ({ articleId }) => {
     if (currentUser) {
       return (
         <div className="writeComment">
-          <p className="comment-username">{currentUser && currentUser.username}</p>
+          <p className="comment-username">{currentUser && capitalizedUsername}</p>
 
           <div className="input-send-container">
             <textarea

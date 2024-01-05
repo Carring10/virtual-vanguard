@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const username = req.body.username;
-    const [userData, _] = await User.findUser(username);
+    const [userData, _] = await User.get(username);
 
     if (userData.length === 0) {
       return res.status(404).json({ message: 'Username is incorrect.' })

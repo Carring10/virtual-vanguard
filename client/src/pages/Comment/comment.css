@@ -3,15 +3,13 @@
   width: 100%;
 }
 
-.comment-user-icon {
-  font-size: 1.6rem;
-  background-color: #886ce4;
-  height: 1.58rem;
+.comment-profile-pic {
+  width: 70px;
+  height: 70px;
   padding: .5rem;
   margin-top: 1rem;
   margin-right: .5rem;
-  text-align: center;
-  border: 2px solid black;
+  object-fit: cover;
   border-radius: 100%;
 }
 

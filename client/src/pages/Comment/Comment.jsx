@@ -14,6 +14,9 @@ export const Comment = ({ comment }) => {
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
+  const username = currentUser.username;
+  const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
+
   const showReplyForm = () => setShowForm(true);
   const hideReplyForm = () => setShowForm(false);
 
@@ -90,10 +93,10 @@ export const Comment = ({ comment }) => {
   return (
     <>
       <div className="comment-container">
-        <span className="comment-user-icon">👤 </span>
+      <img src={"/upload/" + currentUser.profilePic} alt="Default" className="comment-profile-pic" />
         <div className="comment" key={comment.createdAt}>
           <div className="user-info">
-            <p className="comment-username">{comment.username}</p>
+            <p className="comment-username">{capitalizedUsername}</p>
             <p className="date">{moment(comment.createdAt).fromNow()}</p>
           </div>
           <p className="comment-content">{comment.content}</p>
