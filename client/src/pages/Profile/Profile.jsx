@@ -24,7 +24,7 @@ export const Profile = () => {
     };
     fetchUser();
   }, [setCurrentUser, username]);
-  
+
   const upload = async (file) => {
     try {
       const formData = new FormData();
@@ -42,7 +42,7 @@ export const Profile = () => {
 
   const updatePic = useMutation(
     (newPic) => {
-      console.log(newPic)
+      console.log(newPic);
       return axios.put("http://localhost:8800/users/updatePic", newPic);
     },
     {
@@ -57,10 +57,10 @@ export const Profile = () => {
     event.preventDefault();
     let profileUrl;
 
-    profileUrl = await upload(file)
+    profileUrl = await upload(file);
 
     if (file) {
-      updatePic.mutate({ username, profilePic:profileUrl });
+      updatePic.mutate({ username, profilePic: profileUrl });
     }
   };
 
@@ -68,20 +68,30 @@ export const Profile = () => {
     <>
       <Navbar />
       <div className="profile-container">
-        <div className="profile-pic-container">
-          <img src={"/upload/" + currentUser.profilePic} alt="Default" className="profile-pic" />
-          <button onClick={handleClick}>Change Profile Picture</button>
-          <input
-            type="file"
-            id="profile"
-            // style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+        <div>
+          <div className="profile-pic-container">
+            <img
+              src={"/upload/" + currentUser.profilePic}
+              alt="Default"
+              className="profile-pic"
+            />
+            <label className="overlay">
+              <input
+                type="file"
+                id="profile"
+                style={{ display: "none" }}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
+          </div>
+          <div className="save-btn-container">
+            <button className="save-btn" onClick={handleClick}>Save Changes</button>
+          </div>
         </div>
-        <div className="user-info-container">
+        {/* <div className="user-info-container">
           <p>Username</p>
           <p>{capitalizedUsername}</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

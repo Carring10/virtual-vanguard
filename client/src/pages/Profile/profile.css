@@ -1,5 +1,6 @@
 .profile-container {
   display: flex;
+  flex-direction: column;
   gap: 3rem;
   background-color: #1f1f23;
   height: 100vh;
@@ -8,8 +9,13 @@
 }
 
 .profile-pic-container {
+  display: flex;
+  align-items: center;
   width: 20%;
   height: auto;
+  position: relative;
+  width: 230px;
+  height: 230px;
 }
 
 .profile-pic {
@@ -17,4 +23,36 @@
   width: 230px;
   height: 230px;
   border-radius: 50%;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.overlay:hover {
+  background-color: #1f1f2385;
+}
+
+.overlay:hover:after {
+  color: white;
+  content: "Change Profile Pic";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.save-btn-container {
+  text-align: center;
+  width: 230px;
+}
+
+.save-btn {
+  
 }
