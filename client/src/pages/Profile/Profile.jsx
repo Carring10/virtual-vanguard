@@ -62,6 +62,21 @@ export const Profile = () => {
     if (file) {
       updatePic.mutate({ username, profilePic: profileUrl });
     }
+
+    window.location.reload();
+  };
+
+  const confirmFile = () => {
+    if (file) {
+      return (
+        <div className="save-btn-container">
+          <p className="file-name">{file.name} selected</p>
+          <button className="save-btn" onClick={handleClick}>
+            Save Changes
+          </button>
+        </div>
+      );
+    }
   };
 
   return (
@@ -84,9 +99,7 @@ export const Profile = () => {
               />
             </label>
           </div>
-          <div className="save-btn-container">
-            <button className="save-btn" onClick={handleClick}>Save Changes</button>
-          </div>
+          {confirmFile()}
         </div>
         {/* <div className="user-info-container">
           <p>Username</p>
