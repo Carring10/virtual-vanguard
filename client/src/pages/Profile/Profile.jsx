@@ -72,7 +72,7 @@ export const Profile = () => {
         <div className="save-btn-container">
           <p className="file-name">{file.name} selected</p>
           <button className="save-btn" onClick={handleClick}>
-            Save Changes
+            UPDATE
           </button>
         </div>
       );
@@ -83,7 +83,8 @@ export const Profile = () => {
     <>
       <Navbar />
       <div className="profile-container">
-        <div>
+        <div className="profile-contents">
+          <p className="profile-username">{capitalizedUsername}</p>
           <div className="profile-pic-container">
             <img
               src={"/upload/" + currentUser.profilePic}
@@ -101,10 +102,6 @@ export const Profile = () => {
           </div>
           {confirmFile()}
         </div>
-        {/* <div className="user-info-container">
-          <p>Username</p>
-          <p>{capitalizedUsername}</p>
-        </div> */}
       </div>
     </>
   );
