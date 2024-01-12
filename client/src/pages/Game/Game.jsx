@@ -39,9 +39,12 @@ export const Game = () => {
     fetchGame();
   }, [gameId]);
 
+  console.log(game)
+
   return (
     <>
       <Navbar />
+      <Link to="/discover" className="back-button">&#8592; Back</Link>
       <div className="game-container">
         <div className="game-contents-container">
           <div className="game-info">

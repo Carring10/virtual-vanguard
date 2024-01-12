@@ -6,9 +6,11 @@
   background-color: #1f1f23;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 93vh;
+  height: 100vh;
   color: #c7c7c7;
   font-size: 18px;
+  position: fixed;
+  top: 2rem;
 }
 
 .game-info {

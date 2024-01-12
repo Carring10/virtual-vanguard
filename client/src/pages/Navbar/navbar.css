@@ -42,8 +42,7 @@
 }
 
 .nav-login-button {
-  padding: 0.4rem 1.5rem;
-  margin: 1.5rem;
+  margin: 1rem;
   text-decoration: none;
   color: #dfbb60;
   background-color: transparent;
@@ -53,6 +52,8 @@
   font-family: "Kanit", sans-serif;
   cursor: pointer;
   width: 9rem;
+  height: 2rem;
+  z-index: 2;
 }
 
 .nav-login-button:hover {

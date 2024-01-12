@@ -74,13 +74,15 @@ export const Navbar = () => {
     }
   };
 
-  console.log(window.location.pathname);
   useEffect(() => {
     const newsLink = document.getElementById("news");
     const discoverLink = document.getElementById("discover");
     const giveawayLink = document.getElementById("giveaways");
 
-    if (window.location.pathname === "/discover") {
+    if (
+      window.location.pathname === "/discover" ||
+      window.location.pathname === "/game"
+    ) {
       discoverLink.style.color = "white";
     }
 
