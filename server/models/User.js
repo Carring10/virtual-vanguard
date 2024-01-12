@@ -1,10 +1,11 @@
 const db = require('../config/connection');
 
 class User {
-  constructor(username, password, profilePic) {
+  constructor(username, password, profilePic, savedGames) {
     this.username = username;
     this.password = password;
     this.profilePic = profilePic;
+    this.savedGames = savedGames;
   }
 
   static get(username) {
@@ -32,6 +33,12 @@ class User {
 
   static update(username, profilePic) {
     let sql = `UPDATE users SET profilePic = "${profilePic}" WHERE username = "${username}";`
+
+    return db.execute(sql);
+  }
+
+  static saveGame(username, gameId) {
+    let sql = `UPDATE users SET savedGames = "${gameId}" WHERE username = "${username}";`
 
     return db.execute(sql);
   }

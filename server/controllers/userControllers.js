@@ -20,9 +20,22 @@ exports.updatePic = async (req, res) => {
   try {
     const username = req.body.username;
     const profilePic = req.body.profilePic;
-    console.log(req.body);
 
     await User.update(username, profilePic);
+
+    res.json("success")
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+exports.saveGame = async (req, res) => {
+  try {
+    const username = req.body.username;
+    const gameId = req.body.gameId;
+
+    await User.saveGame(username, gameId);
 
     res.json("success")
 
