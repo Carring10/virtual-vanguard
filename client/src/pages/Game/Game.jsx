@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
@@ -17,6 +19,8 @@ export const Game = () => {
     description: "",
     minimum_system_requirements: [],
   });
+
+  const { currentUser } = useContext(AuthContext);
 
   const location = useLocation();
   const gameId = location.state;
@@ -39,16 +43,48 @@ export const Game = () => {
     fetchGame();
   }, [gameId]);
 
-  console.log(game)
+  const queryClient = useQueryClient();
+
+  const saveGame = useMutation(
+    (gameId) => {
+      console.log(gameId);
+      return axios.put("http://localhost:8800/users/saveGame", gameId);
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["users"]);
+      },
+    }
+  );
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+    const gameId = game.id;
+    const username = currentUser.username;
+
+    saveGame.mutate({ username, gameId: gameId });
+  };
+
+  const saveButton = () => {
+    if (currentUser) {
+      return <button onClick={handleClick}>Save Game</button>;
+    }
+  };
+
+  console.log(game);
 
   return (
     <>
       <Navbar />
-      <Link to="/discover" className="back-button">&#8592; Back</Link>
+      <Link to="/discover" className="back-button">
+        &#8592; Back
+      </Link>
       <div className="game-container">
         <div className="game-contents-container">
           <div className="game-info">
             <h1 className="game-title">{game.title}</h1>
+            {saveButton()}
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
             <p>Released on {game.release_date}</p>
