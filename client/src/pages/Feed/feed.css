@@ -97,7 +97,7 @@ hr {
 }
 
 .article-img {
-  width: 28%;
+  width: 20rem;
 }
 
 .article-contents {
@@ -116,4 +116,52 @@ hr {
   color: #878794;
   font-size: 1rem;
   margin-top: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .article-img {
+    width: 15rem;
+  }
+
+  .headline {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: .8rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 909px) {
+  .news-header {
+    font-size: 1.6rem;
+  }
+
+  .article {
+    width: 85%;
+  }
+
+  .headline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 830px) {
+  .news-header {
+    font-size: 1.4rem;
+  }
+
+  .article-img {
+    width: 12rem;
+  }
+
+  .headline {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: .7rem;
+    margin-top: .9rem;
+  }
 }
