@@ -9,7 +9,7 @@ class User {
   }
 
   static get(username) {
-    let sql = `SELECT * FROM users WHERE username = "${username}";`;
+    let sql = `SELECT * FROM users LEFT JOIN games ON user = users.username WHERE username = "${username}";`;
 
     return db.execute(sql);
   }
@@ -33,12 +33,6 @@ class User {
 
   static update(username, profilePic) {
     let sql = `UPDATE users SET profilePic = "${profilePic}" WHERE username = "${username}";`
-
-    return db.execute(sql);
-  }
-
-  static saveGame(username, gameId) {
-    let sql = `UPDATE users SET savedGames = "${gameId}" WHERE username = "${username}";`
 
     return db.execute(sql);
   }

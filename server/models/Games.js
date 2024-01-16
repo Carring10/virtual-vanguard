@@ -2,7 +2,7 @@ const db = require('../config/connection');
 
 class Games {
   constructor(user, savedGameId) {
-    this.username = user;
+    this.user = user;
     this.savedGameId = savedGameId;
   }
 
@@ -23,13 +23,11 @@ class Games {
     return newComment;
   }
 
-  static getGames(username, gameId) {
-    let sql = `
-    SELECT * FROM games
-    LEFT JOIN users ON games.userId = users.id
-    WHERE user = ${username};
-    `;
+  static getGames(user, gameId) {
+    let sql = `SELECT * FROM games WHERE user = '${user}';`;
 
     return db.execute(sql);
   }
 }
+
+module.exports = Games;
