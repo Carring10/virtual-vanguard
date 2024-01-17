@@ -29,7 +29,7 @@ class Games {
     return db.execute(sql);
   }
 
-  static deleteGame(savedGameId, user) {
+  static deleteGame(user, savedGameId) {
     let sql = `
     DELETE FROM games
     WHERE savedGameId = ${savedGameId}

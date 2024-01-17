@@ -30,9 +30,10 @@ exports.addGame = async (req, res) => {
 
 exports.deleteGame = async (req, res) => {
   try {
-    const { savedGameId, user } = req.body;
+    const { user, savedGameId } = req.body;
+    console.log("delete", req.body)
 
-    await Games.deleteGame(savedGameId, user);
+    await Games.deleteGame(user, savedGameId);
 
     res.status(200).json({ message: 'Game deleted' });
   } catch (err) {

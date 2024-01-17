@@ -21,8 +21,11 @@ export const Game = () => {
   });
 
   const [bookmark, setBookmark] = useState(true);
+  const toggleBookmark = () => setBookmark(false);
+  const toggleRemoveBookmark = () => setBookmark(true);
 
   const { currentUser } = useContext(AuthContext);
+  const user = currentUser.username;
 
   const location = useLocation();
   const gameId = location.state;
@@ -48,9 +51,8 @@ export const Game = () => {
   const queryClient = useQueryClient();
 
   const saveGame = useMutation(
-    (gameId) => {
-      console.log(gameId);
-      return axios.post("http://localhost:8800/games", gameId);
+    (data) => {
+      return axios.post("http://localhost:8800/games", data);
     },
     {
       onSuccess: () => {
@@ -60,17 +62,40 @@ export const Game = () => {
     }
   );
 
-  const handleSave = async (event) => {
-    event.preventDefault();
-    const gameId = game.id;
-    const user = currentUser.username;
+  const deleteGame = useMutation(
+    (deletedData) => {
+      console.log("deletedData", deletedData);
+      return axios.delete("http://localhost:8800/games/delete", { data: deletedData });
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["game"]);
+      },
+    }
+  );
 
-    saveGame.mutate({ user, savedGameId: gameId });
+  const handleSave = (event) => {
+    event.preventDefault();
+    const savedGameId = game.id;
+
+    saveGame.mutate({ user, savedGameId: savedGameId });
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    const savedGameId = game.id;
+    
+     deleteGame.mutate({ user, savedGameId });
   };
 
   const saveButton = () => {
-    if (currentUser) {
-      return <i className="bx bx-bookmark-plus" id="bookmark" onClick={handleSave}></i>;
+    if (currentUser && bookmark === true) {
+      return <i className="bx bx-bookmark-plus" id="bookmark" onClick={(event) => { handleSave(event); toggleBookmark(); }}></i>;
+    }
+
+    if (bookmark === false) {
+      return <i className="bx bx-bookmark-minus" id="bookmark" onClick={(event) => { handleDelete(event); toggleRemoveBookmark(); }}></i>;
     }
   };
 
