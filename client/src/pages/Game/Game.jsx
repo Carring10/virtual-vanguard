@@ -64,7 +64,6 @@ export const Game = () => {
     event.preventDefault();
     const gameId = game.id;
     const user = currentUser.username;
-    setBookmark(false);
 
     saveGame.mutate({ user, savedGameId: gameId });
   };

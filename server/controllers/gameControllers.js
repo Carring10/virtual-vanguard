@@ -27,3 +27,15 @@ exports.addGame = async (req, res) => {
     console.log(err)
   }
 }
+
+exports.deleteGame = async (req, res) => {
+  try {
+    const { savedGameId, user } = req.body;
+
+    await Games.deleteGame(savedGameId, user);
+
+    res.status(200).json({ message: 'Game deleted' });
+  } catch (err) {
+    console.log(err)
+  }
+}

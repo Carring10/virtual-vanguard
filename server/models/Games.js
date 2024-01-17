@@ -28,6 +28,17 @@ class Games {
 
     return db.execute(sql);
   }
+
+  static deleteGame(savedGameId, user) {
+    let sql = `
+    DELETE FROM games
+    WHERE savedGameId = ${savedGameId}
+    AND user = '${user}';
+    `;
+
+    return db.execute(sql);
+  }
 }
+
 
 module.exports = Games;
