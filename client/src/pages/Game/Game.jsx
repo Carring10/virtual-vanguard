@@ -20,6 +20,8 @@ export const Game = () => {
     minimum_system_requirements: [],
   });
 
+  const [bookmark, setBookmark] = useState(true);
+
   const { currentUser } = useContext(AuthContext);
 
   const location = useLocation();
@@ -48,27 +50,28 @@ export const Game = () => {
   const saveGame = useMutation(
     (gameId) => {
       console.log(gameId);
-      return axios.put("http://localhost:8800/users/saveGame", gameId);
+      return axios.post("http://localhost:8800/games", gameId);
     },
     {
       onSuccess: () => {
         // Invalidate and refetch
-        queryClient.invalidateQueries(["users"]);
+        queryClient.invalidateQueries(["games"]);
       },
     }
   );
 
-  const handleClick = async (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
     const gameId = game.id;
-    const username = currentUser.username;
+    const user = currentUser.username;
+    setBookmark(false);
 
-    saveGame.mutate({ username, gameId: gameId });
+    saveGame.mutate({ user, savedGameId: gameId });
   };
 
   const saveButton = () => {
     if (currentUser) {
-      return <button onClick={handleClick}>Save Game</button>;
+      return <i className="bx bx-bookmark-plus" id="bookmark" onClick={handleSave}></i>;
     }
   };
 
@@ -83,8 +86,11 @@ export const Game = () => {
       <div className="game-container">
         <div className="game-contents-container">
           <div className="game-info">
+            <div className="game-title-container">
             <h1 className="game-title">{game.title}</h1>
+            
             {saveButton()}
+            </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
             <p>Released on {game.release_date}</p>

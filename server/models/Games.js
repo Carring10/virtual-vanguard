@@ -23,7 +23,7 @@ class Games {
     return newComment;
   }
 
-  static getGames(user, gameId) {
+  static getGames(user) {
     let sql = `SELECT * FROM games WHERE user = '${user}';`;
 
     return db.execute(sql);
