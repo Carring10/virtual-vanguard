@@ -1,14 +1,11 @@
 const User = require('../models/User');
 
-exports.getAllUsers = async (req, res) => {
-  res.send("Get all users route!")
-}
-
 exports.findUser = async (req, res) => {
   try {
     const username = req.params.username;
 
-    const [user, _] = await User.get(username);
+    const [user, _] = await User.getUser(username);
+    console.log("find", user)
 
     res.json(user)
   } catch (err) {

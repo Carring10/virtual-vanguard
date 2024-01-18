@@ -8,8 +8,8 @@ class User {
     this.savedGames = savedGames;
   }
 
-  static get(username) {
-    let sql = `SELECT * FROM users LEFT JOIN games ON user = users.username WHERE username = "${username}";`;
+  static getUser(username) {
+    let sql = `SELECT * FROM users WHERE username = "${username}";`;
 
     return db.execute(sql);
   }

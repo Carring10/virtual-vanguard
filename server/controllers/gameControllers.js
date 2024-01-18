@@ -1,18 +1,5 @@
 const Games = require('../models/Games');
 
-exports.getGames = async (req, res) => {
-  try {
-    const user = req.body.user;
-    console.log(req.body.user)
-
-    const [games, _] = await Games.getGames(user);
-
-    res.status(200).json({ games });
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 exports.addGame = async (req, res) => {
   try {
     const { user, savedGameId } = req.body;
@@ -38,5 +25,18 @@ exports.deleteGame = async (req, res) => {
     res.status(200).json({ message: 'Game deleted' });
   } catch (err) {
     console.log(err)
+  }
+}
+
+exports.getGames = async (req, res) => {
+  try {
+    const user = req.params.user;
+    console.log(user)
+
+    const [games, _] = await Games.getGames(user);
+
+    res.status(200).json({ games });
+  } catch (err) {
+    console.log(err);
   }
 }

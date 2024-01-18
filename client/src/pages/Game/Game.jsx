@@ -92,6 +92,7 @@ export const Game = () => {
     const savedGameId = game.id;
 
     deleteGame.mutate({ user, savedGameId });
+    setIsPopupVisible(true);
   };
 
   const saveButton = () => {
@@ -115,6 +116,8 @@ export const Game = () => {
     }, 500);
   };
 
+  const popupMessage = bookmark ? "Game removed!" : "Game saved!";
+
   return (
     <>
       <Navbar />
@@ -127,7 +130,7 @@ export const Game = () => {
             <div className="game-title-container">
               <h1 className="game-title">{game.title}</h1>
               {saveButton()}
-              {isPopupVisible && <Popup message="Game saved!" onClose={handleClosePopup} />}
+              {isPopupVisible && <Popup message={popupMessage} onClose={handleClosePopup} />}
             </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>

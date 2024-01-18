@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Navbar } from "../Navbar/Navbar";
 import defaultPic from "../../images/default-pic.jpg";
@@ -9,6 +9,7 @@ import "./profile.css";
 export const Profile = () => {
   const [file, setFile] = useState(null);
   const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const queryClient = useQueryClient();
 
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
@@ -25,6 +26,14 @@ export const Profile = () => {
     fetchUser();
   }, [setCurrentUser, username]);
 
+  const { data } = useQuery(["games"], () =>
+  axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
+    const data = res.data.savedGameId;
+    console.log(data)
+    return data;
+  })
+);
+
   const upload = async (file) => {
     try {
       const formData = new FormData();
@@ -37,8 +46,6 @@ export const Profile = () => {
       console.log(err);
     }
   };
-
-  const queryClient = useQueryClient();
 
   const updatePic = useMutation(
     (newPic) => {
