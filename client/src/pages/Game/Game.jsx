@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
+import { Popup } from '../Popup/Popup';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
@@ -19,6 +20,8 @@ export const Game = () => {
     description: "",
     minimum_system_requirements: [],
   });
+
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const [bookmark, setBookmark] = useState(true);
   const toggleBookmark = () => setBookmark(false);
@@ -80,6 +83,7 @@ export const Game = () => {
     const savedGameId = game.id;
 
     saveGame.mutate({ user, savedGameId: savedGameId });
+    setIsPopupVisible(true);
   };
 
   const handleDelete = (event) => {
@@ -105,7 +109,11 @@ export const Game = () => {
     return <i className={iconClass} id="bookmark" onClick={clickHandler}></i>;
   };
 
-  console.log(game);
+  const handleClosePopup = () => {
+    setTimeout(() => {
+      setIsPopupVisible(false);
+    }, 500);
+  };
 
   return (
     <>
@@ -118,8 +126,8 @@ export const Game = () => {
           <div className="game-info">
             <div className="game-title-container">
               <h1 className="game-title">{game.title}</h1>
-
               {saveButton()}
+              {isPopupVisible && <Popup message="Game saved!" onClose={handleClosePopup} />}
             </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
