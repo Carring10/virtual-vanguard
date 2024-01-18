@@ -25,7 +25,6 @@ export const Game = () => {
   const toggleRemoveBookmark = () => setBookmark(true);
 
   const { currentUser } = useContext(AuthContext);
-  const user = currentUser.username;
 
   const location = useLocation();
   const gameId = location.state;
@@ -77,6 +76,7 @@ export const Game = () => {
 
   const handleSave = (event) => {
     event.preventDefault();
+    const user = currentUser.username;
     const savedGameId = game.id;
 
     saveGame.mutate({ user, savedGameId: savedGameId });
@@ -84,19 +84,25 @@ export const Game = () => {
 
   const handleDelete = (event) => {
     event.preventDefault();
+    const user = currentUser.username;
     const savedGameId = game.id;
-    
-     deleteGame.mutate({ user, savedGameId });
+
+    deleteGame.mutate({ user, savedGameId });
   };
 
   const saveButton = () => {
-    if (currentUser && bookmark === true) {
-      return <i className="bx bx-bookmark-plus" id="bookmark" onClick={(event) => { handleSave(event); toggleBookmark(); }}></i>;
-    }
+    const iconClass = bookmark ? "bx bx-bookmark-plus" : "bx bx-bookmark-minus";
+    const clickHandler = bookmark
+      ? (event) => {
+          handleSave(event);
+          toggleBookmark();
+        }
+      : (event) => {
+          handleDelete(event);
+          toggleRemoveBookmark();
+        };
 
-    if (bookmark === false) {
-      return <i className="bx bx-bookmark-minus" id="bookmark" onClick={(event) => { handleDelete(event); toggleRemoveBookmark(); }}></i>;
-    }
+    return <i className={iconClass} id="bookmark" onClick={clickHandler}></i>;
   };
 
   console.log(game);
@@ -111,9 +117,9 @@ export const Game = () => {
         <div className="game-contents-container">
           <div className="game-info">
             <div className="game-title-container">
-            <h1 className="game-title">{game.title}</h1>
-            
-            {saveButton()}
+              <h1 className="game-title">{game.title}</h1>
+
+              {saveButton()}
             </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
