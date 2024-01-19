@@ -2,10 +2,10 @@ const Games = require('../models/Games');
 
 exports.addGame = async (req, res) => {
   try {
-    const { user, savedGameId } = req.body;
+    const { user, apiId, gameTitle, gameImg, gameGenre } = req.body;
     console.log(req.body)
 
-    const game = new Games(user, savedGameId);
+    const game = new Games(user, apiId, gameTitle, gameImg, gameGenre);
 
     await game.addGame();
 
@@ -17,10 +17,10 @@ exports.addGame = async (req, res) => {
 
 exports.deleteGame = async (req, res) => {
   try {
-    const { user, savedGameId } = req.body;
+    const { user, apiId } = req.body;
     console.log("delete", req.body)
 
-    await Games.deleteGame(user, savedGameId);
+    await Games.deleteGame(user, apiId);
 
     res.status(200).json({ message: 'Game deleted' });
   } catch (err) {

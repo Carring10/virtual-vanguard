@@ -28,7 +28,7 @@ export const Profile = () => {
 
   const { data } = useQuery(["games"], () =>
   axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
-    const data = res.data.savedGameId;
+    const data = res.data;
     console.log(data)
     return data;
   })
@@ -108,6 +108,9 @@ export const Profile = () => {
             </label>
           </div>
           {confirmFile()}
+        </div>
+        <div className="savedGamesContainer">
+          <h4>Your saved games</h4>
         </div>
       </div>
     </>

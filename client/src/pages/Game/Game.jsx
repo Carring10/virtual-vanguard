@@ -21,6 +21,12 @@ export const Game = () => {
     minimum_system_requirements: [],
   });
 
+  console.log("GAME", game)
+  const apiId = game.id;
+  const gameTitle = game.title;
+  const gameImg = game.thumbnail;
+  const gameGenre = game.genre;
+
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const [bookmark, setBookmark] = useState(true);
@@ -80,18 +86,17 @@ export const Game = () => {
   const handleSave = (event) => {
     event.preventDefault();
     const user = currentUser.username;
-    const savedGameId = game.id;
 
-    saveGame.mutate({ user, savedGameId: savedGameId });
+    saveGame.mutate({ user, apiId, gameTitle, gameImg, gameGenre });
     setIsPopupVisible(true);
   };
 
   const handleDelete = (event) => {
     event.preventDefault();
     const user = currentUser.username;
-    const savedGameId = game.id;
+    const apiId = game.id;
 
-    deleteGame.mutate({ user, savedGameId });
+    deleteGame.mutate({ user, apiId });
     setIsPopupVisible(true);
   };
 

@@ -95,7 +95,6 @@ export const Discover = () => {
           {games.map((game) => (
             <Link className="discover-game-container" to="/game" state={game.id}>
               <div className="game-contents">
-                {console.log(game.thumbnail)}
                 <img
                   src={game.thumbnail}
                   alt="Game Thumbnail"

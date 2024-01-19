@@ -1,20 +1,29 @@
 const db = require('../config/connection');
 
 class Games {
-  constructor(user, savedGameId) {
+  constructor(user, apiId, gameTitle, gameImg, gameGenre) {
     this.user = user;
-    this.savedGameId = savedGameId;
+    this.apiId = apiId;
+    this.gameTitle = gameTitle;
+    this.gameImg = gameImg;
+    this.gameGenre = gameGenre;
   }
 
   addGame() {
     let sql = `
     INSERT INTO games(
       user,
-      savedGameId
+      apiId,
+      gameTitle, 
+      gameImg,
+      gameGenre
     )
     VALUES(
       '${this.user}',
-      '${this.savedGameId}'
+      '${this.apiId}',
+      '${this.gameTitle}',
+      '${this.gameImg}',
+      '${this.gameGenre}'
     );
     `;
 
@@ -29,10 +38,10 @@ class Games {
     return db.execute(sql);
   }
 
-  static deleteGame(user, savedGameId) {
+  static deleteGame(user, apiId) {
     let sql = `
     DELETE FROM games
-    WHERE savedGameId = ${savedGameId}
+    WHERE apiId = ${apiId}
     AND user = '${user}';
     `;
 
