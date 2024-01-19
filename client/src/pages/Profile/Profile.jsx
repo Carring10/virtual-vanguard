@@ -28,8 +28,8 @@ export const Profile = () => {
 
   const { data } = useQuery(["games"], () =>
   axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
-    const data = res.data;
-    console.log(data)
+    const data = res.data.games;
+    console.log("DATA", data)
     return data;
   })
 );
@@ -111,6 +111,13 @@ export const Profile = () => {
         </div>
         <div className="savedGamesContainer">
           <h4>Your saved games</h4>
+          {data.map((game) => (
+            <div className="profile-game-container" key={game.gameId}>
+              <img src={game.gameImg} alt="Game thumbnail" />
+              <p>{game.gameTitle}</p>
+              <p>{game.gameGenre}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>
