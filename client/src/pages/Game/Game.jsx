@@ -26,10 +26,13 @@ export const Game = () => {
   const gameTitle = game.title;
   const gameImg = game.thumbnail;
   const gameGenre = game.genre;
+  const gameUrl = game.game_url;
 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const [bookmark, setBookmark] = useState(true);
+  const popupMessage = bookmark ? "Game removed!" : "Game saved!";
+
   const toggleBookmark = () => setBookmark(false);
   const toggleRemoveBookmark = () => setBookmark(true);
 
@@ -87,7 +90,7 @@ export const Game = () => {
     event.preventDefault();
     const user = currentUser.username;
 
-    saveGame.mutate({ user, apiId, gameTitle, gameImg, gameGenre });
+    saveGame.mutate({ user, apiId, gameTitle, gameImg, gameGenre, gameUrl });
     setIsPopupVisible(true);
   };
 
@@ -121,7 +124,6 @@ export const Game = () => {
     }, 500);
   };
 
-  const popupMessage = bookmark ? "Game removed!" : "Game saved!";
 
   return (
     <>

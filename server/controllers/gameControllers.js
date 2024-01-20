@@ -2,10 +2,10 @@ const Games = require('../models/Games');
 
 exports.addGame = async (req, res) => {
   try {
-    const { user, apiId, gameTitle, gameImg, gameGenre } = req.body;
+    const { user, apiId, gameTitle, gameImg, gameGenre, gameUrl } = req.body;
     console.log(req.body)
 
-    const game = new Games(user, apiId, gameTitle, gameImg, gameGenre);
+    const game = new Games(user, apiId, gameTitle, gameImg, gameGenre, gameUrl);
 
     await game.addGame();
 

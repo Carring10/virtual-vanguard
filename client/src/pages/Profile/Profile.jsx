@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Navbar } from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
 import defaultPic from "../../images/default-pic.jpg";
 import "./profile.css";
 
@@ -38,7 +39,6 @@ export const Profile = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      console.log(file);
 
       const res = await axios.post("http://localhost:8800/upload", formData);
       return res.data;
@@ -116,6 +116,9 @@ export const Profile = () => {
               <img src={game.gameImg} alt="Game thumbnail" />
               <p>{game.gameTitle}</p>
               <p>{game.gameGenre}</p>
+              <Link to={game.gameUrl} target="_blank" className="play-button">
+              Play Now
+            </Link>
             </div>
           ))}
         </div>

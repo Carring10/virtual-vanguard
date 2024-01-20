@@ -1,12 +1,13 @@
 const db = require('../config/connection');
 
 class Games {
-  constructor(user, apiId, gameTitle, gameImg, gameGenre) {
+  constructor(user, apiId, gameTitle, gameImg, gameGenre, gameUrl) {
     this.user = user;
     this.apiId = apiId;
     this.gameTitle = gameTitle;
     this.gameImg = gameImg;
     this.gameGenre = gameGenre;
+    this.gameUrl = gameUrl;
   }
 
   addGame() {
@@ -16,14 +17,16 @@ class Games {
       apiId,
       gameTitle, 
       gameImg,
-      gameGenre
+      gameGenre,
+      gameUrl
     )
     VALUES(
       '${this.user}',
       '${this.apiId}',
       '${this.gameTitle}',
       '${this.gameImg}',
-      '${this.gameGenre}'
+      '${this.gameGenre}',
+      '${this.gameUrl}'
     );
     `;
 
