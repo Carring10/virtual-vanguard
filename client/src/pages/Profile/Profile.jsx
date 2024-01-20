@@ -28,12 +28,12 @@ export const Profile = () => {
   }, [setCurrentUser, username]);
 
   const { data } = useQuery(["games"], () =>
-  axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
-    const data = res.data.games;
-    console.log("DATA", data)
-    return data;
-  })
-);
+    axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
+      const data = res.data.games;
+      console.log("DATA", data);
+      return data;
+    })
+  );
 
   const upload = async (file) => {
     try {
@@ -109,18 +109,29 @@ export const Profile = () => {
           </div>
           {confirmFile()}
         </div>
-        <div className="savedGamesContainer">
-          <h4>Your saved games</h4>
-          {data.map((game) => (
-            <div className="profile-game-container" key={game.gameId}>
-              <img src={game.gameImg} alt="Game thumbnail" />
-              <p>{game.gameTitle}</p>
-              <p>{game.gameGenre}</p>
-              <Link to={game.gameUrl} target="_blank" className="play-button">
-              Play Now
-            </Link>
-            </div>
-          ))}
+        <h4>Your saved games</h4>
+        <div className="saved-games-container">
+          {data &&
+            data.map((game) => (
+              <div className="profile-game-container" key={game.gameId}>
+                <img
+                  src={game.gameImg}
+                  alt="Game thumbnail"
+                  className="profile-game-img"
+                />
+                <div className="profile-game-info">
+                  <p className="profile-game-title">{game.gameTitle}</p>
+
+                  <div>
+                    <p className="profile-game-genre">{game.gameGenre}</p>
+                  </div>
+                </div>
+                {console.log(game.gameUrl)}
+                <Link to={game.gameUrl} target="_blank" className="profile-play-button">
+                  Play Now
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </>

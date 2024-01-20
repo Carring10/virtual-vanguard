@@ -93,7 +93,7 @@ export const Discover = () => {
       return (
         <div className="game-results-container">
           {games.map((game) => (
-            <Link className="discover-game-container" to="/game" state={game.id}>
+            <Link className="discover-game-container" to="/game" state={game.id} key={game.id}>
               <div className="game-contents">
                 <img
                   src={game.thumbnail}
