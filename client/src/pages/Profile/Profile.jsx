@@ -15,6 +15,20 @@ export const Profile = () => {
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
+  const genreColors = {
+    MMORPG: '#FF5733',
+    Shooter: '#3399FF',
+    Strategy: '#9933FF',
+    MOBA: '#33CC33',
+    Racing: '#FFCC33',
+    Sports: '#FF3366',
+    Survival: '#66CCFF',
+    MMO: '#660066',
+    MMOFPS: '#FF9933',
+    MMOTPS: '#CC0033',
+    MMORTS: '#9966FF',
+  };
+  
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -121,9 +135,8 @@ export const Profile = () => {
                 />
                 <div className="profile-game-info">
                   <p className="profile-game-title">{game.gameTitle}</p>
-
                   <div>
-                    <p className="profile-game-genre">{game.gameGenre}</p>
+                    <p className="profile-game-genre" style={{backgroundColor: genreColors[game.gameGenre]}} >{game.gameGenre}</p>
                   </div>
                 </div>
                 {console.log(game.gameUrl)}
