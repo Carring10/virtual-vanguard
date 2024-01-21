@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+
 dialog::backdrop {
   background-color: #151518b4;
 }
@@ -8,6 +10,7 @@ dialog {
   padding: 2rem;
   width: 20%;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .close-button {
@@ -41,9 +44,27 @@ dialog {
   font-family: "Kanit", sans-serif;
   background-color: transparent;
   width: 80%;
-  font-size: 1rem;
   border: none;
   border-bottom: solid 1px #151518;
+}
+
+#user-circle {
+  color: grey;
+}
+
+#lock {
+  color: grey;
+}
+
+input {
+  border: none;
+  font-size: 1rem;
+  width: 80%;
+  padding-left: 10px;
+}
+
+input:focus {
+  outline: none;
 }
 
 .login-button {

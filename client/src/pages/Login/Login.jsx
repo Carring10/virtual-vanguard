@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./login.css"
+import "./login.css";
 
 export const Login = ({ open, onClose }) => {
   const [input, setInput] = useState({
@@ -53,25 +53,33 @@ export const Login = ({ open, onClose }) => {
       </button>
       <p className="sign-in">Sign In</p>
       <form className="login-form">
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={handleChange}
-          className="login-input"
-        />
-        <input
-          type="text"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-          className="login-input"
-        />
+        <div className="login-input">
+          <i className="bx bx-user-circle" id="user-circle"></i>
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="login-input">
+          <i className="bx bx-lock-alt" id="lock"></i>
+          <input
+            type="text"
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+          />
+        </div>
         <button onClick={handleLogin} className="login-button">
           Sign In
         </button>
         <p>
-          Don't have an account?<Link to="/register" className="create-account-link"> Create one</Link>
+          Don't have an account?
+          <Link to="/register" className="create-account-link">
+            {" "}
+            Create one
+          </Link>
         </p>
         {/* If err is not null, render err message */}
         {err && err}

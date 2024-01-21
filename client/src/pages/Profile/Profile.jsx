@@ -104,6 +104,7 @@ export const Profile = () => {
     <>
       <Navbar />
       <div className="profile-container">
+        <h1 className="profile-header">Profile</h1>
         <div className="profile-contents">
           <p className="profile-username">{capitalizedUsername}</p>
           <div className="profile-pic-container">
@@ -123,7 +124,7 @@ export const Profile = () => {
           </div>
           {confirmFile()}
         </div>
-        <h4>Your saved games</h4>
+        <h4 className="saved-games-header">Your saved games</h4>
         <div className="saved-games-container">
           {data &&
             data.map((game) => (

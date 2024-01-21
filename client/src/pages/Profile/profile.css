@@ -1,12 +1,27 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   background-color: #1f1f23;
+  border: solid 1.5px #3e3e44;
+  border-top: none;
   height: 100vh;
   width: 50rem;
-  padding: 4rem;
+  padding: 10px 50px 20px;
   overflow: auto;
+}
+
+.profile-header {
+  margin: 0px;
+  color: white;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin: 0.6rem;
+  padding: 1rem 0.6rem;
+  background-color: transparent;
+  border-bottom: solid 3px #28282c;
+  z-index: 2;
+  width: 90%;
 }
 
 .profile-contents {
@@ -16,7 +31,7 @@
 }
 
 .profile-username {
-  color: white;
+  color: #dfbb60;;
   font-size: 40px;
   margin: 10px;
 }
@@ -35,6 +50,7 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .overlay {
@@ -73,11 +89,24 @@
   font-family: Kanit, sans-serif;
 }
 
+.saved-games-header {
+  color: white;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin: 0.6rem;
+  padding: 1rem 0.6rem;
+  background-color: transparent;
+  border-bottom: solid 3px #28282c;
+  z-index: 2;
+  width: 90%;
+}
+
 .saved-games-container {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   flex-wrap: wrap;
+  background-color: transparent;
 }
 
 .profile-game-container {
@@ -123,12 +152,11 @@
   margin: 5px;
   background-color: #ffffff;
   color: #7fad59;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 15px;
   font-weight: bold;
   width: 5rem;
   cursor: pointer;
   transition: 0.3s;
-  letter-spacing: .8px;
+  letter-spacing: 0.8px;
 }
-

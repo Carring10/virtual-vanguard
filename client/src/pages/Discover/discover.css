@@ -5,6 +5,8 @@
   gap: 0.5rem;
   width: 80%;
   background-color: #1f1f23;
+  border: solid 1.5px #3e3e44;
+  border-top: none;
   overflow: auto;
   height: 100vh;
   scrollbar-gutter: stable;
