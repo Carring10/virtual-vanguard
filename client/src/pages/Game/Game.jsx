@@ -22,6 +22,10 @@ export const Game = () => {
   });
 
   console.log("GAME", game)
+
+  const [userGames, setUserGames] = useState([]);
+  console.log(userGames);
+
   const apiId = game.id;
   const gameTitle = game.title;
   const gameImg = game.thumbnail;
@@ -45,6 +49,22 @@ export const Game = () => {
     __html: DOMPurify.sanitize(game.description),
   });
 
+  
+  useEffect(() => {
+    const isGameSaved = () => {
+      for (let savedGame = 0; savedGame < userGames.length; savedGame++) {
+        const savedGameId = userGames[savedGame].apiId;
+  
+        if (savedGameId === game.id) {
+          console.log(true)
+          toggleBookmark();
+        }
+        break;
+      }
+    }
+    isGameSaved();
+  }, [game.id, userGames]);
+
   useEffect(() => {
     const api = "https://www.mmobomb.com/api1/game?id=" + gameId;
 
@@ -58,6 +78,20 @@ export const Game = () => {
     };
     fetchGame();
   }, [gameId]);
+
+  useEffect(() => {
+    const getUserGames = "http://localhost:8800/games/getGames/" + currentUser.username;
+
+    const fetchUserGames = async () => {
+      try {
+        const response = await axios.get(getUserGames);
+        setUserGames(response.data.games);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserGames();
+  }, [currentUser.username]);
 
   const queryClient = useQueryClient();
 
