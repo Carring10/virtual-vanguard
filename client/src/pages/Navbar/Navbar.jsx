@@ -53,11 +53,11 @@ export const Navbar = () => {
               <i className="bx bx-chevron-down" id="arrow"></i>
             </button>
             <div className="dropdown" id="dropdown">
-              <a href="#logout" onClick={handleClick}>
+              <a href="#logout" onClick={handleClick} className="logout-link">
                 <i className="bx bx-log-out"></i>
                 Logout
               </a>
-              <a href="/profile">
+              <a href="/profile" className="profile-link">
                 <i className="bx bx-user"></i>
                 Profile
               </a>

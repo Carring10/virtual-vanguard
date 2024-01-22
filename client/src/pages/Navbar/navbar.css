@@ -136,6 +136,16 @@
   color: black;
 }
 
+.logout-link {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.profile-link:hover {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .logout-button {
   padding: 0.4rem 1.5rem;
   margin: 1.5rem;
