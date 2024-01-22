@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
-import { Popup } from '../Popup/Popup';
+import { Popup } from "../Popup/Popup";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
@@ -21,10 +21,7 @@ export const Game = () => {
     minimum_system_requirements: [],
   });
 
-  console.log("GAME", game)
-
   const [userGames, setUserGames] = useState([]);
-  console.log(userGames);
 
   const apiId = game.id;
   const gameTitle = game.title;
@@ -49,19 +46,16 @@ export const Game = () => {
     __html: DOMPurify.sanitize(game.description),
   });
 
-  
   useEffect(() => {
     const isGameSaved = () => {
       for (let savedGame = 0; savedGame < userGames.length; savedGame++) {
         const savedGameId = userGames[savedGame].apiId;
-  
+
         if (savedGameId === game.id) {
-          console.log(true)
           toggleBookmark();
         }
-        break;
       }
-    }
+    };
     isGameSaved();
   }, [game.id, userGames]);
 
@@ -80,18 +74,20 @@ export const Game = () => {
   }, [gameId]);
 
   useEffect(() => {
-    const getUserGames = "http://localhost:8800/games/getGames/" + currentUser.username;
+    if (currentUser) {
+      const getUserGames = "http://localhost:8800/games/getGames/" + currentUser.username;
 
-    const fetchUserGames = async () => {
-      try {
-        const response = await axios.get(getUserGames);
-        setUserGames(response.data.games);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchUserGames();
-  }, [currentUser.username]);
+      const fetchUserGames = async () => {
+        try {
+          const response = await axios.get(getUserGames);
+          setUserGames(response.data.games);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchUserGames();
+    }
+  }, [currentUser]);
 
   const queryClient = useQueryClient();
 
@@ -158,7 +154,6 @@ export const Game = () => {
     }, 500);
   };
 
-
   return (
     <>
       <Navbar />
@@ -171,7 +166,9 @@ export const Game = () => {
             <div className="game-title-container">
               <h1 className="game-title">{game.title}</h1>
               {saveButton()}
-              {isPopupVisible && <Popup message={popupMessage} onClose={handleClosePopup} />}
+              {isPopupVisible && (
+                <Popup message={popupMessage} onClose={handleClosePopup} />
+              )}
             </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>

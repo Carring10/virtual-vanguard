@@ -21,12 +21,11 @@
   padding: 0rem 6rem;
   background-color: #1f1f23;
   color: white;
-  border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
-  top: 0rem;
-  position: fixed;
+   top: 0rem; 
+   position: fixed; 
 }
 
 .title-contents {

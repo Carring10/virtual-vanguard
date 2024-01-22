@@ -19,8 +19,6 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(res.data);
   }
   
-  console.log(currentUser)
-
   useEffect(() => {
     // Write user object into session storage
     sessionStorage.setItem('user', JSON.stringify(currentUser));

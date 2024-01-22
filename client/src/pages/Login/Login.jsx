@@ -75,9 +75,8 @@ export const Login = ({ open, onClose }) => {
           Sign In
         </button>
         <p>
-          Don't have an account?
+          Don't have an account? {" "}
           <Link to="/register" className="create-account-link">
-            {" "}
             Create one
           </Link>
         </p>

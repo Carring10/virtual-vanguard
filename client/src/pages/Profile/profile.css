@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -5,10 +7,11 @@
   background-color: #1f1f23;
   border: solid 1.5px #3e3e44;
   border-top: none;
-  height: 100vh;
+  height: 90vh;
   width: 50rem;
   padding: 10px 50px 20px;
   overflow: auto;
+
 }
 
 .profile-header {
@@ -115,6 +118,23 @@
   background-color: white;
   width: 365px;
   border-radius: 10px;
+  position: relative;
+}
+
+.delete-game {
+  position: absolute;
+  width: 2rem;
+  text-align: center;
+  z-index: 2;
+  right: 5px;
+  top: 5px;
+  background-color: rgba(255, 255, 255, 0.493);
+  border-radius: 5px;
+  cursor: pointer
+}
+
+#trash {
+  font-size: 25px;
 }
 
 .profile-game-img {

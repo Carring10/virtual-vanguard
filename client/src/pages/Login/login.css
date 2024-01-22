@@ -71,8 +71,9 @@ input:focus {
   font-family: "Kanit", sans-serif;
   width: 80%;
   font-size: 1rem;
-  color: white;
-  background-color: #554391;
+  color: rgb(31, 31, 31);
+  background-color: #dfbb60;
+  box-shadow: rgba(0, 0, 0, 0.534) 0px -30px 36px -28px inset;
   padding: 0.5rem;
   border: none;
   border-radius: 0.3rem;
@@ -81,7 +82,7 @@ input:focus {
 }
 
 .login-button:hover {
-  background-color: #6e58b8;
+  color: white;
 }
 
 dialog p {
@@ -91,6 +92,10 @@ dialog p {
 }
 
 .create-account-link {
-  color: #6e58b8 !important;
+  color: #000000 !important;
   text-decoration: none;
+}
+
+.create-account-link:hover {
+  text-decoration: underline;
 }

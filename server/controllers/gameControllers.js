@@ -3,7 +3,6 @@ const Games = require('../models/Games');
 exports.addGame = async (req, res) => {
   try {
     const { user, apiId, gameTitle, gameImg, gameGenre, gameUrl } = req.body;
-    console.log(req.body)
 
     const game = new Games(user, apiId, gameTitle, gameImg, gameGenre, gameUrl);
 
@@ -31,7 +30,6 @@ exports.deleteGame = async (req, res) => {
 exports.getGames = async (req, res) => {
   try {
     const user = req.params.user;
-    console.log(user)
 
     const [games, _] = await Games.getGames(user);
 

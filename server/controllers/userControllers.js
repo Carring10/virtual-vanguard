@@ -5,7 +5,6 @@ exports.findUser = async (req, res) => {
     const username = req.params.username;
 
     const [user, _] = await User.getUser(username);
-    console.log("find", user)
 
     res.json(user)
   } catch (err) {

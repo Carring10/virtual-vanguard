@@ -15,12 +15,17 @@ export const Article = () => {
 
   return (
     <>
-      <Link to="/" className="back-button">&#8592; Back</Link>
+      <Link to="/" className="back-button">
+        &#8592; Back
+      </Link>
       <div className="article-container">
         <div className="title-contents">
           <h1 className="article-headline">{propsData.title}</h1>
           <p className="source">
-            Posted by <a href="https://www.mmobomb.com/" target="_blank" rel="noreferrer">mmobomb.com</a>
+            Posted by{" "}
+            <a href="https://www.mmobomb.com/" target="_blank" rel="noreferrer">
+              mmobomb.com
+            </a>
           </p>
         </div>
         <article className="article-post">

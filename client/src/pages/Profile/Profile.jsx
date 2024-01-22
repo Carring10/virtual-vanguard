@@ -16,19 +16,19 @@ export const Profile = () => {
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
   const genreColors = {
-    MMORPG: '#FF5733',
-    Shooter: '#3399FF',
-    Strategy: '#9933FF',
-    MOBA: '#33CC33',
-    Racing: '#FFCC33',
-    Sports: '#FF3366',
-    Survival: '#66CCFF',
-    MMO: '#660066',
-    MMOFPS: '#FF9933',
-    MMOTPS: '#CC0033',
-    MMORTS: '#9966FF',
+    MMORPG: "#FF5733",
+    Shooter: "#3399FF",
+    Strategy: "#9933FF",
+    MOBA: "#33CC33",
+    Racing: "#FFCC33",
+    Sports: "#FF3366",
+    Survival: "#66CCFF",
+    MMO: "#660066",
+    MMOFPS: "#FF9933",
+    MMOTPS: "#CC0033",
+    MMORTS: "#9966FF",
   };
-  
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -44,7 +44,6 @@ export const Profile = () => {
   const { data } = useQuery(["games"], () =>
     axios.get(`http://localhost:8800/games/getGames/${username}`).then((res) => {
       const data = res.data.games;
-      console.log("DATA", data);
       return data;
     })
   );
@@ -100,6 +99,30 @@ export const Profile = () => {
     }
   };
 
+  const deleteGame = useMutation(
+    (deletedData) => {
+      console.log("deletedData", deletedData);
+      return axios.delete("http://localhost:8800/games/delete", { data: deletedData });
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["game"]);
+      },
+    }
+  );
+
+  const handleDelete = (event, game) => {
+    event.preventDefault();
+    
+    console.log(game)
+    const user = currentUser.username;
+    const apiId = game.apiId;
+
+    deleteGame.mutate({ user, apiId });
+    window.location.reload();
+  };
+
   return (
     <>
       <Navbar />
@@ -129,6 +152,9 @@ export const Profile = () => {
           {data &&
             data.map((game) => (
               <div className="profile-game-container" key={game.gameId}>
+                <div className="delete-game" onClick={(event) => handleDelete(event, game)}>
+                  <i className="bx bx-trash" id="trash"></i>
+                </div>
                 <img
                   src={game.gameImg}
                   alt="Game thumbnail"
@@ -137,10 +163,14 @@ export const Profile = () => {
                 <div className="profile-game-info">
                   <p className="profile-game-title">{game.gameTitle}</p>
                   <div>
-                    <p className="profile-game-genre" style={{backgroundColor: genreColors[game.gameGenre]}} >{game.gameGenre}</p>
+                    <p
+                      className="profile-game-genre"
+                      style={{ backgroundColor: genreColors[game.gameGenre] }}
+                    >
+                      {game.gameGenre}
+                    </p>
                   </div>
                 </div>
-                {console.log(game.gameUrl)}
                 <Link to={game.gameUrl} target="_blank" className="profile-play-button">
                   Play Now
                 </Link>
