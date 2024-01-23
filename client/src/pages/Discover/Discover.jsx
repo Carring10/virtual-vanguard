@@ -28,6 +28,7 @@ export const Discover = () => {
 
   let [param, setParam] = useState(getSessionStorage("param", ""));
   let [games, setGames] = useState([]);
+  console.log(games)
   const [tagArray, setTagArray] = useState(tagStorage("tagStorage", []));
   const buttonElements = document.getElementsByTagName("button");
 
@@ -132,6 +133,7 @@ export const Discover = () => {
             <button onClick={getTag}>mmofps</button>
             <button onClick={getTag}>mmotps</button>
             <button onClick={getTag}>mmorts</button>
+            <button onClick={getTag}>card</button>
           </div>
 
           <div className="style">
@@ -146,7 +148,6 @@ export const Discover = () => {
             <button onClick={getTag}>top-down</button>
             <button onClick={getTag}>side-scroller</button>
             <button onClick={getTag}>tower-defense</button>
-            <button onClick={getTag}>card</button>
           </div>
 
           <div className="theme">

@@ -21,6 +21,7 @@ export const Game = () => {
     minimum_system_requirements: [],
   });
 
+  console.log(game)
   const [userGames, setUserGames] = useState([]);
 
   const apiId = game.id;

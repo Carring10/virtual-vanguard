@@ -43,6 +43,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
+app.use("/", require("./server/routes/reviewRoutes"));
 app.use("/", require("./server/routes/profileRoutes"));
 app.use("/", require("./server/routes/gameRoutes"));
 app.use("/", require("./server/routes/authRoutes"));

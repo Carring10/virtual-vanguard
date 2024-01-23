@@ -27,6 +27,7 @@ export const Profile = () => {
     MMOFPS: "#FF9933",
     MMOTPS: "#CC0033",
     MMORTS: "#9966FF",
+    "Card Game": "#ff66d9",
   };
 
   useEffect(() => {
