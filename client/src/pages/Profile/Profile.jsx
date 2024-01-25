@@ -108,7 +108,7 @@ export const Profile = () => {
     {
       onSuccess: () => {
         // Invalidate and refetch
-        queryClient.invalidateQueries(["game"]);
+        queryClient.invalidateQueries(["games"]);
       },
     }
   );
@@ -116,12 +116,10 @@ export const Profile = () => {
   const handleDelete = (event, game) => {
     event.preventDefault();
     
-    console.log(game)
     const user = currentUser.username;
     const apiId = game.apiId;
 
     deleteGame.mutate({ user, apiId });
-    window.location.reload();
   };
 
   return (

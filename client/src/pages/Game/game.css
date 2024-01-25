@@ -6,7 +6,6 @@
   align-items: flex-start;
   width: 85%;
   background-color: #1f1f23;
-  overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
   color: #c7c7c7;
@@ -90,6 +89,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 4rem 3rem;
+  overflow-y: auto;
 }
 
 .screenshots-container {

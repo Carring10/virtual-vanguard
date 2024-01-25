@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import { Popup } from "../Popup/Popup";
+import { ReviewSection } from "../ReviewSection/ReviewSection";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
@@ -21,7 +22,6 @@ export const Game = () => {
     minimum_system_requirements: [],
   });
 
-  console.log(game)
   const [userGames, setUserGames] = useState([]);
 
   const apiId = game.id;
@@ -190,6 +190,7 @@ export const Game = () => {
               ))}
             </div>
             <div dangerouslySetInnerHTML={sanitizedData()} />
+            <ReviewSection gameId={apiId} />
           </div>
         </div>
       </div>

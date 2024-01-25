@@ -20,6 +20,7 @@
   width: 60%;
   padding: 0rem 6rem;
   background-color: #1f1f23;
+  border: solid 1.5px #3e3e44;
   color: white;
   overflow-y: auto;
   overflow-x: hidden;
