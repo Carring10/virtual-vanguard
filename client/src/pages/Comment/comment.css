@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+
 .comment-container {
   display: flex;
   width: 100%;
@@ -51,12 +53,28 @@
 }
 
 .delete-button {
+  font-family: 'Kanit', sans-serif;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: .3rem .5rem;
+}
+
+.delete-button:hover {
+  background-color: #b8d8e05e;
+  border-radius: 15px;
+}
+
+#trash-icon {
+  font-size: 1.3rem;
   align-self: center;
 }
 
 .reply-button {
   font-family: 'Kanit', sans-serif;
-  font-size: .9rem;
+  font-size: 1rem;
   background-color: transparent;
   border: none;
   color: white;
@@ -67,6 +85,11 @@
 .reply-button:hover {
   background-color: #b8d8e05e;
   border-radius: 15px;
+}
+
+#chat-icon {
+  font-size: 1.2rem;
+  align-self: center;
 }
 
 .show-replies-button {

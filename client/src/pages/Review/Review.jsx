@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
+import "./review.css";
 
 export const Review = ({ review }) => {
 
@@ -39,8 +40,8 @@ export const Review = ({ review }) => {
     if (userId && userId === review.userId) {
       return (
         <button onClick={() => handleDelete(review)} className="delete-button">
-          Delete
-        </button>
+        <i className="bx bx-trash" id="trash-icon"></i>{" "}Delete
+      </button>
       );
     }
   };

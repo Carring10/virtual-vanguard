@@ -47,11 +47,9 @@ export const Comment = ({ comment }) => {
   const deleteButton = (comment) => {
     const userId = currentUser.id;
     if (userId && userId === comment.userId) {
-      return (
-        <button onClick={() => handleDelete(comment)} className="delete-button">
-          Delete
-        </button>
-      );
+      return <button onClick={() => handleDelete(comment)} className="delete-button">
+        <i className="bx bx-trash" id="trash-icon"></i>{" "}Delete
+      </button>;
     }
   };
 
@@ -83,7 +81,7 @@ export const Comment = ({ comment }) => {
       return (
         <div>
           <button onClick={() => showReplyForm(comment)} className="reply-button">
-            Reply
+            <i className="bx bx-message" id="chat-icon"></i>{" "}Reply
           </button>
         </div>
       );
@@ -93,7 +91,11 @@ export const Comment = ({ comment }) => {
   return (
     <>
       <div className="comment-container">
-      <img src={"/upload/" + currentUser.profilePic} alt="Default" className="comment-profile-pic" />
+        <img
+          src={"/upload/" + currentUser.profilePic}
+          alt="Default"
+          className="comment-profile-pic"
+        />
         <div className="comment" key={comment.createdAt}>
           <div className="user-info">
             <p className="comment-username">{capitalizedUsername}</p>
