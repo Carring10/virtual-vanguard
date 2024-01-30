@@ -63,14 +63,16 @@
   font-size: 1rem;
   background-color: transparent;
   border: none;
-  color: white;
   cursor: pointer;
-  padding: .3rem 0rem;
+  padding: .3rem 0.2rem;
+  color: grey;
+  transition: .3s;
 }
 
 .delete-button:hover {
   background-color: #b8d8e05e;
-  border-radius: 15px;
+  color: white;
+  border-radius: 5px;
 }
 
 #trash-icon {
@@ -78,19 +80,26 @@
   align-self: center;
 }
 
+.reply-arrow {
+  transform: rotate(180deg);
+  transition: 0.2s ease;
+}
+
 .reply-button {
   font-family: 'Kanit', sans-serif;
   font-size: 1rem;
   background-color: transparent;
   border: none;
-  color: white;
   cursor: pointer;
   padding: .3rem .2rem;
+  color: grey;
+  transition: .3s;
 }
 
 .reply-button:hover {
   background-color: #b8d8e05e;
-  border-radius: 15px;
+  color: white;
+  border-radius: 5px;
 }
 
 #reply-icon {
@@ -108,4 +117,5 @@
   cursor: pointer;
   padding: 0rem .7rem;
   margin: 0rem;
+  text-align: center;
 }

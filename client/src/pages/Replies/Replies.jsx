@@ -35,7 +35,7 @@ export const Replies = ({ comment, deleteComment }) => {
     if (userId && userId === comment.userId) {
       return (
         <button onClick={() => handleDelete(comment)} className="delete-reply">
-          Delete
+          <i className="bx bx-trash" id="trash-icon"></i>{" "}Delete
         </button>
       );
     }

@@ -57,10 +57,14 @@ export const Comment = ({ comment }) => {
     const replies = JSON.parse(comment.replies);
 
     if (replies != null) {
+      const toggleArrow = function () {
+        const toggleArrow = document.getElementById("reply-arrow");
+      
+        toggleArrow.classList.toggle("reply-arrow");
+      };
       const numReplies = replies.length;
-      const toggleText = showReplies ? "▲" : "▼";
       const buttonText =
-        numReplies > 1 ? `${toggleText} ${numReplies} replies` : `${toggleText} 1 reply`;
+        numReplies > 1 ? `${numReplies} replies` : `1 reply`;
 
       const controlClick = showReplies
         ? () => toggleHideReplies()
@@ -68,7 +72,8 @@ export const Comment = ({ comment }) => {
 
       return (
         <div>
-          <button onClick={controlClick} className="show-replies-button">
+          <button onClick={() => {controlClick(); toggleArrow();}} className="show-replies-button">
+          <i className="bx bx-chevron-down" id="reply-arrow"></i>
             {buttonText}
           </button>
         </div>
