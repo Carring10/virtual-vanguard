@@ -46,7 +46,7 @@ export const Replies = ({ comment, deleteComment }) => {
       {data &&
         data.map((reply, index) => (
           <div className="reply-container" key={index}>
-            <img src={"/upload/" + currentUser.profilePic} alt="Default" className="comment-profile-pic" />
+            <img src={"/upload/" + currentUser.profilePic} alt="Default" className="replies-profile-pic" />
             <div className="reply" key={reply.createdAt}>
               <div className="reply-user-info">
                 <p className="reply-username">{capitalizedUsername}</p>

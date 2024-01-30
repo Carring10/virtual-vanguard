@@ -7,19 +7,17 @@
 
 .reply-container {
   display: flex;
-  border-left: solid 1.5px #3e3e44;
+  border-left: solid 1.5px #219ebc;
 }
 
-.reply-user-icon {
-  font-size: 1.5rem;
-  background-color: #886ce4;
-  height: 1.58rem;
-  padding: .4rem;
-  margin-top: .5rem;
-  margin-right: .5rem;
-  text-align: center;
-  border: 2px solid black;
-  border-radius: 100%;
+.replies-profile-pic {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  object-fit: cover;
+  border: 2px solid #525252;
 }
 
 .reply {

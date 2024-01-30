@@ -79,9 +79,9 @@ export const Comment = ({ comment }) => {
   const replyButton = (comment) => {
     if (currentUser) {
       return (
-        <div>
+        <div className="reply-button-container">
           <button onClick={() => showReplyForm(comment)} className="reply-button">
-            <i className="bx bx-message" id="chat-icon"></i>{" "}Reply
+            <i className="bx bx-reply" id="reply-icon"></i>{" "}Reply
           </button>
         </div>
       );
