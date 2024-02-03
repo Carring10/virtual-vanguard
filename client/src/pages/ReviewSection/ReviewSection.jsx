@@ -9,7 +9,6 @@ export const ReviewSection = ({ gameId }) => {
   const [content, setContent] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [recommended, setRecommended] = useState(false);
-  console.log(recommended)
 
   const onClose = () => setIsOpen(false);
   const recommend = () => setRecommended(true);
@@ -57,7 +56,7 @@ export const ReviewSection = ({ gameId }) => {
   };
 
   const showSendButton = () => {
-    if (content.length >= 1 && (document.getElementById('yes').checked || document.getElementById('no').checked)) {
+    if ((content.length >= 1) && (document.getElementById('no').checked || document.getElementById('yes').checked)) {
       return (
         <button onClick={handleClick} className="send-comment">
           Send
