@@ -17,10 +17,9 @@ exports.getReviews = async (req, res) => {
 
 exports.getReplies = async (req, res) => {
   try {
-    const parentId = req.params.parentId;
     const gameId = req.params.gameId
 
-    const [replies, _] = await Review.getReplies(gameId, parentId)
+    const [replies, _] = await Review.getReplies(gameId)
 
     res.status(200).json({ replies });
   } catch (err) {
@@ -34,9 +33,9 @@ exports.addReview = async (req, res) => {
     // if (!token) return res.status(403).json({ message: 'Not logged in' });
 
     const createdAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    const { userId, content, gameId, parentId } = req.body;
+    const { userId, content, gameId, recommended } = req.body;
 
-    const review = new Review(userId, content, createdAt, gameId, parentId || null);
+    const review = new Review(userId, content, createdAt, gameId, recommended);
 
     await review.addReview();
 

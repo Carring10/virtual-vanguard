@@ -1,12 +1,12 @@
 const db = require('../config/connection');
 
 class Review {
-  constructor(userId, content, createdAt, gameId, parentId) {
+  constructor(userId, content, createdAt, gameId, recommended) {
     this.userId = userId;
     this.content = content;
     this.createdAt = createdAt;
     this.gameId = gameId;
-    this.parentId = parentId;
+    this.recommended = recommended;
   }
 
   static getReviews(gameId) {
@@ -38,14 +38,14 @@ class Review {
       content,
       createdAt,
       gameId,
-      parentId
+      recommended
     )
     VALUES(
       '${this.userId}',
       '${this.content}',
       '${this.createdAt}',
       '${this.gameId}',
-       ${this.parentId}
+      '${this.recommended}'
     );
     `;
 

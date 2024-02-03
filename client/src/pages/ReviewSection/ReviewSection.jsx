@@ -6,24 +6,28 @@ import { Review } from "../Review/Review";
 import axios from "axios";
 
 export const ReviewSection = ({ gameId }) => {
-  console.log(gameId)
   const [content, setContent] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [recommended, setRecommended] = useState(false);
+  console.log(recommended)
 
   const onClose = () => setIsOpen(false);
+  const recommend = () => setRecommended(true);
+  const notRecommended = () => setRecommended(false);
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["reviews"], () =>
-    axios.get(`http://localhost:8800/reviews/${gameId}`).then((res) => {
-      
-      const data = res.data.reviews;
-      console.log(data)
-      return data;
-    }),
+  const { data } = useQuery(
+    ["reviews"],
+    () =>
+      axios.get(`http://localhost:8800/reviews/${gameId}`).then((res) => {
+        const data = res.data.reviews;
+        console.log(data);
+        return data;
+      }),
     {
-      enabled: !!gameId
+      enabled: !!gameId,
     }
   );
 
@@ -45,7 +49,7 @@ export const ReviewSection = ({ gameId }) => {
     if (currentUser) {
       const userId = currentUser.id;
 
-      addReview.mutate({ userId, content, gameId });
+      addReview.mutate({ userId, content, gameId, recommended });
       setContent("");
     } else {
       console.log("not logged in");
@@ -53,7 +57,7 @@ export const ReviewSection = ({ gameId }) => {
   };
 
   const showSendButton = () => {
-    if (content.length >= 1) {
+    if (content.length >= 1 && (document.getElementById('yes').checked || document.getElementById('no').checked)) {
       return (
         <button onClick={handleClick} className="send-comment">
           Send
@@ -81,7 +85,16 @@ export const ReviewSection = ({ gameId }) => {
               onChange={(event) => setContent(event.target.value)}
               className="comment-input"
             />
-            {showSendButton()}
+            <div>
+              <div>
+                <p>Would you recommend this game?</p>
+                <input type="radio" value="yes" onClick={recommend} name="recommend" id="yes" />
+                <label>Yes</label>
+                <input type="radio" value="no" onClick={notRecommended} name="recommend" id="no" />
+                <label>No</label>
+              </div>
+              {showSendButton()}
+            </div>
           </div>
         </div>
       );
@@ -98,7 +111,7 @@ export const ReviewSection = ({ gameId }) => {
     <div className="review-section">
       {loginToComment()}
       <Login open={isOpen} onClose={onClose} />
-      {data && data.map((review, index) => <Review review={review} />)}
+      {data && data.map((review, index) => <Review review={review} key={index} />)}
     </div>
   );
 };
