@@ -6,7 +6,6 @@ import moment from "moment/moment";
 import "./review.css";
 
 export const Review = ({ review }) => {
-
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
@@ -38,46 +37,52 @@ export const Review = ({ review }) => {
     if (userId && userId === review.userId) {
       return (
         <button onClick={() => handleDelete(review)} className="delete-button">
-        <i className="bx bx-trash" id="trash-icon"></i>{" "}Delete
-      </button>
+          <i className="bx bx-trash" id="trash-icon"></i> Delete
+        </button>
       );
     }
   };
 
   const gameRecommended = (review) => {
     const isRecommended = review.recommended;
-    
+
     if (isRecommended === "true") {
       return (
         <div className="recommendation">
-          <i className="bx bx-message-check"></i>
+          <i className="bx bx-message-check" id="check-icon"></i>
           <p>Recommended</p>
         </div>
-      )
+      );
     } else {
       return (
         <div className="recommendation">
-        <i className="bx bx-message-x"></i>
-        <p>Not Recommended</p>
-      </div>
-      )
+          <i className="bx bx-message-x" id="x-icon"></i>
+          <p>Not Recommended</p>
+        </div>
+      );
     }
-  }
+  };
 
   return (
     <>
       <div className="comment-container">
-      <img src={"/upload/" + currentUser.profilePic} alt="Default" className="comment-profile-pic" />
+        <img
+          src={"/upload/" + currentUser.profilePic}
+          alt="Default"
+          className="comment-profile-pic"
+        />
         <div className="comment" key={review.createdAt}>
-          <div className="user-info">
-            <p className="comment-username">{capitalizedUsername}</p>
-            <p className="date">{moment(review.createdAt).fromNow()}</p>
+          <div className="user-info-container">
+            <div className="user-info">
+              <p className="comment-username">{capitalizedUsername}</p>
+              <p className="date">{moment(review.createdAt).fromNow()}</p>
+            </div>
+            {gameRecommended(review)}
           </div>
           <p className="comment-content">{review.content}</p>
           <div className="reply-delete-buttons-container">
             {currentUser && deleteButton(review)}
           </div>
-          {gameRecommended(review)}
         </div>
       </div>
     </>

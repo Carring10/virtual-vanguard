@@ -133,7 +133,8 @@ export const ReviewSection = ({ gameId }) => {
 
   return (
     <div className="review-section">
-      {recommendedStats()}
+      <h2 className="review-header">Reviews</h2>
+      {data && recommendedStats()}
       {loginToComment()}
       <Login open={isOpen} onClose={onClose} />
       {data && data.map((review, index) => <Review review={review} key={index} />)}

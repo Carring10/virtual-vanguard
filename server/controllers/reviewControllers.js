@@ -5,7 +5,6 @@ const moment = require('moment');
 exports.getReviews = async (req, res) => {
   try {
     const gameId = req.params.gameId;
-    console.log(req.params)
 
     const [reviews, _] = await Review.getReviews(gameId);
 
