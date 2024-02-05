@@ -6,7 +6,6 @@ import moment from "moment/moment";
 import "./review.css";
 
 export const Review = ({ review }) => {
-  console.log(review)
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
@@ -47,18 +46,17 @@ export const Review = ({ review }) => {
 
   const gameRecommended = (review) => {
     const isRecommended = review.recommended;
-    console.log(review)
     
     if (isRecommended === "true") {
       return (
-        <div>
+        <div className="recommendation">
           <i className="bx bx-message-check"></i>
           <p>Recommended</p>
         </div>
       )
     } else {
       return (
-        <div>
+        <div className="recommendation">
         <i className="bx bx-message-x"></i>
         <p>Not Recommended</p>
       </div>

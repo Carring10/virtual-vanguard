@@ -1,3 +1,12 @@
 .review-section {
   margin-top: 3rem;
 }
+
+.recommendation {
+  display: flex;
+  flex-direction: row;
+}
+
+.recommendation p {
+  margin: 0px;
+}

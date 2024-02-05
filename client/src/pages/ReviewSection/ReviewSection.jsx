@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Login } from "../Login/Login";
 import { Review } from "../Review/Review";
 import axios from "axios";
+import "./reviewSection.css";
 
 export const ReviewSection = ({ gameId }) => {
   const [content, setContent] = useState("");
@@ -56,7 +57,10 @@ export const ReviewSection = ({ gameId }) => {
   };
 
   const showSendButton = () => {
-    if ((content.length >= 1) && (document.getElementById('no').checked || document.getElementById('yes').checked)) {
+    if (
+      content.length >= 1 &&
+      (document.getElementById("no").checked || document.getElementById("yes").checked)
+    ) {
       return (
         <button onClick={handleClick} className="send-comment">
           Send
@@ -87,9 +91,23 @@ export const ReviewSection = ({ gameId }) => {
             <div>
               <div>
                 <p>Would you recommend this game?</p>
-                <input type="radio" value="yes" onClick={recommend} name="recommend" id="yes" />
+                <input
+                  type="radio"
+                  value="yes"
+                  onClick={recommend}
+                  name="recommend"
+                  id="yes"
+                  className="radio-button"
+                />
                 <label>Yes</label>
-                <input type="radio" value="no" onClick={notRecommended} name="recommend" id="no" />
+                <input
+                  type="radio"
+                  value="no"
+                  onClick={notRecommended}
+                  name="recommend"
+                  id="no"
+                  className="radio-button"
+                />
                 <label>No</label>
               </div>
               {showSendButton()}
@@ -106,8 +124,16 @@ export const ReviewSection = ({ gameId }) => {
     }
   };
 
+  const recommendedStats = () => {
+    const recommendedReviews = data.filter((review) => review.recommended === "true");
+    const percentage = (recommendedReviews.length / data.length) * 100;
+
+    return <p>{percentage.toFixed(0)}% of reviewers recommend this game.</p>;
+  };
+
   return (
     <div className="review-section">
+      {recommendedStats()}
       {loginToComment()}
       <Login open={isOpen} onClose={onClose} />
       {data && data.map((review, index) => <Review review={review} key={index} />)}
