@@ -162,15 +162,13 @@ export const Game = () => {
         &#8592; Back
       </Link>
       <div className="game-container">
+        <div className="game-title-container">
+          <h1 className="game-title">{game.title}</h1>
+          {saveButton()}
+          {isPopupVisible && <Popup message={popupMessage} onClose={handleClosePopup} />}
+        </div>
         <div className="game-contents-container">
           <div className="game-info">
-            <div className="game-title-container">
-              <h1 className="game-title">{game.title}</h1>
-              {saveButton()}
-              {isPopupVisible && (
-                <Popup message={popupMessage} onClose={handleClosePopup} />
-              )}
-            </div>
             <img src={game.thumbnail} alt="game-thumbnail" className="game-img" />
             <p>Developed by {game.developer}</p>
             <p>Released on {game.release_date}</p>
