@@ -10,11 +10,12 @@ import "./comment.css";
 export const Comment = ({ comment }) => {
   const [showReplies, setShowReplies] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  console.log(comment)
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
-  const username = currentUser.username;
+  const username = comment.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
   const showReplyForm = () => setShowForm(true);
@@ -97,7 +98,7 @@ export const Comment = ({ comment }) => {
     <>
       <div className="comment-container">
         <img
-          src={"/upload/" + currentUser.profilePic}
+          src={"/upload/" + comment.profilePic}
           alt="Default"
           className="comment-profile-pic"
         />

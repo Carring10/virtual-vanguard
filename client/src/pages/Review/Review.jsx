@@ -8,8 +8,8 @@ import "./review.css";
 export const Review = ({ review }) => {
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
-
-  const username = currentUser.username;
+console.log(review)
+  const username = review.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
   const deleteReview = useMutation(
@@ -67,7 +67,7 @@ export const Review = ({ review }) => {
     <>
       <div className="comment-container">
         <img
-          src={"/upload/" + currentUser.profilePic}
+          src={"/upload/" + review.profilePic}
           alt="Default"
           className="comment-profile-pic"
         />

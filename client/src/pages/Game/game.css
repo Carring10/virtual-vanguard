@@ -8,6 +8,7 @@
   background-color: #1f1f23;
   border: solid 1.5px #3e3e44;
   border-top: none;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
   color: #c7c7c7;

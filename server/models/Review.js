@@ -12,6 +12,8 @@ class Review {
   static getReviews(gameId) {
     let sql = `
     SELECT * FROM reviews
+    LEFT JOIN users
+    ON reviews.userId = users.id
     WHERE gameId = ${gameId}
     ORDER BY createdAt DESC;
     `;
