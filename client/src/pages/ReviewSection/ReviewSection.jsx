@@ -128,7 +128,16 @@ export const ReviewSection = ({ gameId }) => {
     const recommendedReviews = data.filter((review) => review.recommended === "true");
     const percentage = (recommendedReviews.length / data.length) * 100;
 
-    return <p>{percentage.toFixed(0)}% of reviewers recommend this game.</p>;
+    return (
+      <>
+        <p>{percentage.toFixed(0)}% of reviewers recommend this game.</p>
+        <div className="recommend-progress-container">
+        <i className="bx bx-happy-beaming" id="happy"></i>
+        <progress className="recommend-progress-bar" max="100" value={percentage}></progress>
+        <i className="bx bx-angry" id="mad"></i>
+        </div>
+      </>
+    );
   };
 
   return (
