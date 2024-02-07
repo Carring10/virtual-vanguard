@@ -45,14 +45,9 @@ export const Giveaways = () => {
               </div>
               <div className="give-away-details">
                 <p>{giveAway.keys_left} of Keys Left!</p>
-                <progress
-                  className="progress-bar"
-                  id="keys"
-                  value={giveAway.keys_left.slice(0, -1)}
-                  max="100"
-                >
-                  {giveAway.keys_left}
-                </progress>
+                <div class="meter">
+                  <span style={{width: giveAway.keys_left.slice(0, -1) + "%"}}></span>
+                </div>
                 <a
                   href={giveAway.giveaway_url}
                   className="giveaway-url"

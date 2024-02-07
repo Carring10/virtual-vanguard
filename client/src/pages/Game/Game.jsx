@@ -181,7 +181,7 @@ export const Game = () => {
             <Link to={game.game_url} target="_blank" className="play-button">
               PLAY NOW
             </Link>
-            <button onClick={clickHandler} className="save-game-button">{saveIcon()} {buttonText()}</button>
+          {currentUser && <button onClick={clickHandler} className="save-game-button">{saveIcon()} {buttonText()}</button>}
           </div>
           <div className="game-description">
             <div className="screenshots-container">

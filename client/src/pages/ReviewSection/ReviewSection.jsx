@@ -130,8 +130,8 @@ export const ReviewSection = ({ gameId }) => {
 
     return (
       <>
-        <p>{percentage.toFixed(0)}% of reviewers recommend this game.</p>
         <div className="recommend-progress-container">
+        <p><span className="percentage">{percentage.toFixed(0)}%</span> of reviewers recommend this game.</p>
         <i className="bx bx-happy-beaming" id="happy"></i>
         <progress className="recommend-progress-bar" max="100" value={percentage}></progress>
         <i className="bx bx-angry" id="mad"></i>

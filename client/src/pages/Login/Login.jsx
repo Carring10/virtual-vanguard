@@ -26,14 +26,12 @@ export const Login = ({ open, onClose }) => {
 
   const { login } = useContext(AuthContext);
 
-  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
       await login(input);
-      navigate("/");
       window.location.reload();
     } catch (err) {
       console.log(err);
