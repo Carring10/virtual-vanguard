@@ -29,20 +29,14 @@
 
 .game-title-container {
   display: flex;
-  padding: 20px;
+  padding-left: 3rem;
+  margin-top: 2rem;
 }
 
 .game-title {
-  font-size: 35px;
+  font-size: 45px;
   color: white;
   letter-spacing: 2px;
-}
-
-#bookmark {
-  align-self: center;
-  font-size: 40px;
-  cursor: pointer;
-  color: white;
 }
 
 .game-img {
@@ -65,20 +59,41 @@ a {
   text-decoration: none;
   text-align: center;
   border-radius: 5px;
-  background-color: #3ac6e9;
+  background-color: #5af17b;
   color: #1f1f23;
   font-family: "Kanit", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-top: 5rem;
   cursor: pointer;
   transition: 0.3s;
-  letter-spacing: 0.8px;
   box-shadow: rgba(0, 0, 0, 0.671) 0px -40px 36px -28px inset;
 }
 
 .play-button:hover {
   color: white;
+}
+
+#bookmark {
+  align-self: center;
+  font-size: 15px;
+  cursor: pointer;
+  color: #84848d;
+}
+
+.save-game-button {
+  padding: 0.6rem;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #84848d;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #84848d;
+  font-family: "Kanit", sans-serif;
+  font-size: 15px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .game-contents-container {

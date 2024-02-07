@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 100%;
+  width: 80%;
   margin: 3rem;
 }
 
@@ -11,6 +11,9 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: #acacac17;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .comment-username {
@@ -27,10 +30,10 @@
 
 .comment-input {
   font-family: 'Kanit', sans-serif;
-  background-color: #1f1f23;
+  background-color: #1f1f2398;
   color: white;
   font-size: 1rem;
-  border: .1rem solid #28282c;
+  border: .1rem solid #343438;
   border-radius: 5px;
   padding: .5rem;
   height: 4rem;
@@ -38,7 +41,8 @@
 }
 
 .comment-input:focus {
-  outline-color: white;
+  outline: none;
+  border: .1rem solid #5e5e64;
 }
 
 .send-placeholder {

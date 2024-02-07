@@ -134,20 +134,27 @@ export const Game = () => {
     setIsPopupVisible(true);
   };
 
-  const saveButton = () => {
+  const saveIcon = () => {
     const iconClass = bookmark ? "bx bx-bookmark-plus" : "bx bx-bookmark-minus";
-    const clickHandler = bookmark
-      ? (event) => {
-          handleSave(event);
-          toggleBookmark();
-        }
-      : (event) => {
-          handleDelete(event);
-          toggleRemoveBookmark();
-        };
 
-    return <i className={iconClass} id="bookmark" onClick={clickHandler}></i>;
+    return <i className={iconClass} id="bookmark"></i>;
   };
+
+  const buttonText = () => {
+    const text = bookmark ? "SAVE TO LIBRARY" : "REMOVE FROM LIBRARY";
+
+    return <span>{text}</span>;
+  };
+
+  const clickHandler = bookmark
+    ? (event) => {
+        handleSave(event);
+        toggleBookmark();
+      }
+    : (event) => {
+        handleDelete(event);
+        toggleRemoveBookmark();
+      };
 
   const handleClosePopup = () => {
     setTimeout(() => {
@@ -164,7 +171,6 @@ export const Game = () => {
       <div className="game-container">
         <div className="game-title-container">
           <h1 className="game-title">{game.title}</h1>
-          {saveButton()}
           {isPopupVisible && <Popup message={popupMessage} onClose={handleClosePopup} />}
         </div>
         <div className="game-contents-container">
@@ -173,8 +179,9 @@ export const Game = () => {
             <p>Developed by {game.developer}</p>
             <p>Released on {game.release_date}</p>
             <Link to={game.game_url} target="_blank" className="play-button">
-              Play Now
+              PLAY NOW
             </Link>
+            <button onClick={clickHandler} className="save-game-button">{saveIcon()} {buttonText()}</button>
           </div>
           <div className="game-description">
             <div className="screenshots-container">
