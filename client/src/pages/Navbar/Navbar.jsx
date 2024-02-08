@@ -30,6 +30,7 @@ const handleClick = async (event) => {
     });
 
     window.location.reload();
+    window.location.href = "/"
   } catch (err) {
     console.log(err);
   }
@@ -115,7 +116,6 @@ export const Navbar = () => {
           </Link>
         </div>
         {isLoggedIn()}
-        {/* {focusLink()} */}
       </div>
       <Login open={isOpen} onClose={onClose} />
     </>

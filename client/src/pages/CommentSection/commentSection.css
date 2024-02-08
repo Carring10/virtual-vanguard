@@ -71,6 +71,7 @@
 }
 
 .comment-sign-in-button {
+  align-self: center;
   font-family: 'Kanit', sans-serif;
   background-color: #6a040f;
   color: #dfbb60;
