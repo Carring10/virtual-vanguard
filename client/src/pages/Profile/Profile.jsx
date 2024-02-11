@@ -10,6 +10,7 @@ import "./profile.css";
 export const Profile = () => {
   const [file, setFile] = useState(null);
   const { currentUser, setCurrentUser } = useContext(AuthContext);
+  console.log(currentUser)
   const queryClient = useQueryClient();
 
   const username = currentUser.username;
@@ -82,9 +83,8 @@ export const Profile = () => {
 
     if (file) {
       updatePic.mutate({ username, profilePic: profileUrl });
+      window.location.reload();
     }
-
-    window.location.reload();
   };
 
   const confirmFile = () => {
