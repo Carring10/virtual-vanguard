@@ -9,7 +9,7 @@ import "./reviewSection.css";
 export const ReviewSection = ({ gameId }) => {
   const [content, setContent] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [recommended, setRecommended] = useState(false);
+  const [recommended, setRecommended] = useState(null);
 
   const onClose = () => setIsOpen(false);
   const recommend = () => setRecommended(true);
@@ -44,8 +44,7 @@ export const ReviewSection = ({ gameId }) => {
     }
   );
 
-  const handleClick = async (event) => {
-    event.preventDefault();
+  const handleClick = () => {
     if (currentUser) {
       const userId = currentUser.id;
 
@@ -57,18 +56,18 @@ export const ReviewSection = ({ gameId }) => {
   };
 
   const showSendButton = () => {
-    if (
+    const isButtonActive =
       content.length >= 1 &&
-      (document.getElementById("no").checked || document.getElementById("yes").checked)
-    ) {
-      return (
-        <button onClick={handleClick} className="send-comment">
-          Send
-        </button>
-      );
-    } else {
-      return <button className="send-placeholder">Send</button>;
-    }
+      (document.getElementById("no").checked || document.getElementById("yes").checked);
+
+    return (
+      <button
+        onClick={isButtonActive ? handleClick : undefined}
+        className={isButtonActive ? "send-comment" : "send-placeholder"}
+      >
+        Send
+      </button>
+    );
   };
 
   const loginToComment = () => {
@@ -131,10 +130,17 @@ export const ReviewSection = ({ gameId }) => {
     return (
       <>
         <div className="recommend-progress-container">
-        <p><span className="percentage">{percentage.toFixed(0)}%</span> of reviewers recommend this game.</p>
-        <i className="bx bx-happy-beaming" id="happy"></i>
-        <progress className="recommend-progress-bar" max="100" value={percentage}></progress>
-        <i className="bx bx-angry" id="mad"></i>
+          <p>
+            <span className="percentage">{percentage.toFixed(0)}%</span> of reviewers
+            recommend this game.
+          </p>
+          <i className="bx bx-happy-beaming" id="happy"></i>
+          <progress
+            className="recommend-progress-bar"
+            max="100"
+            value={percentage}
+          ></progress>
+          <i className="bx bx-angry" id="mad"></i>
         </div>
       </>
     );
