@@ -87,7 +87,7 @@ export const ReviewSection = ({ gameId }) => {
               onChange={(event) => setContent(event.target.value)}
               className="comment-input"
             />
-            <div>
+            <div className="recommend-container">
               <div>
                 <p>Would you recommend this game?</p>
                 <input
