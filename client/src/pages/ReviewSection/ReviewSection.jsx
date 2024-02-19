@@ -88,7 +88,7 @@ export const ReviewSection = ({ gameId }) => {
               className="comment-input"
             />
             <div className="recommend-container">
-              <div>
+              <div className="user-recommendation">
                 <p>Would you recommend this game?</p>
                 <input
                   type="radio"
