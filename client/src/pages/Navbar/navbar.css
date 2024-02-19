@@ -31,7 +31,7 @@
 }
 
 .categories a {
-  margin: 10px;
+  margin: 20px;
   text-decoration: none;
   font-size: 1rem;
   color: #727272;
@@ -40,6 +40,10 @@
 
 .categories a:hover {
   color: white;
+}
+
+.categories i {
+  font-size: 15px;
 }
 
 .nav-login-button {
