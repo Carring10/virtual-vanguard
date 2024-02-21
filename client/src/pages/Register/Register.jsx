@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 import axios from "axios";
 import "./register.css";
 
@@ -12,6 +14,8 @@ export const Register = () => {
   const [confirmation, setConfirmation] = useState({
     confirm: "",
   });
+
+  const { register } = useContext(AuthContext);
 
   const matchPassword = () => {
     if (input.password !== confirmation.confirm) {
@@ -35,7 +39,8 @@ export const Register = () => {
     event.preventDefault();
 
     try {
-      await axios.post("http://localhost:8800/auth/register", input);
+      await register(input);
+      window.location.replace("/");
     } catch (err) {
       console.log(err);
       setErr(err.response.data.message);
@@ -95,9 +100,17 @@ export const Register = () => {
       password.length >= 8 &&
       input.password === confirmation.confirm
     ) {
-      return <button onClick={handleClick} className="register-button">Register</button>;
+      return (
+        <button onClick={handleClick} className="register-button">
+          Register
+        </button>
+      );
     } else {
-      return <button type="button" className="register-placeholder">Register</button>
+      return (
+        <button type="button" className="register-placeholder">
+          Register
+        </button>
+      );
     }
   };
 
@@ -107,27 +120,27 @@ export const Register = () => {
       <form className="register-form">
         <input
           type="text"
+          autoComplete="off"
           placeholder="Username"
           name="username"
           onChange={handleChange}
         />
         <input
-          type="text"
+          type="password"
+          autoComplete="off"
           placeholder="Password"
           name="password"
           onChange={handleChange}
         />
-        <div style={{ width: "95% "}}>
         <input
-          type="text"
+          type="password"
+          autoComplete="off"
           placeholder="Confirm password"
           name="confirm"
           id="confirm-password"
           onChange={handleConfirmation}
-          style={{ width: "100% "}}
         />
-        {matchPassword()}
-        </div>
+        <div>{matchPassword()}</div>
         <div id="password-requirements-container">
           <h3>Password must contain the following:</h3>
           <p id="letter" className="invalid">

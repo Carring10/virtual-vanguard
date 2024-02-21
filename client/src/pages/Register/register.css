@@ -3,10 +3,10 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 5rem;
+  margin: 3rem;
   padding: 3.5rem;
-  height: 40rem;
-  border-radius: 2%;
+  height: 45rem;
+  border-radius: 10px;
 }
 
 .register-container h1 {
@@ -24,7 +24,7 @@
   padding: .5rem;
   font-family: "Kanit", sans-serif;
   background-color: transparent;
-  font-size: 1rem;
+  font-size: 20px;
   border: none;
   border-bottom: solid 1px #151518;
 }
@@ -56,7 +56,7 @@
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-  color: red;
+  color: gray;
 }
 
 .invalid:before {
@@ -68,19 +68,21 @@
 .register-placeholder {
   padding: .5rem;
   color: #353a3f;
-  font-size: 1rem;
+  border: none;
+  font-size: 18px;
   background-color: #343a40a4;
-  border: 2px solid #c0c0c0;
   border-radius: 8px;
   font-family: "Kanit", sans-serif;
 }
 
 .register-button { 
   padding: .5rem;
+  cursor: pointer;
   color: white;
-  font-size: 1rem;
-  background-color: #765ec7;
-  border: 2px solid #9182c5;
+  font-size: 18px;
+  background-color: #219ebc;
+  box-shadow: rgba(0, 0, 0, 0.534) 0px -30px 36px -28px inset;
+  border: none;
   border-radius: 8px;
   font-family: "Kanit", sans-serif;
 }

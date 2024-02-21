@@ -10,7 +10,6 @@ import "./profile.css";
 export const Profile = () => {
   const [file, setFile] = useState(null);
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  console.log(currentUser)
   const queryClient = useQueryClient();
 
   const username = currentUser.username;

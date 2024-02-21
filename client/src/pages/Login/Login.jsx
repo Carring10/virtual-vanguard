@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { useState, useRef } from "react";
 import { AuthContext } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./login.css";
 
@@ -25,7 +24,6 @@ export const Login = ({ open, onClose }) => {
   };
 
   const { login } = useContext(AuthContext);
-
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -52,20 +50,22 @@ export const Login = ({ open, onClose }) => {
       <p className="sign-in">Sign In</p>
       <form className="login-form">
         <div className="login-input">
-          <i className="bx bx-user-circle" id="user-circle"></i>
+          <i className="bx bx-user-circle" id="login-icon"></i>
           <input
             type="text"
             placeholder="Username"
             name="username"
+            autoComplete="off"
             onChange={handleChange}
           />
         </div>
         <div className="login-input">
-          <i className="bx bx-lock-alt" id="lock"></i>
+          <i className="bx bx-lock-alt" id="login-icon"></i>
           <input
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
+            autoComplete="off"
             onChange={handleChange}
           />
         </div>

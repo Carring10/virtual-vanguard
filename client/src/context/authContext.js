@@ -18,6 +18,11 @@ export const AuthContextProvider = ({ children }) => {
     });
     setCurrentUser(res.data);
   }
+
+  const register = async (input) => {
+    const res = await axios.post('http://localhost:8800/auth/register', input);
+    setCurrentUser(res.data);
+  }
   
   useEffect(() => {
     // Write user object into session storage
@@ -25,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [currentUser]);
   
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser, login }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, login, register }}>
       {/* children allows the nested components to access the shared data provided by the context api */}
       {children}
     </AuthContext.Provider>

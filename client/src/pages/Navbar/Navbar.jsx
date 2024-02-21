@@ -44,6 +44,7 @@ export const Navbar = () => {
   const isLoggedIn = () => {
     if (user) {
       const username = user.username;
+      console.log(username)
       const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
       return (

@@ -48,17 +48,14 @@ dialog {
   border-bottom: solid 1px #151518;
 }
 
-#user-circle {
+#login-icon {
   color: grey;
-}
-
-#lock {
-  color: grey;
+  font-size: 20px;
 }
 
 input {
   border: none;
-  font-size: 1rem;
+  font-size: 20px;
   width: 80%;
   padding-left: 10px;
 }
@@ -71,18 +68,14 @@ input:focus {
   font-family: "Kanit", sans-serif;
   width: 80%;
   font-size: 1rem;
-  color: rgb(31, 31, 31);
-  background-color: #dfbb60;
+  color: white;
+  background-color: #219ebc;
   box-shadow: rgba(0, 0, 0, 0.534) 0px -30px 36px -28px inset;
   padding: 0.5rem;
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
   transition: 0.4s;
-}
-
-.login-button:hover {
-  color: white;
 }
 
 dialog p {
@@ -92,7 +85,7 @@ dialog p {
 }
 
 .create-account-link {
-  color: #000000 !important;
+  color: #219ebc !important;
   text-decoration: none;
 }
 

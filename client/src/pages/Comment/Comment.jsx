@@ -10,7 +10,6 @@ import "./comment.css";
 export const Comment = ({ comment }) => {
   const [showReplies, setShowReplies] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  console.log(comment)
 
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
