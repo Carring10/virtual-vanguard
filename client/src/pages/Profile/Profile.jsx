@@ -15,6 +15,8 @@ export const Profile = () => {
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
+  console.log(currentUser);
+
   const genreColors = {
     MMORPG: "#FF5733",
     Shooter: "#3399FF",
@@ -48,6 +50,20 @@ export const Profile = () => {
       return data;
     })
   );
+
+  const placeholderImg = () => {
+    if (currentUser.profilePic === null) {
+      return <img src={defaultPic} alt="Default" className="profile-pic" />;
+    } else {
+      return (
+        <img
+          src={"/upload/" + currentUser.profilePic}
+          alt="Default"
+          className="profile-pic"
+        />
+      );
+    }
+  };
 
   const upload = async (file) => {
     try {
@@ -114,7 +130,7 @@ export const Profile = () => {
 
   const handleDelete = (event, game) => {
     event.preventDefault();
-    
+
     const user = currentUser.username;
     const apiId = game.apiId;
 
@@ -129,11 +145,7 @@ export const Profile = () => {
         <div className="profile-contents">
           <p className="profile-username">{capitalizedUsername}</p>
           <div className="profile-pic-container">
-            <img
-              src={"/upload/" + currentUser.profilePic}
-              alt="Default"
-              className="profile-pic"
-            />
+            {placeholderImg()}
             <label className="overlay">
               <input
                 type="file"
@@ -150,7 +162,10 @@ export const Profile = () => {
           {data &&
             data.map((game) => (
               <div className="profile-game-container" key={game.gameId}>
-                <div className="delete-game" onClick={(event) => handleDelete(event, game)}>
+                <div
+                  className="delete-game"
+                  onClick={(event) => handleDelete(event, game)}
+                >
                   <i className="bx bx-trash" id="trash"></i>
                 </div>
                 <img

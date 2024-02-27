@@ -42,7 +42,6 @@
 .profile-pic-container {
   display: flex;
   align-items: center;
-  /* width: 20%; */
   position: relative;
   width: 130px;
   height: 130px;
@@ -85,11 +84,19 @@
 }
 
 .file-name {
-  color: #01b30a;
+  color: white;
 }
 
 .save-btn {
   font-family: Kanit, sans-serif;
+  font-size: 15px;
+  letter-spacing: .5px;
+  width: 8rem;
+  background-color: rgb(1, 165, 1);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .saved-games-header {
