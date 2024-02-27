@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit&family=Audiowide&display=swap");
 /* @import url("../../images/controller-background.webp"); */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: black;
   height: 100vh;
@@ -29,7 +33,7 @@ body {
   border-top: none;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 93vh;
+  height: 100vh;
 }
 
 /* width */
@@ -62,7 +66,6 @@ body {
   padding: 1rem .6rem;
   background-color: transparent;
   border-bottom: solid 3px #28282c;
-  z-index: 2;
   width: 90%;
 }
 
@@ -118,6 +121,25 @@ hr {
   color: #878794;
   font-size: 1rem;
   margin-top: 1.5rem;
+}
+
+.to-top-container {
+  margin-bottom: 250px;
+}
+
+.to-top-btn {
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 20px;
+  font-family: Kanit, sans-serif;
+  color: white;
+  background-color: transparent;
+  width: 15rem;
+}
+
+#up-arrow {
+  font-size: 20px;
+  margin-right: 5px;
 }
 
 @media (max-width: 1200px) {

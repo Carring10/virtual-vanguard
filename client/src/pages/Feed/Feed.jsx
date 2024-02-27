@@ -20,6 +20,11 @@ export const Feed = () => {
     fetchAllArticles();
   }, []);
 
+
+  const topFunction = () => {
+    document.querySelector(".feed-container").scrollTop = 0;
+  }
+
   return (
     <>
     <div style={{ backgroundImage: `url(${background})` }} className="bg-img"></div>
@@ -37,6 +42,10 @@ export const Feed = () => {
           </Link>
         </div>
       ))}
+      <div className="to-top-container">
+        <button className="to-top-btn" onClick={topFunction}>
+          <i className="bx bx-up-arrow-alt" id="up-arrow"></i>Back to Top</button>
+      </div>
     </div>
     </>
   );
