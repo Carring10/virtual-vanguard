@@ -12,14 +12,12 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
   color: #dfbb60;
   margin: 0rem 2.5rem;
   font-family: Audiowide;
   font-size: 0.6rem;
-}
-
-.logo span {
-  font-size: 2rem;
 }
 
 .categories {
@@ -174,14 +172,16 @@
   text-align: center;
 }
 
-@media (max-width: 990px) {
-  .logo {
-    font-size: 0.5rem;
-  }
-
+@media (max-width: 1130px) {
   .categories a {
     font-size: .8rem;
     margin: 10px;
+  }
+}
+
+@media (max-width: 990px) {
+  .logo {
+    font-size: 0.5rem;
   }
 
   .nav-login-button {
@@ -191,7 +191,8 @@
 
 @media (max-width: 900px) {
   .logo {
-    font-size: 0.4rem;
+    font-size: 7px;
+    margin: 0rem 1rem;
   }
 
   .bx {
@@ -204,6 +205,29 @@
 
   .nav-login-button {
     width: 7rem;
-    font-size: .7rem;
+    height: 1.8rem;
+    font-size:  10px;
+  }
+}
+
+@media (max-width: 750px) {
+  .categories {
+    position: relative;
+  }
+
+  .nav-login-button {
+    width: 6rem;
+    height: 1.7rem;
+    font-size:  10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    display: none;
+  }
+
+  .categories a {
+    font-size: 10px;
   }
 }

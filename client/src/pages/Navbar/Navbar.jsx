@@ -102,7 +102,7 @@ export const Navbar = () => {
       <div className="navbar">
         <header className="logo">
           <h1>
-            <span>V</span>IRTUAL <span>V</span>ANGUARD
+            VIRTUAL VANGUARD
           </h1>
         </header>
         <div className="categories">

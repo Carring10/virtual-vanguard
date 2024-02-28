@@ -135,6 +135,14 @@ hr {
   color: white;
   background-color: transparent;
   width: 15rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.to-top-btn:hover {
+  background-color: #5b5b6457;
 }
 
 #up-arrow {
