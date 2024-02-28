@@ -15,9 +15,20 @@ const toggleDropdown = function () {
   toggleArrow.classList.toggle("arrow");
 };
 
+const toggleLinksDropdown = function () {
+  const linksDropdownMenu = document.getElementById("links-dropdown");
+
+  linksDropdownMenu.classList.toggle("show");
+};
+
 const showDropdownMenu = (event) => {
   event.stopPropagation();
   toggleDropdown();
+};
+
+const showLinksDropdownMenu = (event) => {
+  event.stopPropagation();
+  toggleLinksDropdown();
 };
 
 const handleClick = async (event) => {
@@ -30,7 +41,7 @@ const handleClick = async (event) => {
     });
 
     window.location.reload();
-    window.location.href = "/"
+    window.location.href = "/";
   } catch (err) {
     console.log(err);
   }
@@ -38,13 +49,57 @@ const handleClick = async (event) => {
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [matches, setMatches] = useState(window.matchMedia("(max-width: 715px)").matches);
+
+  useEffect(() => {
+    window
+      .matchMedia("(max-width: 715px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
+  }, []);
+
+  const compactMenu = () => {
+    if (matches) {
+      return (
+        <div className="link-dropdown-container">
+          <i className="bx bx-menu" onClick={showLinksDropdownMenu} id="menu-icon"></i>
+          <div className="links-dropdown" id="links-dropdown">
+            <div className="categories">
+              <Link to="/" id="news">
+                <i className="bx bx-news"></i> NEWS
+              </Link>
+              <Link to="/discover" id="discover">
+                <i className="bx bx-rocket"></i> DISCOVER
+              </Link>
+              <Link to="/giveaways" id="giveaways">
+                <i className="bx bx-gift"></i> GIVEAWAYS
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="categories">
+          <Link to="/" id="news">
+            <i className="bx bx-news"></i> NEWS
+          </Link>
+          <Link to="/discover" id="discover">
+            <i className="bx bx-rocket"></i> DISCOVER
+          </Link>
+          <Link to="/giveaways" id="giveaways">
+            <i className="bx bx-gift"></i> GIVEAWAYS
+          </Link>
+        </div>
+      );
+    }
+  };
 
   const onClose = () => setIsOpen(false);
 
   const isLoggedIn = () => {
     if (user) {
       const username = user.username;
-      console.log(username)
+      console.log(username);
       const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
       return (
@@ -101,21 +156,9 @@ export const Navbar = () => {
     <>
       <div className="navbar">
         <header className="logo">
-          <h1>
-            VIRTUAL VANGUARD
-          </h1>
+          <h1>VIRTUAL VANGUARD</h1>
         </header>
-        <div className="categories">
-          <Link to="/" id="news">
-            <i className="bx bx-news"></i> NEWS
-          </Link>
-          <Link to="/discover" id="discover">
-            <i className="bx bx-rocket"></i> DISCOVER
-          </Link>
-          <Link to="/giveaways" id="giveaways">
-            <i className="bx bx-gift"></i> GIVEAWAYS
-          </Link>
-        </div>
+        {compactMenu()}
         {isLoggedIn()}
       </div>
       <Login open={isOpen} onClose={onClose} />
