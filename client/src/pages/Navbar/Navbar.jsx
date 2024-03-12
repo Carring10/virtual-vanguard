@@ -65,13 +65,13 @@ export const Navbar = () => {
           <div className="links-dropdown" id="links-dropdown">
             <div className="categories">
               <Link to="/" id="news">
-                <i className="bx bx-news"></i> NEWS
+                <i className="bx bx-news" id="category-icon"></i> NEWS
               </Link>
               <Link to="/discover" id="discover">
-                <i className="bx bx-rocket"></i> DISCOVER
+                <i className="bx bx-rocket" id="category-icon"></i> DISCOVER
               </Link>
               <Link to="/giveaways" id="giveaways">
-                <i className="bx bx-gift"></i> GIVEAWAYS
+                <i className="bx bx-gift" id="category-icon"></i> GIVEAWAYS
               </Link>
             </div>
           </div>
