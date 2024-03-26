@@ -151,6 +151,10 @@ hr {
 }
 
 @media (max-width: 1200px) {
+  .feed-container {
+    width: 100%;
+  }
+  
   .article-img {
     width: 15rem;
   }
@@ -180,9 +184,7 @@ hr {
 }
 
 @media (max-width: 715px) {
-  .feed-container {
-    width: 100%;
-  }
+
 }
 
 @media (max-width: 830px) {
