@@ -179,21 +179,50 @@ hr {
   }
 }
 
+@media (max-width: 715px) {
+  .feed-container {
+    width: 100%;
+  }
+}
+
 @media (max-width: 830px) {
   .news-header {
     font-size: 1.4rem;
   }
 
+  .article {
+    width: 90%; 
+  }
+
   .article-img {
-    width: 12rem;
+    width: 14rem;
   }
 
   .headline {
-    font-size: 0.9rem;
+    font-size: 18px;
   }
 
   .description {
-    font-size: .7rem;
+    font-size: 12px;
     margin-top: .9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-link {
+    flex-direction: column;
+  }
+
+  .article-img {
+    width: 100%;
+  }
+
+  .headline {
+    font-size: 18px;
+  }
+
+  .article-contents {
+    margin: 2rem 0rem;
+    text-align: center;
   }
 }
