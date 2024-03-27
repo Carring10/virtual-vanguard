@@ -49,7 +49,7 @@
   background-color: #28282c;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .title-container {
@@ -73,9 +73,9 @@
 
 .meter {
   box-sizing: content-box;
-  height: 15px; 
+  height: 15px;
   position: relative;
-  margin: 10px; 
+  margin: 10px;
   background: #555;
   border-radius: 25px;
   padding: 10px;
@@ -100,25 +100,16 @@
   overflow: hidden;
 }
 
-/* .progress-bar {
-  -webkit-appearance: none;
-}
-
-::-webkit-progress-bar {
-  background-color: white;
-  height: .5rem;
-  border-radius: 5px;
-}
-
-::-webkit-progress-value {
-  background-color: green;
-  border-radius: 5px;
-} */
-
 .giveaway-url {
   transition: 0.4s;
 }
 
 .giveaway-url:hover {
   color: white;
+}
+
+@media (max-width: 1200px) {
+  .main-container {
+    width: 100%;
+  }
 }

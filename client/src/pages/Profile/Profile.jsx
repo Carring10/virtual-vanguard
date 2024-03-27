@@ -139,7 +139,7 @@ export const Profile = () => {
 
   return (
     <>
-      <Navbar />
+    <Navbar />
       <div className="profile-container">
         <h1 className="profile-header">Profile</h1>
         <div className="profile-contents">
