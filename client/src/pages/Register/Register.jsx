@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import axios from "axios";
 import "./register.css";
 
 export const Register = () => {
