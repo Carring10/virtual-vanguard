@@ -49,3 +49,9 @@ app.use("/", require("./server/routes/gameRoutes"));
 app.use("/", require("./server/routes/authRoutes"));
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+
+// Condition for production 
+app.use(express.static("client"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client"));
+});
