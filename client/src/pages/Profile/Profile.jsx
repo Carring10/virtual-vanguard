@@ -15,8 +15,6 @@ export const Profile = () => {
   const username = currentUser.username;
   const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
-  console.log(currentUser);
-
   const genreColors = {
     MMORPG: "#FF5733",
     Shooter: "#3399FF",
@@ -98,6 +96,7 @@ export const Profile = () => {
 
     if (file) {
       updatePic.mutate({ username, profilePic: profileUrl });
+      setCurrentUser(updatePic);
       window.location.reload();
     }
   };

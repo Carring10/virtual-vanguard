@@ -28,7 +28,6 @@ export const Discover = () => {
 
   let [param, setParam] = useState(getSessionStorage("param", ""));
   let [games, setGames] = useState([]);
-  console.log(games)
   const [tagArray, setTagArray] = useState(tagStorage("tagStorage", []));
   const buttonElements = document.getElementsByTagName("button");
 

@@ -68,3 +68,44 @@
 .article-post p {
   font-size: 1.2rem;
 }
+
+@media (max-width: 1200px) {
+  .article-container {
+    width: 100%;
+  }
+
+  .title-contents {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-headline {
+    font-size: 2rem;
+  }
+
+  .article-post p {
+    font-size: 1rem;
+  }
+
+  .replies-profile-pic {
+    width: 60px;
+    height: 60px;
+  }
+
+  .comment-profile-pic {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 500px) {
+  .comment-section {
+    margin: 3rem 0rem;
+    width: 90%;
+  }
+
+  .comment-content {
+    padding: 5px;
+  }
+}
