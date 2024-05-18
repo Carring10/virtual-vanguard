@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
 const cors = require('cors');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use((req, res, next) => {
