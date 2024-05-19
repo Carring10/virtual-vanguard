@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (input) => {
     const res = await axios.post('https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/auth/login', input, {
-      withCredentials: 'true',
+      withCredentials: true,
       // sameSite: "none"
     });
     setCurrentUser(res.data);

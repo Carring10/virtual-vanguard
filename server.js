@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8800;
 
 // Middleware
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", 'true');
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 })
 
@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: "https://virtual-vanguard.netlify.app",
-  credentials: 'include',
+  credentials: true,
   // sameSite: 'None'
 }));
 
