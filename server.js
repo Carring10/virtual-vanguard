@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors({
   origin: "https://virtual-vanguard.netlify.app",
   credentials: true,
-  // sameSite: 'None'
+  sameSite: 'None'
 }));
 
 app.use(express.urlencoded({ extended: false }));
