@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
 const cors = require('cors');
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8800;
 
 // Middleware
 app.use((req, res, next) => {
@@ -36,7 +36,7 @@ const corsMiddleware = (req, res, next) => {
 }
 
 const applyCorsHeaders = res => {
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS, PATCH, DELETE, POST, PUT')
   res.setHeader(
