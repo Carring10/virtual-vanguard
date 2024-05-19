@@ -1,21 +1,12 @@
 require("dotenv").config();
 
-const multer = require("multer");
 const express = require("express");
-const cookieParser = require("cookie-parser");
-
-const app = express();
-app.use(cookieParser());
 const cors = require('cors');
-const PORT = process.env.PORT || 8800;
+const app = express();
 
-// Middleware
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Credentials", true);
-//   next();
-// })
+const cookieParser = require("cookie-parser");
+const multer = require("multer");
 
-// CORS configuration
 const corsOptions = {
   origin: 'https://virtual-vanguard.netlify.app', // client origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -24,13 +15,22 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// CORS configuration
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Origin', 'https://virtual-vanguard.netlify.app');
   next();
 });
 
-app.use(express.json());
+app.use(cookieParser());
+const PORT = process.env.PORT || 8800;
+
+// Middleware
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// })
+
 
 // app.use(cors({
 //   origin: "https://virtual-vanguard.netlify.app",
@@ -40,7 +40,6 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
