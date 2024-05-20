@@ -8,31 +8,31 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 
 // Middleware
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-})
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// })
 
-app.use(cors({
-  origin: "https://virtual-vanguard.netlify.app",
-  credentials: true,
-  sameSite: 'None'
-}));
+// app.use(cors({
+//   origin: "https://virtual-vanguard.netlify.app",
+//   credentials: true,
+//   sameSite: 'None'
+// }));
 
-// const corsOptions = {
-//   origin: 'https://virtual-vanguard.netlify.app', // client origin
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true, // Allow credentials
-// };
+const corsOptions = {
+  origin: 'https://virtual-vanguard.netlify.app', // client origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // CORS configuration
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   res.header('Access-Control-Allow-Origin', 'https://virtual-vanguard.netlify.app');
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', 'https://virtual-vanguard.netlify.app');
+  next();
+});
 
 app.use(cookieParser());
 const PORT = process.env.PORT || 8800;
