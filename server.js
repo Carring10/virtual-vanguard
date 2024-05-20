@@ -29,6 +29,7 @@ app.use(cors(corsOptions));
 
 // CORS configuration
 app.use((req, res, next) => {
+  console.log('Setting CORS headers');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Origin', 'https://virtual-vanguard.netlify.app');
   next();
