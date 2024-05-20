@@ -63,6 +63,10 @@ app.get('/', (req, res) => {
   res.send('Welcome to my app!');
 });
 
+app.get('/auth/login', (req, res) => {
+  res.send('login route');
+});
+
 app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
 app.use("/", require("./server/routes/reviewRoutes"));
