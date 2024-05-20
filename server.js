@@ -59,6 +59,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
   res.status(200).json(file.filename);
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to my app!');
+});
+
 app.use("/", require("./server/routes/userRoutes"));
 app.use("/", require("./server/routes/commentRoutes"));
 app.use("/", require("./server/routes/reviewRoutes"));
