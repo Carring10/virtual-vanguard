@@ -50,7 +50,8 @@ exports.login = async (req, res) => {
     res.cookie('accessToken', token, {
       httpOnly: true,
       sameSite: "none",
-      domain: "https://virtual-vanguard.netlify.app/"
+      secure: true,
+      proxy: true
     }).status(200).json(data);
 
   } catch (err) {
