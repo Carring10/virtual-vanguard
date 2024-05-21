@@ -29,6 +29,7 @@ exports.getReplies = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   try {
+    console.log(req.cookies)
     const token = req.cookies.accessToken;
     if (!token) return res.status(403).json({ message: 'Not logged in' });
 
