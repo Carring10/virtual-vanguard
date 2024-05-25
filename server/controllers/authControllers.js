@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
 
     res.cookie('accessToken', token, {
       httpOnly: true,
-      sameSite: "none",
+      sameSite: "Strict",
       secure: true,
       proxy: true
     }).status(200).json(data);

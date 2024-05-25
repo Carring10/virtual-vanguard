@@ -7,18 +7,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 
-// Middleware
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Credentials", true);
-//   next();
-// })
-
-// app.use(cors({
-//   origin: "https://virtual-vanguard.netlify.app",
-//   credentials: true,
-//   sameSite: 'None'
-// }));
-
 const corsOptions = {
   origin: 'https://virtual-vanguard.netlify.app', // client origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
