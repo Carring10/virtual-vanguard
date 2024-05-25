@@ -5,7 +5,7 @@ Welcome to Virtual Vanguard, your go-to destination for all things related to ma
 ## Features
 
 - **Latest MMO News:** Stay updated with the latest news and updates in the MMO world, powered by the MMOBomb API.
-- **Discover Games:** Find your next favorite game with our "Discover" feature. Select your preferred genre, theme, and style to get personalized game recommendations.
+- **Discover Games:** Find your next favorite game with the "Discover" feature. Select your preferred genre, theme, and style to get personalized game recommendations.
 - **User Interactions:** Rate, comment on, and save games to your profile to view later. Share your opinions and connect with a community of like-minded gamers.
 - **Exclusive Giveaways:** Get access to exclusive giveaway keys for in-game items, beta tests, and more.
 
