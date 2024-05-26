@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Navbar } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
-import defaultPic from "../../images/default-pic.jpg";
+import defaultPic from "../../upload/default-pic.jpg";
 import "./profile.css";
 
 export const Profile = () => {
@@ -13,7 +13,6 @@ export const Profile = () => {
   const queryClient = useQueryClient();
 
   const username = currentUser.username;
-  const capitalizedUsername = username[0].toUpperCase() + username.slice(1);
 
   const genreColors = {
     MMORPG: "#FF5733",
@@ -55,7 +54,7 @@ export const Profile = () => {
     } else {
       return (
         <img
-          src={"/upload/" + currentUser.profilePic}
+          src={"public/upload/" + currentUser.profilePic}
           alt="Default"
           className="profile-pic"
         />
@@ -96,7 +95,7 @@ export const Profile = () => {
 
     if (file) {
       updatePic.mutate({ username, profilePic: profileUrl });
-      setCurrentUser(updatePic);
+
       window.location.reload();
     }
   };
@@ -142,7 +141,7 @@ export const Profile = () => {
       <div className="profile-container">
         <h1 className="profile-header">Profile</h1>
         <div className="profile-contents">
-          <p className="profile-username">{capitalizedUsername}</p>
+          <p className="profile-username">{username && username[0].toUpperCase() + username.slice(1)}</p>
           <div className="profile-pic-container">
             {placeholderImg()}
             <label className="overlay">

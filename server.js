@@ -31,7 +31,7 @@ app.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './client/public/upload')
+    cb(null, './client/src/upload')
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
@@ -45,14 +45,6 @@ app.post("/", require("./server/routes/authRoutes"));
 app.post("/upload", upload.single("file"), (req, res) => {
   const file = req.file;
   res.status(200).json(file.filename);
-});
-
-app.get('/', (req, res) => {
-  res.send('Welcome to my app!');
-});
-
-app.get('/auth/login', (req, res) => {
-  res.send('login route');
 });
 
 app.use("/", require("./server/routes/userRoutes"));
