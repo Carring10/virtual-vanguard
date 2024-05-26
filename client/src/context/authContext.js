@@ -1,5 +1,6 @@
 import axios from "axios";
 import {createContext, useEffect, useState } from "react";
+import defaultPic from "../upload/default-pic.jpg";
 
 export const AuthContext = createContext();
 
