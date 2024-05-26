@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import "./replyForm.css";
+import config from "../../config";
 
 export const ReplyForm = ({ comment, hideReplyForm }) => {
   const [content, setContent] = useState("");
@@ -27,7 +28,7 @@ export const ReplyForm = ({ comment, hideReplyForm }) => {
 
   const addReply = useMutation(
     (newComment) => {
-      return axios.post("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/comments", newComment, {
+      return axios.post(`${config.baseURL}/comments`, newComment, {
         withCredentials: true,
       });
     },

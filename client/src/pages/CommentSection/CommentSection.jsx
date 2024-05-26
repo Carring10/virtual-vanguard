@@ -5,6 +5,7 @@ import { Login } from "../Login/Login";
 import axios from "axios";
 import { Comment } from "../Comment/Comment";
 import "./commentSection.css";
+import config from "../../config";
 
 export const CommentSection = ({ articleId }) => {
   const [content, setContent] = useState("");
@@ -16,7 +17,7 @@ export const CommentSection = ({ articleId }) => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["comments"], () =>
-    axios.get(`https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/comments/${articleId}`).then((res) => {
+    axios.get(`${config.baseURL}/comments/${articleId}`).then((res) => {
       const data = res.data.comments;
       return data;
     })
@@ -25,7 +26,7 @@ export const CommentSection = ({ articleId }) => {
   // Mutation used to make changes to the server, provide data as 'newComment'
   const addComment = useMutation(
     (newComment) => {
-      return axios.post("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/comments", newComment, {
+      return axios.post(`${config.baseURL}/comments`, newComment, {
         withCredentials: true,
       });
     },

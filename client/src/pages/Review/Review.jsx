@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import moment from "moment/moment";
 import "./review.css";
+import config from "../../config";
 
 export const Review = ({ review }) => {
   const { currentUser } = useContext(AuthContext);
@@ -15,7 +16,7 @@ export const Review = ({ review }) => {
   const deleteReview = useMutation(
     (deletedReview) => {
       return axios.delete(
-        `https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/reviews/${deletedReview.id}/${deletedReview.userId}`
+        `${config.baseURL}/reviews/${deletedReview.id}/${deletedReview.userId}`
       );
     },
     {

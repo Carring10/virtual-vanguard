@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import { Replies } from "../Replies/Replies";
 import { ReplyForm } from "../ReplyForm/ReplyForm";
 import "./comment.css";
+import config from "../../config";
 
 export const Comment = ({ comment }) => {
   const [showReplies, setShowReplies] = useState(false);
@@ -26,7 +27,7 @@ export const Comment = ({ comment }) => {
   const deleteComment = useMutation(
     (deletedComment) => {
       return axios.delete(
-        `https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/comments/${deletedComment.id}/${deletedComment.userId}`
+        `${config.baseURL}/comments/${deletedComment.id}/${deletedComment.userId}`
       );
     },
     {

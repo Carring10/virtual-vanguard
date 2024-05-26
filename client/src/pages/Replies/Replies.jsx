@@ -4,6 +4,7 @@ import axios from "axios";
 import moment from "moment/moment";
 import { useQuery } from "@tanstack/react-query";
 import "./replies.css";
+import config from "../../config";
 
 export const Replies = ({ comment, deleteComment }) => {
   const articleId = comment.articleId;
@@ -16,7 +17,7 @@ export const Replies = ({ comment, deleteComment }) => {
 
   // 'articleId' and 'parentId' ensure each comment's replies are fetched separately
   const { data } = useQuery(["replies", articleId, parentId], () =>
-    axios.get(`https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/comments/${articleId}/${parentId}`).then((res) => {
+    axios.get(`${config.baseURL}/comments/${articleId}/${parentId}`).then((res) => {
       const data = res.data.replies;
 
       return data;

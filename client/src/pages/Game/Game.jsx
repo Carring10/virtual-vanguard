@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import "./game.css";
+import config from "../../config";
 
 export const Game = () => {
   const [game, setGame] = useState({
@@ -76,7 +77,7 @@ export const Game = () => {
 
   useEffect(() => {
     if (currentUser) {
-      const getUserGames = "https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/games/getGames/" + currentUser.username;
+      const getUserGames = `${config.baseURL}/games/getGames/` + currentUser.username;
 
       const fetchUserGames = async () => {
         try {
@@ -94,7 +95,7 @@ export const Game = () => {
 
   const saveGame = useMutation(
     (data) => {
-      return axios.post("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/games", data);
+      return axios.post(`${config.baseURL}/games`, data);
     },
     {
       onSuccess: () => {
@@ -107,7 +108,7 @@ export const Game = () => {
   const deleteGame = useMutation(
     (deletedData) => {
       console.log("deletedData", deletedData);
-      return axios.delete("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/games/delete", { data: deletedData });
+      return axios.delete(`${config.baseURL}/games/delete`, { data: deletedData });
     },
     {
       onSuccess: () => {

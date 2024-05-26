@@ -5,6 +5,7 @@ import { Login } from "../Login/Login";
 import { Review } from "../Review/Review";
 import axios from "axios";
 import "./reviewSection.css";
+import config from "../../config";
 
 export const ReviewSection = ({ gameId }) => {
   const [content, setContent] = useState("");
@@ -21,7 +22,7 @@ export const ReviewSection = ({ gameId }) => {
   const { data } = useQuery(
     ["reviews"],
     () =>
-      axios.get(`https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/reviews/${gameId}`).then((res) => {
+      axios.get(`${config.baseURL}/reviews/${gameId}`).then((res) => {
         const data = res.data.reviews;
         console.log(data);
         return data;
@@ -33,7 +34,7 @@ export const ReviewSection = ({ gameId }) => {
 
   const addReview = useMutation(
     (newReview) => {
-      return axios.post("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/reviews", newReview, {
+      return axios.post(`${config.baseURL}/reviews`, newReview, {
         withCredentials: true,
       });
     },

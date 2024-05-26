@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./navbar.css";
 import { Login } from "../Login/Login";
 import { Link } from "react-router-dom";
+import config from "../../config";
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -36,7 +37,7 @@ const handleClick = async (event) => {
   sessionStorage.removeItem("user");
 
   try {
-    await axios.delete("https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/auth/logout", {
+    await axios.delete(`${config.baseURL}/auth/logout`, {
       withCredentials: true,
     });
 

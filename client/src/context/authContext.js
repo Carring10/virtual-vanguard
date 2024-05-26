@@ -1,9 +1,9 @@
 import axios from "axios";
 import {createContext, useEffect, useState } from "react";
+import config from "../config";
 
 export const AuthContext = createContext();
-
-
+console.log(config.baseURL)
 export const AuthContextProvider = ({ children }) => {
   // children refers to the nested components enclosed within <BrowserRouter>
   const [currentUser, setCurrentUser] = useState(
@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (input) => {
-    const res = await axios.post('https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/auth/login', input, {
+    const res = await axios.post(`${config.baseURL}/auth/login`, input, {
       withCredentials: true,
       sameSite: "none"
     });
@@ -20,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const register = async (input) => {
-    const res = await axios.post('https://virtual-vanguard-mmo-f84f119b0dd9.herokuapp.com/auth/register', input);
+    const res = await axios.post(`${config.baseURL}/auth/register`, input);
     setCurrentUser(res.data);
   }
   

@@ -18,11 +18,13 @@ class User {
     let sql = `
     INSERT INTO users(
       username,
-      password
+      password,
+      profilePic
     )
     VALUES(
       '${this.username}',
-      '${this.password}'
+      '${this.password}',
+      'default-pic.jpg'
     )
     `;
 
