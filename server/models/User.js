@@ -19,12 +19,10 @@ class User {
     INSERT INTO users(
       username,
       password,
-      profilePic
     )
     VALUES(
       '${this.username}',
       '${this.password}',
-      'default-pic.jpg'
     )
     `;
 
