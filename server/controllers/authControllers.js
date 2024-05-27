@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res) => {
   try {
     const username = req.body.username;
+    const profilePic = 'default-pic.jpg';
+
     const [userData, _] = await User.getUser(username);
     // If a user already exists, do not save it to the database.
     if (userData.length != 0) {
@@ -14,11 +16,24 @@ exports.register = async (req, res) => {
     } else {
       // Hash the password before saving to the database, salt it 10 times.
       const password = await bcrypt.hash(req.body.password, 10);
-      let user = new User(username, password);
+      let user = new User(username, password, profilePic);
+
+      const token = jwt.sign({ username: username }, process.env.ACCESS_TOKEN);
+  
+      res.cookie('accessToken', token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        proxy: true
+      }).status(200);
 
       await user.create();
+
+      const [userData, _] = await User.getUser(username);
+      console.log(userData)
   
-      res.status(200).json(user);
+      res.status(200).json(userData[0]);
+      console.log(user)
     }
   } catch (err) {
     console.log(err);
@@ -49,7 +64,7 @@ exports.login = async (req, res) => {
 
     res.cookie('accessToken', token, {
       httpOnly: true,
-      sameSite: "Strict",
+      sameSite: "none",
       secure: true,
       proxy: true
     }).status(200).json(data);

@@ -50,17 +50,13 @@ export const Profile = () => {
   );
 
   const placeholderImg = () => {
-    // if (currentUser.profilePic === null) {
-    //   return <img src={defaultPic} alt="Default" className="profile-pic" />;
-    // } else {
       return (
         <img
-          src={"./upload/" + currentUser.profilePic}
+          src={"./upload/" + (currentUser.profilePic === null ? 'default-pic.jpg' : currentUser.profilePic)}
           alt="Default"
           className="profile-pic"
         />
       );
-    // }
   };
 
   const upload = async (file) => {

@@ -24,8 +24,8 @@ class User {
     VALUES(
       '${this.username}',
       '${this.password}',
-      'default-pic.jpg'
-    )
+      '${this.profilePic}'
+    );
     `;
 
     const newUser = db.execute(sql);

@@ -3,7 +3,6 @@ import {createContext, useEffect, useState } from "react";
 import config from "../config";
 
 export const AuthContext = createContext();
-console.log(config.baseURL)
 export const AuthContextProvider = ({ children }) => {
   // children refers to the nested components enclosed within <BrowserRouter>
   const [currentUser, setCurrentUser] = useState(
@@ -20,7 +19,10 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const register = async (input) => {
-    const res = await axios.post(`${config.baseURL}/auth/register`, input);
+    const res = await axios.post(`${config.baseURL}/auth/register`, input, {
+      withCredentials: true,
+      sameSite: "none"
+    });
     setCurrentUser(res.data);
   }
   
