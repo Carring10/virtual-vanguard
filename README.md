@@ -11,11 +11,11 @@ Welcome to Virtual Vanguard, your go-to destination for all things related to ma
 
 ## Visuals
 
-# Feed/Homepage
+### Feed/Homepage
 ![Feed Page](client/src/images/virtual-vanguard-feed.png)
-# Discover Page
+### Discover Page
 ![Discover Page](client/src/images/virtual-vanguard-discover.png)
-#Game Reviews
+### Game Reviews
 ![Review Page](client/src/images/virtual-vanguard-reviews.png)
 
 ## Video
