@@ -127,14 +127,25 @@ export const ReviewSection = ({ gameId }) => {
   const recommendedStats = () => {
     const recommendedReviews = data.filter((review) => review.recommended === "true");
     const percentage = (recommendedReviews.length / data.length) * 100;
+    console.log(data.length);
 
-    return (
-      <>
-        <div className="recommend-progress-container">
+    const getStats = () => {
+      if (data.length === 0) {
+        return <p className="percentage">Be the first to write a review!</p>;
+      } else {
+        return (
           <p>
             <span className="percentage">{percentage.toFixed(0)}%</span> of reviewers
             recommend this game.
           </p>
+        );
+      }
+    };
+
+    return (
+      <>
+        <div className="recommend-progress-container">
+          {getStats()}
           <i className="bx bx-happy-beaming" id="happy"></i>
           <progress
             className="recommend-progress-bar"

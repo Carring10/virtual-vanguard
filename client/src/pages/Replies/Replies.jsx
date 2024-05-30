@@ -44,13 +44,15 @@ export const Replies = ({ comment, deleteComment }) => {
 
   return (
     <div className="replies">
+      {console.log(data)}
       {data &&
         data.map((reply, index) => (
           <div className="reply-container" key={index}>
-            <img src={"/upload/" + currentUser.profilePic} alt="Default" className="replies-profile-pic" />
+            {console.log(reply)}
+            <img src={"/upload/" + reply.profilePic} alt="Default" className="replies-profile-pic" />
             <div className="reply" key={reply.createdAt}>
               <div className="reply-user-info">
-                <p className="reply-username">{capitalizedUsername}</p>
+                <p className="reply-username">{reply.username[0].toUpperCase() + reply.username.slice(1)}</p>
                 <span className="reply-date">{moment(reply.createdAt).fromNow()}</span>
               </div>
               <p className="reply-content">{reply.content}</p>
