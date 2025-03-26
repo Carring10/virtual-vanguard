@@ -1,6 +1,6 @@
 # Virtual Vanguard MMO News Hub
 
-Welcome to Virtual Vanguard, your go-to destination for all things related to massively multiplayer online (MMO) games. This app brings you the latest news, game recommendations, and exclusive giveaways directly to your fingertips. Built with React, Node.js, Express, and MySQL, Virtual Vanguard offers a seamless and interactive experience for MMO enthusiasts.
+Welcome to Virtual Vanguard, your go-to destination for all things related to massively multiplayer online (MMO) games. This app brings you the latest news, game recommendations, and exclusive giveaways directly to your fingertips.
 
 ## Features
 
